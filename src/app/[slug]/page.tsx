@@ -85,11 +85,11 @@ export default async function BlogDetailPage({ params }: Props) {
         readTime: post.readTime || '5 menit baca',
         author: {
             name: post.authorName || 'Admin',
-            image: post.authorImage || '/admin_image_placeholder.jpeg',
+            image: (post.authorImage && !post.authorImage.includes('ui-avatars.com')) ? post.authorImage : '/images/logo-kelas-inovatif/admin_image_placeholder.avif',
             role: 'Penulis',
             bio: 'Penulis di Kelas Inovatif.',
         },
-        image: post.image || '/placeholder-image.jpg',
+        image: post.contentImage || post.image || '/placeholder-image.jpg',
         content: post.content || '<p>Konten belum tersedia.</p>',
     };
 
@@ -119,9 +119,9 @@ export default async function BlogDetailPage({ params }: Props) {
         readTime: p.readTime || '5 menit baca',
         author: {
             name: p.authorName || 'Admin',
-            image: p.authorImage || '/admin_image_placeholder.jpeg',
+            image: (p.authorImage && !p.authorImage.includes('ui-avatars.com')) ? p.authorImage : '/images/logo-kelas-inovatif/admin_image_placeholder.avif',
         },
-        image: p.image || '/placeholder-image.jpg',
+        image: p.image || p.contentImage || '/placeholder-image.jpg',
         slug: p.slug || '',
     }));
 

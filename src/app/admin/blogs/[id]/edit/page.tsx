@@ -41,12 +41,15 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
             content: formData.get('content'),
             category: formData.get('category'),
             image: formData.get('image'),
+            contentImage: formData.get('contentImage'),
+            image_file: formData.get('image_file'),
+            content_image_file: formData.get('content_image_file'),
             read_time: readTime,
             featured: formData.get('featured') === 'on',
             status: formData.get('status'),
             // Preserve author info or update if needed
-            author_name: blog.author_name,
-            author_image: blog.author_image,
+            author_name: blog.authorName,
+            author_image: blog.authorImage,
         });
 
         if (res.msg === 'success') {

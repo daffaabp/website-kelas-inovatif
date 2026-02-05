@@ -39,10 +39,10 @@ export default async function BlogsPage() {
             }),
             author: {
                 name: blog.authorName || 'Admin',
-                image: blog.authorImage || '/admin_image_placeholder.jpeg',
+                image: (blog.authorImage && !blog.authorImage.includes('ui-avatars.com')) ? blog.authorImage : '/images/logo-kelas-inovatif/admin_image_placeholder.avif',
                 role: 'Penulis',
             },
-            image: blog.image || '/placeholder-image.jpg',
+            image: blog.image || blog.contentImage || '/placeholder-image.jpg',
             readTime: blog.readTime || '5 menit baca',
             featured: Boolean(blog.featured),
             slug: blog.slug || undefined,

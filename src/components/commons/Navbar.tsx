@@ -22,7 +22,7 @@ export function Navbar() {
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-contact-secondary/90 dark:bg-contact-bg-dark/90 backdrop-blur-md shadow-sm border-b border-contact-primary/10 dark:border-white/10 ${scrolled ? 'py-4' : 'py-6'}`}>
+        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-contact-secondary/90 dark:bg-contact-bg-dark/90 backdrop-blur-md shadow-sm border-b border-contact-primary/10 dark:border-white/10 ${scrolled ? 'py-3' : 'py-4'}`}>
             <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
                 {/* Logo */}
                 <a href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">

@@ -103,7 +103,7 @@ export async function getScheduleById(id: number) {
     }
 }
 
-import { saveFile } from '@/lib/storage';
+import { saveFile, deleteFile } from '@/lib/storage';
 
 // ... imports
 
@@ -163,13 +163,27 @@ export async function createSchedule(data: any) {
 
 export async function updateSchedule(id: number, data: any) {
     try {
+        // Fetch existing data first to handle image deletion
+        const existingSchedule = await prisma.schedule.findUnique({
+            where: { id },
+            select: { speakerImage: true, image: true }
+        });
+
         // Handle speaker image upload
         if (data.speaker_image_file && data.speaker_image_file instanceof File && data.speaker_image_file.size > 0) {
+            // Delete old speaker image if it exists and is being replaced
+            if (existingSchedule?.speakerImage) {
+                await deleteFile(existingSchedule.speakerImage);
+            }
             data.speaker_image = await saveFile(data.speaker_image_file, 'speaker');
         }
 
         // Handle featured image upload
         if (data.featured_image_file && data.featured_image_file instanceof File && data.featured_image_file.size > 0) {
+            // Delete old featured image if it exists and is being replaced
+            if (existingSchedule?.image) {
+                await deleteFile(existingSchedule.image);
+            }
             data.image = await saveFile(data.featured_image_file, 'schedule');
         }
 
@@ -206,6 +220,20 @@ export async function updateSchedule(id: number, data: any) {
 
 export async function deleteSchedule(id: number) {
     try {
+        // Find existing schedule to get image URLs
+        const existingSchedule = await prisma.schedule.findUnique({
+            where: { id },
+            select: { speakerImage: true, image: true }
+        });
+
+        // Delete associated images
+        if (existingSchedule?.speakerImage) {
+            await deleteFile(existingSchedule.speakerImage);
+        }
+        if (existingSchedule?.image) {
+            await deleteFile(existingSchedule.image);
+        }
+
         await prisma.schedule.delete({ where: { id } });
         revalidatePath('/admin/schedule');
         revalidatePath('/homepage');
@@ -218,11 +246,25 @@ export async function deleteSchedule(id: number) {
 
 export async function getLatestSchedules(limit: number = 10) {
     try {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const currentMonth = now.getMonth();
+
+        // Start of Current Month (1st day)
+        const startOfCurrentMonth = new Date(currentYear, currentMonth, 1, 0, 0, 0, 0);
+
+        // End of Next Month
+        // new Date(year, month + 2, 0) gives the last day of (month + 1).
+        const endOfNextMonth = new Date(currentYear, currentMonth + 2, 0, 23, 59, 59, 999);
+
         const schedules = await prisma.schedule.findMany({
-            orderBy: [
-                { updatedAt: 'desc' },
-                { date: 'desc' },
-            ],
+            where: {
+                date: {
+                    gte: startOfCurrentMonth,
+                    lte: endOfNextMonth,
+                },
+            },
+            orderBy: { date: 'asc' }, // Show nearest events first
             take: limit,
         });
 

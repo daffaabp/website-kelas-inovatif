@@ -25,12 +25,15 @@ export default function CreatePostPage() {
             content: formData.get('content'),
             category: formData.get('category'),
             image: formData.get('image'),
+            contentImage: formData.get('contentImage'), // Keep usage of URL input if needed
+            image_file: formData.get('image_file'), // File upload for thumbnail
+            content_image_file: formData.get('content_image_file'), // File upload for content image
             read_time: readTime,
             featured: formData.get('featured') === 'on',
             status: formData.get('status'),
             // Author hardcoded or pulled from auth session in real app
             author_name: 'Admin',
-            author_image: 'https://ui-avatars.com/api/?name=Admin',
+            author_image: '/images/logo-kelas-inovatif/admin_image_placeholder.avif',
         });
 
         if (res.msg === 'success') {

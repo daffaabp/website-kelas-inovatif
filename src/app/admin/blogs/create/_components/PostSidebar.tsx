@@ -8,6 +8,9 @@ interface PostSidebarProps {
         featured?: boolean;
         category?: string;
         image?: string;
+        contentImage?: string;
+        image_file?: File;
+        content_image_file?: File;
         read_time?: string;
         status?: 'published' | 'draft';
     };
@@ -15,9 +18,42 @@ interface PostSidebarProps {
 
 export function PostSidebar({ initialData }: PostSidebarProps) {
     const [featured, setFeatured] = useState(initialData?.featured || false);
+    
+    // Thumbnail Image State
+    const [imagePreview, setImagePreview] = useState<string | null>(initialData?.image || null);
+    const [imageFile, setImageFile] = useState<File | null>(null);
+
+    // Content Image State
+    const [contentImagePreview, setContentImagePreview] = useState<string | null>(initialData?.contentImage || null);
+    const [contentImageFile, setContentImageFile] = useState<File | null>(null);
+
     // Parse read time to number if it format is "X min read"
     const initialReadTime = initialData?.read_time ? parseInt(initialData.read_time) : undefined;
     const initialStatus = initialData?.status || 'draft';
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'thumbnail' | 'content') => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            if (type === 'thumbnail') {
+                setImageFile(file);
+                setImagePreview(url);
+            } else {
+                setContentImageFile(file);
+                setContentImagePreview(url);
+            }
+        }
+    };
+
+    const removeImage = (type: 'thumbnail' | 'content') => {
+        if (type === 'thumbnail') {
+            setImageFile(null);
+            setImagePreview(null);
+        } else {
+            setContentImageFile(null);
+            setContentImagePreview(null);
+        }
+    };
 
     return (
         <div className="lg:col-span-1 space-y-6">
@@ -44,33 +80,88 @@ export function PostSidebar({ initialData }: PostSidebarProps) {
                     ></label>
                 </div>
             </div>
-            <div className="bg-white dark:bg-[#1C2624] p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+            {/* Thumbnail Image Section */}
+            <div className="bg-white dark:bg-[#1C2624] p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm relative">
                 <h3 className="font-serif font-bold text-lg text-gray-800 dark:text-white mb-4">
-                    Cover Image
+                    Thumbnail Image
                 </h3>
-                {/* File upload omitted for simplicity, using URL */}
-                <div className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
-                    <div className="w-12 h-12 bg-[#263c32]/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                        <CloudUpload className="text-[#263c32] text-2xl w-6 h-6" />
+                <p className="text-xs text-gray-500 mb-4">Displayed on blog cards and lists.</p>
+                
+                {/* Hidden input must exist in DOM regardless of preview state */}
+                <input 
+                    type="file" 
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(e, 'thumbnail')}
+                    className="hidden" 
+                    id="image_file_input"
+                    name="image_file"
+                />
+
+                {imagePreview ? (
+                    <div className="relative rounded-lg overflow-hidden group border border-gray-200 dark:border-gray-700">
+                        <img src={imagePreview} alt="Thumbnail preview" className="w-full h-48 object-cover" />
+                        <button
+                            type="button"
+                            onClick={() => removeImage('thumbnail')}
+                            className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                            <X className="w-4 h-4" />
+                        </button>
                     </div>
-                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Click to upload
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">or drag and drop</p>
-                    <p className="text-xs text-gray-400 mt-2">SVG, PNG, JPG (max. 2MB)</p>
-                </div>
-                <div className="mt-4">
-                    <label className="text-xs font-medium text-gray-500 mb-1 block">
-                        Or use image URL
+                ) : (
+                    <label htmlFor="image_file_input" className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+                        <div className="w-12 h-12 bg-[#263c32]/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <CloudUpload className="text-[#263c32] text-2xl w-6 h-6" />
+                        </div>
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Click to upload thumbnail
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">or drag and drop</p>
+                        <p className="text-xs text-gray-400 mt-2">SVG, PNG, JPG (max. 2MB)</p>
                     </label>
-                    <input
-                        type="text"
-                        name="image"
-                        defaultValue={initialData?.image}
-                        className="w-full text-sm rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800/50 dark:text-white focus:border-[#263c32] focus:ring-[#263c32] shadow-sm p-2 bg-transparent border"
-                        placeholder="https://..."
-                    />
-                </div>
+                )}
+            </div>
+
+            {/* Content Image Section */}
+            <div className="bg-white dark:bg-[#1C2624] p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm relative">
+                <h3 className="font-serif font-bold text-lg text-gray-800 dark:text-white mb-4">
+                    Content Image
+                </h3>
+                <p className="text-xs text-gray-500 mb-4">Displayed at the top of the blog post.</p>
+
+                {/* Hidden input must exist in DOM regardless of preview state */}
+                <input 
+                    type="file" 
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(e, 'content')} 
+                    className="hidden" 
+                    id="content_image_file_input"
+                    name="content_image_file"
+                />
+
+                {contentImagePreview ? (
+                    <div className="relative rounded-lg overflow-hidden group border border-gray-200 dark:border-gray-700">
+                        <img src={contentImagePreview} alt="Content image preview" className="w-full h-48 object-cover" />
+                        <button
+                            type="button"
+                            onClick={() => removeImage('content')}
+                            className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                            <X className="w-4 h-4" />
+                        </button>
+                    </div>
+                ) : (
+                    <label htmlFor="content_image_file_input" className="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+                        <div className="w-12 h-12 bg-[#263c32]/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <CloudUpload className="text-[#263c32] text-2xl w-6 h-6" />
+                        </div>
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Click to upload content image
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">or drag and drop</p>
+                        <p className="text-xs text-gray-400 mt-2">SVG, PNG, JPG (max. 2MB)</p>
+                    </label>
+                )}
             </div>
             <div className="bg-white dark:bg-[#1C2624] p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm space-y-5">
                 <h3 className="font-serif font-bold text-lg text-gray-800 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-2">

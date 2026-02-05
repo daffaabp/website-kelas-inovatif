@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://free.kelasinovatif.com'),
+  metadataBase: new URL('https://kelasinovatif.com'),
   title: {
     default: "Komunitas Kelas Inovatif",
     template: "%s | Kelas Inovatif"
@@ -45,6 +46,7 @@ export default function RootLayout({
         <NextTopLoader color="#1C302B" showSpinner={false} />
         {children}
         <FloatingWhatsApp />
+        <Analytics />
       </body>
     </html>
   );

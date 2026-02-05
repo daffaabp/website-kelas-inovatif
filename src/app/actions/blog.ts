@@ -37,6 +37,7 @@ export async function getBlogs({ page = 1, limit = 10, query = '' }: { page?: nu
                 author_name: blog.authorName ?? undefined,
                 author_image: blog.authorImage ?? undefined,
                 image: blog.image ?? undefined,
+                contentImage: blog.contentImage ?? undefined,
                 read_time: blog.readTime ?? undefined,
                 featured: blog.featured,
                 status: blog.status,
@@ -78,6 +79,7 @@ export async function getBlogById(id: number) {
             author_name: blog.authorName ?? undefined,
             author_image: blog.authorImage ?? undefined,
             image: blog.image ?? undefined,
+            contentImage: blog.contentImage ?? undefined,
             read_time: blog.readTime ?? undefined,
             featured: blog.featured,
             status: blog.status,
@@ -110,6 +112,7 @@ export async function getBlogBySlug(slug: string) {
             author_name: blog.authorName ?? undefined,
             author_image: blog.authorImage ?? undefined,
             image: blog.image ?? undefined,
+            contentImage: blog.contentImage ?? undefined,
             read_time: blog.readTime ?? undefined,
             featured: blog.featured,
             status: blog.status,
@@ -122,8 +125,44 @@ export async function getBlogBySlug(slug: string) {
     }
 }
 
+import { saveFile, deleteFile } from '@/lib/storage';
+
 export async function createBlog(data: any) {
     try {
+        console.log('createBlog called with:', {
+            title: data.title,
+            hasImageFile: !!data.image_file,
+            imageFileSize: data.image_file?.size,
+            imageFileType: data.image_file?.type,
+            hasContentImageFile: !!data.content_image_file,
+            contentImageFileSize: data.content_image_file?.size
+        });
+
+        // Handle thumbnail image upload
+        if (data.image_file && data.image_file.size > 0) {
+            console.log('Uploading thumbnail...');
+            try {
+                data.image = await saveFile(data.image_file, 'blog/thumbnail');
+                console.log('Thumbnail uploaded:', data.image);
+            } catch (uploadError) {
+                console.error('Thumbnail upload failed:', uploadError);
+                throw uploadError; // Re-throw to ensure we don't create half-baked post? Or allow partial?
+                // For now let's assume we want to fail if upload fails
+            }
+        }
+
+        // Handle content image upload
+        if (data.content_image_file && data.content_image_file.size > 0) {
+            console.log('Uploading content image...');
+            try {
+                data.contentImage = await saveFile(data.content_image_file, 'blog/content');
+                console.log('Content image uploaded:', data.contentImage);
+            } catch (uploadError) {
+                console.error('Content image upload failed:', uploadError);
+                throw uploadError;
+            }
+        }
+
         await prisma.blog.create({
             data: {
                 title: data.title,
@@ -134,6 +173,7 @@ export async function createBlog(data: any) {
                 authorName: data.author_name,
                 authorImage: data.author_image,
                 image: data.image,
+                contentImage: data.contentImage,
                 readTime: data.read_time,
                 featured: data.featured || false,
                 status: data.status || 'draft',
@@ -152,6 +192,27 @@ export async function createBlog(data: any) {
 
 export async function updateBlog(id: number, data: any) {
     try {
+        const existingBlog = await prisma.blog.findUnique({
+            where: { id },
+            select: { image: true, contentImage: true }
+        });
+
+        // Handle thumbnail image upload
+        if (data.image_file && data.image_file instanceof File && data.image_file.size > 0) {
+            if (existingBlog?.image) {
+                await deleteFile(existingBlog.image);
+            }
+            data.image = await saveFile(data.image_file, 'blog/thumbnail');
+        }
+
+        // Handle content image upload
+        if (data.content_image_file && data.content_image_file instanceof File && data.content_image_file.size > 0) {
+            if (existingBlog?.contentImage) {
+                await deleteFile(existingBlog.contentImage);
+            }
+            data.contentImage = await saveFile(data.content_image_file, 'blog/content');
+        }
+
         await prisma.blog.update({
             where: { id },
             data: {
@@ -163,6 +224,7 @@ export async function updateBlog(id: number, data: any) {
                 authorName: data.author_name,
                 authorImage: data.author_image,
                 image: data.image,
+                contentImage: data.contentImage,
                 readTime: data.read_time,
                 featured: data.featured,
                 status: data.status,
@@ -181,6 +243,18 @@ export async function updateBlog(id: number, data: any) {
 
 export async function deleteBlog(id: number) {
     try {
+        const existingBlog = await prisma.blog.findUnique({
+            where: { id },
+            select: { image: true, contentImage: true }
+        });
+
+        if (existingBlog?.image) {
+            await deleteFile(existingBlog.image);
+        }
+        if (existingBlog?.contentImage) {
+            await deleteFile(existingBlog.contentImage);
+        }
+
         await prisma.blog.delete({ where: { id } });
         revalidatePath('/blogs');
         revalidatePath('/admin/blogs');
