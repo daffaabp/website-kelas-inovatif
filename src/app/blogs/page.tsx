@@ -5,9 +5,9 @@ import { Hero } from './_components/Hero';
 import { FeaturedPost } from './_components/FeaturedPost';
 import { BlogGrid } from './_components/BlogGrid';
 import { Newsletter } from './_components/Newsletter';
-import db from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import type { Metadata } from 'next';
-import { BlogPost, BlogFromDB } from './_components/types';
+import { BlogPost } from './_components/types';
 
 export const metadata: Metadata = {
     title: 'Blog - Komunitas Kelas Inovatif',
@@ -22,25 +22,28 @@ export const metadata: Metadata = {
 
 export default async function BlogsPage() {
     try {
-        const blogs = await db('blogs').where({ status: 'published' }).select('*').orderBy('created_at', 'desc');
+        const blogs = await prisma.blog.findMany({
+            where: { status: 'published' },
+            orderBy: { createdAt: 'desc' },
+        });
 
-        const formattedPosts: BlogPost[] = blogs.map((blog: BlogFromDB) => ({
+        const formattedPosts: BlogPost[] = blogs.map((blog) => ({
             id: blog.id,
             title: blog.title,
             excerpt: blog.excerpt || '',
             category: blog.category || 'Umum',
-            date: new Date(blog.created_at).toLocaleDateString('id-ID', {
+            date: new Date(blog.createdAt).toLocaleDateString('id-ID', {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',
             }),
             author: {
-                name: blog.author_name || 'Admin',
-                image: blog.author_image || '/admin_image_placeholder.jpeg',
+                name: blog.authorName || 'Admin',
+                image: blog.authorImage || '/admin_image_placeholder.jpeg',
                 role: 'Penulis',
             },
             image: blog.image || '/placeholder-image.jpg',
-            readTime: blog.read_time || '5 menit baca',
+            readTime: blog.readTime || '5 menit baca',
             featured: Boolean(blog.featured),
             slug: blog.slug || undefined,
         }));

@@ -1,6 +1,6 @@
 'use server'
 
-import db from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
 const schema = z.object({
@@ -22,7 +22,7 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
     const validEmail = validatedFields.data.email;
 
     try {
-        const existing = await db('emails').where({ email: validEmail }).first();
+        const existing = await prisma.email.findUnique({ where: { email: validEmail } });
         if (existing) {
             return {
                 success: false,
@@ -30,7 +30,7 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
             };
         }
 
-        await db('emails').insert({ email: validEmail });
+        await prisma.email.create({ data: { email: validEmail } });
         return {
             success: true,
             message: "Successfully subscribed!",

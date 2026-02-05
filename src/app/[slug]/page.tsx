@@ -8,8 +8,7 @@ import { AuthorBio } from './_components/AuthorBio';
 import { Breadcrumb } from './_components/Breadcrumb';
 import { RelatedArticles } from './_components/RelatedArticles';
 import { Newsletter } from '@/app/blogs/_components/Newsletter';
-import db from '@/lib/db';
-import { BlogFromDB } from '@/app/blogs/_components/types';
+import { prisma } from '@/lib/prisma';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -19,11 +18,12 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
 
-    // Fallback metadata while fetching
-    // In a real app we might want to fetch here too for accurate meta title
-    // But for now let's reuse logic or just set a generic one if we don't want to double fetch
-    // However, for SEO, better to fetch.
-    const post: BlogFromDB = await db('blogs').where({ slug, status: 'published' }).first();
+    let post = await prisma.blog.findUnique({ where: { slug, status: 'published' } });
+
+    // If not found by slug, and input is numeric, try ID (Legacy support)
+    if (!post && !isNaN(parseInt(slug))) {
+        post = await prisma.blog.findUnique({ where: { id: parseInt(slug), status: 'published' } });
+    }
 
     if (!post) {
         return {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     return {
         title: post.title,
-        description: post.excerpt,
+        description: post.excerpt || undefined,
         openGraph: {
             title: post.title,
             description: post.excerpt || "",
@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                 },
             ],
             type: 'article',
-            publishedTime: new Date(post.created_at).toISOString(),
-            authors: [post.author_name || 'Admin'],
+            publishedTime: post.createdAt.toISOString(),
+            authors: [post.authorName || 'Admin'],
         },
         twitter: {
             card: 'summary_large_image',
@@ -62,7 +62,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogDetailPage({ params }: Props) {
     const { slug } = await params;
 
-    const post: BlogFromDB = await db('blogs').where({ slug, status: 'published' }).first();
+    let post = await prisma.blog.findUnique({ where: { slug, status: 'published' } });
+
+    // If not found by slug, and input is numeric, try ID (Legacy support)
+    if (!post && !isNaN(parseInt(slug))) {
+        post = await prisma.blog.findUnique({ where: { id: parseInt(slug), status: 'published' } });
+    }
 
     if (!post) {
         notFound();
@@ -72,43 +77,49 @@ export default async function BlogDetailPage({ params }: Props) {
     const formattedPost = {
         title: post.title,
         category: post.category || 'Umum',
-        date: new Date(post.created_at).toLocaleDateString('id-ID', {
+        date: new Date(post.createdAt).toLocaleDateString('id-ID', {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
         }),
-        readTime: post.read_time || '5 menit baca',
+        readTime: post.readTime || '5 menit baca',
         author: {
-            name: post.author_name || 'Admin',
-            image: post.author_image || '/admin_image_placeholder.jpeg',
-            role: 'Penulis', // DB doesn't have role yet
-            bio: 'Penulis di Kelas Inovatif.', // DB doesn't have bio yet
+            name: post.authorName || 'Admin',
+            image: post.authorImage || '/admin_image_placeholder.jpeg',
+            role: 'Penulis',
+            bio: 'Penulis di Kelas Inovatif.',
         },
         image: post.image || '/placeholder-image.jpg',
         content: post.content || '<p>Konten belum tersedia.</p>',
     };
 
     // Fetch related articles (random 3)
-    const relatedPostsRaw = await db('blogs')
-        .whereNot('id', post.id)
-        .where({ status: 'published' })
-        .orderByRaw('RANDOM()')
-        .limit(3);
+    // Get all published blogs except current one, then shuffle and take 3
+    const allRelatedPosts = await prisma.blog.findMany({
+        where: {
+            id: { not: post.id },
+            status: 'published',
+        },
+    });
 
-    const relatedArticles = relatedPostsRaw.map((p: BlogFromDB) => ({
+    // Shuffle array and take first 3
+    const shuffled = allRelatedPosts.sort(() => 0.5 - Math.random());
+    const relatedPostsRaw = shuffled.slice(0, 3);
+
+    const relatedArticles = relatedPostsRaw.map((p) => ({
         id: p.id,
         title: p.title,
         excerpt: p.excerpt || '',
         category: p.category || 'Umum',
-        date: new Date(p.created_at).toLocaleDateString('id-ID', {
+        date: new Date(p.createdAt).toLocaleDateString('id-ID', {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
         }),
-        readTime: p.read_time || '5 menit baca',
+        readTime: p.readTime || '5 menit baca',
         author: {
-            name: p.author_name || 'Admin',
-            image: p.author_image || '/admin_image_placeholder.jpeg',
+            name: p.authorName || 'Admin',
+            image: p.authorImage || '/admin_image_placeholder.jpeg',
         },
         image: p.image || '/placeholder-image.jpg',
         slug: p.slug || '',

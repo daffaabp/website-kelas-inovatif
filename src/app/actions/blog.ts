@@ -1,35 +1,47 @@
 'use server';
 
-import db from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
 
 export async function getBlogs({ page = 1, limit = 10, query = '' }: { page?: number; limit?: number; query?: string } = {}) {
     try {
         const offset = (page - 1) * limit;
 
-        let baseQuery = db('blogs');
+        const where = query ? {
+            title: {
+                contains: query,
+                mode: 'insensitive' as const,
+            }
+        } : {};
 
-        if (query) {
-            baseQuery = baseQuery.where('title', 'like', `%${query}%`);
-        }
+        const [blogs, total] = await Promise.all([
+            prisma.blog.findMany({
+                where,
+                orderBy: { createdAt: 'desc' },
+                take: limit,
+                skip: offset,
+            }),
+            prisma.blog.count({ where }),
+        ]);
 
-        const countResult = await baseQuery.clone().count('id as total').first();
-        const total = countResult ? parseInt(countResult.total as string) : 0;
         const totalPages = Math.ceil(total / limit);
-
-        const blogs = await baseQuery
-            .select('*')
-            .orderBy('created_at', 'desc')
-            .limit(limit)
-            .offset(offset);
 
         return {
             data: blogs.map(blog => ({
-                ...blog,
-                created_at: blog.created_at?.toISOString(),
-                updated_at: blog.updated_at?.toISOString(),
+                id: blog.id,
+                title: blog.title,
                 slug: blog.slug,
+                excerpt: blog.excerpt,
+                content: blog.content,
+                category: blog.category,
+                author_name: blog.authorName,
+                author_image: blog.authorImage,
+                image: blog.image,
+                read_time: blog.readTime,
+                featured: blog.featured,
                 status: blog.status,
+                created_at: blog.createdAt.toISOString(),
+                updated_at: blog.updatedAt.toISOString(),
             })),
             metadata: {
                 total,
@@ -54,14 +66,23 @@ export async function getBlogs({ page = 1, limit = 10, query = '' }: { page?: nu
 
 export async function getBlogById(id: number) {
     try {
-        const blog = await db('blogs').where({ id }).first();
+        const blog = await prisma.blog.findUnique({ where: { id } });
         if (!blog) return null;
         return {
-            ...blog,
-            created_at: blog.created_at?.toISOString(),
-            updated_at: blog.updated_at?.toISOString(),
+            id: blog.id,
+            title: blog.title,
             slug: blog.slug,
+            excerpt: blog.excerpt,
+            content: blog.content,
+            category: blog.category,
+            author_name: blog.authorName,
+            author_image: blog.authorImage,
+            image: blog.image,
+            read_time: blog.readTime,
+            featured: blog.featured,
             status: blog.status,
+            created_at: blog.createdAt.toISOString(),
+            updated_at: blog.updatedAt.toISOString(),
         };
     } catch (error) {
         console.error('Error fetching blog by id:', error);
@@ -71,20 +92,29 @@ export async function getBlogById(id: number) {
 
 export async function getBlogBySlug(slug: string) {
     try {
-        let blog = await db('blogs').where({ slug }).first();
+        let blog = await prisma.blog.findUnique({ where: { slug } });
 
         // If not found by slug, and input is numeric, try ID (Legacy support)
         if (!blog && !isNaN(parseInt(slug))) {
-            blog = await db('blogs').where({ id: parseInt(slug) }).first();
+            blog = await prisma.blog.findUnique({ where: { id: parseInt(slug) } });
         }
 
         if (!blog) return null;
         return {
-            ...blog,
-            created_at: blog.created_at?.toISOString(),
-            updated_at: blog.updated_at?.toISOString(),
+            id: blog.id,
+            title: blog.title,
             slug: blog.slug,
+            excerpt: blog.excerpt,
+            content: blog.content,
+            category: blog.category,
+            author_name: blog.authorName,
+            author_image: blog.authorImage,
+            image: blog.image,
+            read_time: blog.readTime,
+            featured: blog.featured,
             status: blog.status,
+            created_at: blog.createdAt.toISOString(),
+            updated_at: blog.updatedAt.toISOString(),
         };
     } catch (error) {
         console.error('Error fetching blog by slug:', error);
@@ -94,22 +124,20 @@ export async function getBlogBySlug(slug: string) {
 
 export async function createBlog(data: any) {
     try {
-        // Ensure slug is unique if possible, or handle DB error.
-        // For now trusting the input.
-        await db('blogs').insert({
-            title: data.title,
-            slug: data.slug, // Add slug
-            excerpt: data.excerpt,
-            content: data.content,
-            category: data.category,
-            author_name: data.author_name,
-            author_image: data.author_image,
-            image: data.image,
-            read_time: data.read_time,
-            featured: data.featured || false,
-            status: data.status || 'draft',
-            created_at: new Date(),
-            updated_at: new Date(),
+        await prisma.blog.create({
+            data: {
+                title: data.title,
+                slug: data.slug,
+                excerpt: data.excerpt,
+                content: data.content,
+                category: data.category,
+                authorName: data.author_name,
+                authorImage: data.author_image,
+                image: data.image,
+                readTime: data.read_time,
+                featured: data.featured || false,
+                status: data.status || 'draft',
+            },
         });
 
         revalidatePath('/blogs');
@@ -124,19 +152,21 @@ export async function createBlog(data: any) {
 
 export async function updateBlog(id: number, data: any) {
     try {
-        await db('blogs').where({ id }).update({
-            title: data.title,
-            slug: data.slug, // Add slug
-            excerpt: data.excerpt,
-            content: data.content,
-            category: data.category,
-            author_name: data.author_name,
-            author_image: data.author_image,
-            image: data.image,
-            read_time: data.read_time,
-            featured: data.featured,
-            status: data.status,
-            updated_at: new Date(),
+        await prisma.blog.update({
+            where: { id },
+            data: {
+                title: data.title,
+                slug: data.slug,
+                excerpt: data.excerpt,
+                content: data.content,
+                category: data.category,
+                authorName: data.author_name,
+                authorImage: data.author_image,
+                image: data.image,
+                readTime: data.read_time,
+                featured: data.featured,
+                status: data.status,
+            },
         });
 
         revalidatePath('/blogs');
@@ -151,7 +181,7 @@ export async function updateBlog(id: number, data: any) {
 
 export async function deleteBlog(id: number) {
     try {
-        await db('blogs').where({ id }).del();
+        await prisma.blog.delete({ where: { id } });
         revalidatePath('/blogs');
         revalidatePath('/admin/blogs');
         revalidatePath('/homepage');
@@ -164,18 +194,27 @@ export async function deleteBlog(id: number) {
 
 export async function getLatestBlogs(limit: number = 3) {
     try {
-        const blogs = await db('blogs')
-            .where({ status: 'published' })
-            .select('*')
-            .orderBy('created_at', 'desc')
-            .limit(limit);
+        const blogs = await prisma.blog.findMany({
+            where: { status: 'published' },
+            orderBy: { createdAt: 'desc' },
+            take: limit,
+        });
 
         return blogs.map(blog => ({
-            ...blog,
-            created_at: blog.created_at?.toISOString(),
-            updated_at: blog.updated_at?.toISOString(),
+            id: blog.id,
+            title: blog.title,
             slug: blog.slug,
+            excerpt: blog.excerpt,
+            content: blog.content,
+            category: blog.category,
+            author_name: blog.authorName,
+            author_image: blog.authorImage,
+            image: blog.image,
+            read_time: blog.readTime,
+            featured: blog.featured,
             status: blog.status,
+            created_at: blog.createdAt.toISOString(),
+            updated_at: blog.updatedAt.toISOString(),
         }));
     } catch (error) {
         console.error('Error fetching latest blogs:', error);
@@ -185,21 +224,15 @@ export async function getLatestBlogs(limit: number = 3) {
 
 export async function getBlogStats() {
     try {
-        const totalResult = await db('blogs').count('id as count').first();
-        const total = totalResult ? parseInt(totalResult.count as string) : 0;
-
-        const publishedResult = await db('blogs')
-            .where('status', 'published')
-            .orWhereNull('status') // Assuming legacy posts with null status are published
-            .count('id as count')
-            .first();
-        const published = publishedResult ? parseInt(publishedResult.count as string) : 0;
-
-        const draftsResult = await db('blogs')
-            .where('status', 'draft')
-            .count('id as count')
-            .first();
-        const drafts = draftsResult ? parseInt(draftsResult.count as string) : 0;
+        const [total, published, drafts] = await Promise.all([
+            prisma.blog.count(),
+            prisma.blog.count({
+                where: { status: 'published' },
+            }),
+            prisma.blog.count({
+                where: { status: 'draft' },
+            }),
+        ]);
 
         return {
             total,

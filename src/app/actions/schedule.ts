@@ -1,44 +1,57 @@
 'use server';
 
-import db from '@/lib/db';
+import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
 
 export async function getSchedules(page = 1, limit = 6, type?: string, month?: number, year?: number) {
     try {
         const offset = (page - 1) * limit;
 
-        let query = db('schedules');
-        let countQuery = db('schedules');
+        const where: any = {};
 
         if (type && type !== 'All') {
-            query = query.where('type', type);
-            countQuery = countQuery.where('type', type);
+            where.type = type;
         }
 
         if (month && year) {
-            // Construct start and end dates for the month
             const startDate = new Date(year, month - 1, 1);
-            const endDate = new Date(year, month, 0, 23, 59, 59, 999); // Last day of the month at 23:59:59.999
-
-            query = query.whereBetween('date', [startDate, endDate]);
-            countQuery = countQuery.whereBetween('date', [startDate, endDate]);
+            const endDate = new Date(year, month, 0, 23, 59, 59, 999);
+            where.date = {
+                gte: startDate,
+                lte: endDate,
+            };
         }
 
-        const [countResult] = await countQuery.count('id as total');
-        const total = countResult.total as number;
+        const [schedules, total] = await Promise.all([
+            prisma.schedule.findMany({
+                where,
+                orderBy: { date: 'desc' },
+                take: limit,
+                skip: offset,
+            }),
+            prisma.schedule.count({ where }),
+        ]);
 
-        const schedules = await query
-            .select('*')
-            .orderBy('date', 'desc')
-            .limit(limit)
-            .offset(offset);
-
-        // Convert dates to string to avoid serialization issues in Next.js
         const data = schedules.map(schedule => ({
-            ...schedule,
+            id: schedule.id,
+            title: schedule.title,
+            type: schedule.type,
+            speaker_name: schedule.speakerName,
+            speaker_role: schedule.speakerRole,
+            speaker_image: schedule.speakerImage,
             date: schedule.date.toISOString(),
-            created_at: schedule.created_at?.toISOString(),
-            updated_at: schedule.updated_at?.toISOString(),
+            start_time: schedule.startTime,
+            end_time: schedule.endTime,
+            location: schedule.location,
+            description: schedule.description,
+            image: schedule.image,
+            excerpt: schedule.excerpt,
+            benefits: schedule.benefits,
+            register_url: schedule.registerUrl,
+            original_price: schedule.originalPrice,
+            discounted_price: schedule.discountedPrice,
+            created_at: schedule.createdAt.toISOString(),
+            updated_at: schedule.updatedAt.toISOString(),
         }));
 
         return {
@@ -61,13 +74,28 @@ export async function getSchedules(page = 1, limit = 6, type?: string, month?: n
 
 export async function getScheduleById(id: number) {
     try {
-        const schedule = await db('schedules').where({ id }).first();
+        const schedule = await prisma.schedule.findUnique({ where: { id } });
         if (!schedule) return null;
         return {
-            ...schedule,
+            id: schedule.id,
+            title: schedule.title,
+            type: schedule.type,
+            speaker_name: schedule.speakerName,
+            speaker_role: schedule.speakerRole,
+            speaker_image: schedule.speakerImage,
             date: schedule.date.toISOString(),
-            created_at: schedule.created_at?.toISOString(),
-            updated_at: schedule.updated_at?.toISOString(),
+            start_time: schedule.startTime,
+            end_time: schedule.endTime,
+            location: schedule.location,
+            description: schedule.description,
+            image: schedule.image,
+            excerpt: schedule.excerpt,
+            benefits: schedule.benefits,
+            register_url: schedule.registerUrl,
+            original_price: schedule.originalPrice,
+            discounted_price: schedule.discountedPrice,
+            created_at: schedule.createdAt.toISOString(),
+            updated_at: schedule.updatedAt.toISOString(),
         };
     } catch (error) {
         console.error('Error fetching schedule by id:', error);
@@ -96,25 +124,25 @@ export async function createSchedule(data: any) {
             return { msg: 'Missing required fields' };
         }
 
-        await db('schedules').insert({
-            title: data.title,
-            type: data.type,
-            speaker_name: data.speaker_name,
-            speaker_role: data.speaker_role,
-            speaker_image: data.speaker_image,
-            image: data.image,
-            date: new Date(data.date), // Ensure it's a Date object
-            start_time: data.start_time,
-            end_time: data.end_time,
-            location: data.location,
-            description: data.description,
-            excerpt: data.excerpt,
-            benefits: data.benefits,
-            register_url: data.register_url,
-            original_price: data.original_price,
-            discounted_price: data.discounted_price,
-            created_at: new Date(),
-            updated_at: new Date(),
+        await prisma.schedule.create({
+            data: {
+                title: data.title,
+                type: data.type,
+                speakerName: data.speaker_name,
+                speakerRole: data.speaker_role,
+                speakerImage: data.speaker_image,
+                image: data.image,
+                date: new Date(data.date),
+                startTime: data.start_time,
+                endTime: data.end_time,
+                location: data.location,
+                description: data.description,
+                excerpt: data.excerpt,
+                benefits: data.benefits,
+                registerUrl: data.register_url,
+                originalPrice: data.original_price,
+                discountedPrice: data.discounted_price,
+            },
         });
 
         revalidatePath('/admin/schedule');
@@ -138,24 +166,26 @@ export async function updateSchedule(id: number, data: any) {
             data.image = await saveFile(data.featured_image_file, 'schedule');
         }
 
-        await db('schedules').where({ id }).update({
-            title: data.title,
-            type: data.type,
-            speaker_name: data.speaker_name,
-            speaker_role: data.speaker_role,
-            speaker_image: data.speaker_image,
-            image: data.image,
-            date: new Date(data.date),
-            start_time: data.start_time,
-            end_time: data.end_time,
-            location: data.location,
-            description: data.description,
-            excerpt: data.excerpt,
-            benefits: data.benefits,
-            register_url: data.register_url,
-            original_price: data.original_price,
-            discounted_price: data.discounted_price,
-            updated_at: new Date(),
+        await prisma.schedule.update({
+            where: { id },
+            data: {
+                title: data.title,
+                type: data.type,
+                speakerName: data.speaker_name,
+                speakerRole: data.speaker_role,
+                speakerImage: data.speaker_image,
+                image: data.image,
+                date: new Date(data.date),
+                startTime: data.start_time,
+                endTime: data.end_time,
+                location: data.location,
+                description: data.description,
+                excerpt: data.excerpt,
+                benefits: data.benefits,
+                registerUrl: data.register_url,
+                originalPrice: data.original_price,
+                discountedPrice: data.discounted_price,
+            },
         });
 
         revalidatePath('/admin/schedule');
@@ -169,7 +199,7 @@ export async function updateSchedule(id: number, data: any) {
 
 export async function deleteSchedule(id: number) {
     try {
-        await db('schedules').where({ id }).del();
+        await prisma.schedule.delete({ where: { id } });
         revalidatePath('/admin/schedule');
         revalidatePath('/homepage');
         return { msg: 'success' };
@@ -181,18 +211,34 @@ export async function deleteSchedule(id: number) {
 
 export async function getLatestSchedules(limit: number = 10) {
     try {
-        const schedules = await db('schedules')
-            .select('*')
-            .orderBy('updated_at', 'desc')
-            .orderBy('date', 'desc')
-            .limit(limit);
+        const schedules = await prisma.schedule.findMany({
+            orderBy: [
+                { updatedAt: 'desc' },
+                { date: 'desc' },
+            ],
+            take: limit,
+        });
 
-        // Convert dates to string to avoid serialization issues in Next.js
         return schedules.map(schedule => ({
-            ...schedule,
+            id: schedule.id,
+            title: schedule.title,
+            type: schedule.type,
+            speaker_name: schedule.speakerName,
+            speaker_role: schedule.speakerRole,
+            speaker_image: schedule.speakerImage,
             date: schedule.date.toISOString(),
-            created_at: schedule.created_at?.toISOString(),
-            updated_at: schedule.updated_at?.toISOString(),
+            start_time: schedule.startTime,
+            end_time: schedule.endTime,
+            location: schedule.location,
+            description: schedule.description,
+            image: schedule.image,
+            excerpt: schedule.excerpt,
+            benefits: schedule.benefits,
+            register_url: schedule.registerUrl,
+            original_price: schedule.originalPrice,
+            discounted_price: schedule.discountedPrice,
+            created_at: schedule.createdAt.toISOString(),
+            updated_at: schedule.updatedAt.toISOString(),
         }));
     } catch (error) {
         console.error('Error fetching latest schedules:', error);
@@ -204,14 +250,20 @@ export async function getScheduleStats() {
     try {
         const now = new Date();
 
-        const [totalResult] = await db('schedules').count('id as count');
-        const [upcomingResult] = await db('schedules').where('date', '>=', now).count('id as count');
-        const [completedResult] = await db('schedules').where('date', '<', now).count('id as count');
+        const [totalEvents, upcomingEvents, completedEvents] = await Promise.all([
+            prisma.schedule.count(),
+            prisma.schedule.count({
+                where: { date: { gte: now } },
+            }),
+            prisma.schedule.count({
+                where: { date: { lt: now } },
+            }),
+        ]);
 
         return {
-            totalEvents: Number(totalResult.count),
-            upcomingEvents: Number(upcomingResult.count),
-            completedEvents: Number(completedResult.count)
+            totalEvents,
+            upcomingEvents,
+            completedEvents
         };
     } catch (error) {
         console.error('Error fetching schedule stats:', error);
