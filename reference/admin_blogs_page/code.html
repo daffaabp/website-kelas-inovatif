@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KelasInovatif - Blog Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#263c32", // Dark Hunter Green
+                        secondary: "#D4A373", // Accent gold/brown
+                        "background-light": "#F3F1EC", // Creamy beige
+                        "background-dark": "#111816", // Very dark green-black
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1C2624",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 20px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #374151;
+        }.custom-scrollbar {
+            scrollbar-width: thin;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans antialiased transition-colors duration-300 overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="hidden md:flex flex-col w-64 h-full bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 shrink-0 z-30 relative">
+<div class="p-8 flex items-center gap-3 shrink-0">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-display font-bold italic text-xl shadow-md">
+                K
+            </div>
+<span class="font-display font-bold text-xl text-primary dark:text-white tracking-wide">KelasInovatif</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-icons-round text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 dark:bg-primary/20 text-primary dark:text-white rounded-lg transition-colors shadow-sm" href="#">
+<span class="material-icons-round">article</span>
+<span class="font-medium">Blogs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-icons-round text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">calendar_today</span>
+<span class="font-medium">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-icons-round text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">people</span>
+<span class="font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-icons-round text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-200 dark:border-gray-800 shrink-0">
+<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 cursor-pointer transition-colors w-full">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmb0q5os0D3PyYecLz1Crk_uIdc73zDZO4NLRJ6aDrEMgq6VrN5BC4u_Eb387roJwfjwFF0dmHy_qaRgKJmrSFgtOUchq8Gbgc91o742zRRTDVpOA08T_PsEkgzBYtpIW_mHgAriBm6wVLLJJTsjlyM1FP9bz-EfEa1XPuohKSob1_QxEaDlGRGthZBvmZd1BuaNBpS9vICEcobeGW75SW2LJaaqoVoUXWDO-buuavviIqDXMfvXzwLJIpQ53GjNnqh5ihFWnfXHM8"/>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold text-gray-800 dark:text-white truncate">Admin User</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 truncate">Editor in Chief</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-full overflow-y-auto relative scroll-smooth bg-background-light dark:bg-background-dark">
+<div class="p-6 md:p-10 max-w-7xl mx-auto min-h-full">
+<div class="md:hidden flex items-center justify-between mb-8 sticky top-0 bg-background-light dark:bg-background-dark z-10 py-4 border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-display font-bold italic text-lg">K</div>
+<span class="font-display font-bold text-lg text-primary dark:text-white">KelasInovatif</span>
+</div>
+<button class="text-gray-600 dark:text-gray-300 p-2">
+<span class="material-icons-round">menu</span>
+</button>
+</div>
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="text-3xl md:text-4xl font-display font-bold text-primary dark:text-white mb-2 leading-tight">Blog Management</h1>
+<p class="text-gray-500 dark:text-gray-400">Manage, edit, and schedule your educational content.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-icons-round text-gray-400">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-gray-700 dark:text-gray-200 placeholder-gray-400 w-48 lg:w-64" placeholder="Search posts..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-[#1e3028] text-white px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform active:scale-95 whitespace-nowrap">
+<span class="material-icons-round text-sm">add</span>
+                        Create New Post
+                    </button>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Total Posts</p>
+<h3 class="text-3xl font-display font-bold text-gray-800 dark:text-white">124</h3>
+</div>
+<div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<span class="material-icons-round">library_books</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Published</p>
+<h3 class="text-3xl font-display font-bold text-gray-800 dark:text-white">98</h3>
+</div>
+<div class="w-12 h-12 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400">
+<span class="material-icons-round">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Drafts</p>
+<h3 class="text-3xl font-display font-bold text-gray-800 dark:text-white">26</h3>
+</div>
+<div class="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
+<span class="material-icons-round">edit_note</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex gap-6 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
+<button class="text-primary dark:text-white font-semibold border-b-2 border-primary pb-1 whitespace-nowrap">All Posts</button>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors whitespace-nowrap">Published</button>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors whitespace-nowrap">Drafts</button>
+<button class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors whitespace-nowrap">Scheduled</button>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<button class="text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors">
+<span class="material-icons-round text-xl">filter_list</span>
+</button>
+<button class="text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors">
+<span class="material-icons-round text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50/50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-800">
+<th class="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-left">Title</th>
+<th class="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-left">Author</th>
+<th class="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-left">Status</th>
+<th class="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-left">Date</th>
+<th class="px-6 py-4 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 shadow-sm">
+<img alt="Blog Thumb" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtxWnpZEK7z3GuwTvnmN1Hc4maoPPqAGrKG82X4NE_k3odZaTaIkUmJaTawxHBkxBR7vDvYSp3ZAVem4Srw5r6k4xFEr5pQ3QoD-j_tSZ4vRn75Mymql493bhata7L__slw1t7YbKvnLy0F8LY4_1ONthTAi7pZIFMH4KhFGkI-3QFjvxaPNEDbR73hmb6lAINoGfstnRGex1gqFqFnUx5GsjHtXLash2NVvdivjI1_ZUSRME6hEQKVawMB4528fLGOlB2CHZ6zKPL"/>
+</div>
+<div>
+<p class="font-display font-semibold text-gray-900 dark:text-gray-100 text-lg line-clamp-1">Pembelajaran Inovatif</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Education, Future</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary dark:text-white flex items-center justify-center text-xs font-bold shrink-0">JD</div>
+<span class="text-sm text-gray-700 dark:text-gray-300">Jane Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                        Published
+                                    </span>
+</td>
+<td class="px-6 py-4 align-middle text-sm text-gray-500 dark:text-gray-400">
+                                    Oct 24, 2023
+                                </td>
+<td class="px-6 py-4 align-middle text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="text-gray-400 hover:text-primary dark:hover:text-white transition-colors p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-icons-round text-lg">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 shadow-sm">
+<img alt="Blog Thumb" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSjOUJIAi1Uutt0d8mf2n6W3I6bAmvjiAmG3Ff7EZW4p0Q6fcx-5LE2bzhJi8Xs5QTMjwPMRkP-v9R7Xlw_OvNt8BDoiP2fLBLNSpBbojmxwR8WwAguBNY0BNxMr0yaof6kVa_Vd6QVuerlLEr-SB3_ol4GlorRpCDcQUPzdA_33FnGfTjoOwnHsVy3f1IAShgWPdArXBBmhXsxoLXBKJxFhPEJkiwvfMM1SoJRYP482w_yXMEQVYLnq86sfF8_BNE42-VAuPseAEi"/>
+</div>
+<div>
+<p class="font-display font-semibold text-gray-900 dark:text-gray-100 text-lg line-clamp-1">AI in Modern Classrooms</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Technology, AI</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-2">
+<img alt="Avatar" class="w-6 h-6 rounded-full shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5DECcNwlr6XKaoC7QMMH9pRanwsdUswa3H1lPRzo6BB5B87vSwdhOo6KP1qqmWtI28EbqdoX0-4LQ4dDPSa2BTCRKkCZTOtenSbjyD6qqVrCacIFyRBoclWsT_0WcF8mY9-7tqsZF89YqlaI6hTZlXslXjU9h1B3zIBTGSqdtQsMHxe9xQeEmTGgwl-SuKJ_Wi4GWS9XM3OAq_32m6Bem7ezj4fvX7gr8B3Jnhkvfg9_OxxzTX7jNOsgrfCzucVA28RU5Nq6HDzSG"/>
+<span class="text-sm text-gray-700 dark:text-gray-300">Alex Morgan</span>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300">
+                                        Draft
+                                    </span>
+</td>
+<td class="px-6 py-4 align-middle text-sm text-gray-500 dark:text-gray-400">
+                                    Oct 22, 2023
+                                </td>
+<td class="px-6 py-4 align-middle text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="text-gray-400 hover:text-primary dark:hover:text-white transition-colors p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-icons-round text-lg">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 shadow-sm">
+<img alt="Blog Thumb" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS8Sop7nLxsbuXNWBEoj1QYcxUygziDfBV4hgDnbm6EI2DCjv40ENG0Le7v6nHE6v4MA2gi095J45dYyXywpfn_4sa0mnhtDuW0pDaxxIUkPEieoB1m-GaKbQcdM-mrKDT2-0nCNK5o_l0m9BjLziDKmkvx2JB_ADwePENADSBfTbq-WmlRg1Obcu_Fn-0L0cM_KDrHDYtJ2e97k0CCCpCfR4kTHlMOxlEJC8sxKKWJvuaHfmKKVQ1baM9mke2_nCmxgleks1Oj2Oz"/>
+</div>
+<div>
+<p class="font-display font-semibold text-gray-900 dark:text-gray-100 text-lg line-clamp-1">Role of Empathy</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Psychology</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold shrink-0">SK</div>
+<span class="text-sm text-gray-700 dark:text-gray-300">Sarah Kim</span>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                                        Scheduled
+                                    </span>
+</td>
+<td class="px-6 py-4 align-middle text-sm text-gray-500 dark:text-gray-400">
+                                    Nov 01, 2023
+                                </td>
+<td class="px-6 py-4 align-middle text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="text-gray-400 hover:text-primary dark:hover:text-white transition-colors p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-icons-round text-lg">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 shadow-sm">
+<img alt="Blog Thumb" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1hZuuz8R0o_ymMZypBBBXTno5_cIBgdyY46aUz_Opmd8lgfToWYbEO6wsfJ07QTv4V1Hb_yqcbGSk4dkpNSRh4A17QUuaO2LVjIXoCttCNfLTQpBbYCADbvSdHD7i_qVGzYkRwgnFOVft91cvYfMyjAr476Lw9bHGseLAX50siORC2Q4tPjSzX5OC91r8bZbgwqI2x4J5qXbJZ7Aww-abidTfWucMiuzmGlOTvR3BGVTAkW4gKTjzfyUAYovKchpKmuaktwZScxr7"/>
+</div>
+<div>
+<p class="font-display font-semibold text-gray-900 dark:text-gray-100 text-lg line-clamp-1">Student Stories</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Community</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary dark:text-white flex items-center justify-center text-xs font-bold shrink-0">AD</div>
+<span class="text-sm text-gray-700 dark:text-gray-300">Admin Team</span>
+</div>
+</td>
+<td class="px-6 py-4 align-middle">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                        Published
+                                    </span>
+</td>
+<td class="px-6 py-4 align-middle text-sm text-gray-500 dark:text-gray-400">
+                                    Sep 15, 2023
+                                </td>
+<td class="px-6 py-4 align-middle text-center">
+<div class="flex items-center justify-center gap-2">
+<button class="text-gray-400 hover:text-primary dark:hover:text-white transition-colors p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
+<span class="material-icons-round text-lg">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1 rounded hover:bg-red-50 dark:hover:bg-red-900/20">
+<span class="material-icons-round text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">Showing 1-4 of 124 results</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 rounded border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm transition-colors">Previous</button>
+<button class="px-3 py-1 rounded bg-primary text-white text-sm">1</button>
+<button class="px-3 py-1 rounded border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm transition-colors">2</button>
+<button class="px-3 py-1 rounded border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm transition-colors">3</button>
+<span class="text-gray-400 px-1 pt-1">...</span>
+<button class="px-3 py-1 rounded border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm transition-colors">Next</button>
+</div>
+</div>
+</div>
+<footer class="mt-10 mb-6 text-center text-xs text-gray-400 dark:text-gray-600">
+                © 2023 KelasInovatif Admin Panel. All rights reserved.
+            </footer>
+</div>
+</main>
+<div class="fixed bottom-6 right-6 z-50">
+<button class="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round block dark:hidden">dark_mode</span>
+<span class="material-icons-round hidden dark:block">light_mode</span>
+</button>
+</div>
+</div>
+
+</body></html>

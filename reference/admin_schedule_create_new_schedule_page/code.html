@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KelasInovatif - Schedule Entry Editor</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#263c32", // Dark Hunter Green
+                        secondary: "#D4A373", // Accent gold/brown
+                        "background-light": "#F3F1EC", // Creamy beige
+                        "background-dark": "#111816", // Very dark green-black
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1C2624",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 20px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #374151;
+        }
+        .custom-scrollbar {
+            scrollbar-width: thin;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-sans antialiased transition-colors duration-300 overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="hidden md:flex flex-col w-64 h-full bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 shrink-0 z-30 relative">
+<div class="p-8 flex items-center gap-3 shrink-0">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-display font-bold italic text-xl shadow-md">
+                    K
+                </div>
+<span class="font-display font-bold text-xl text-primary dark:text-white tracking-wide">KelasInovatif</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">article</span>
+<span class="font-medium">Blogs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 dark:bg-primary/20 text-primary dark:text-white rounded-lg transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-medium">Schedule</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">people</span>
+<span class="font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-500 dark:text-gray-400 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary dark:group-hover:text-white transition-colors">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-200 dark:border-gray-800 shrink-0">
+<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-background-light dark:hover:bg-gray-800 cursor-pointer transition-colors w-full">
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmb0q5os0D3PyYecLz1Crk_uIdc73zDZO4NLRJ6aDrEMgq6VrN5BC4u_Eb387roJwfjwFF0dmHy_qaRgKJmrSFgtOUchq8Gbgc91o742zRRTDVpOA08T_PsEkgzBYtpIW_mHgAriBm6wVLLJJTsjlyM1FP9bz-EfEa1XPuohKSob1_QxEaDlGRGthZBvmZd1BuaNBpS9vICEcobeGW75SW2LJaaqoVoUXWDO-buuavviIqDXMfvXzwLJIpQ53GjNnqh5ihFWnfXHM8"/>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold text-gray-800 dark:text-white truncate">Admin User</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 truncate">Editor in Chief</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-full overflow-y-auto relative scroll-smooth bg-background-light dark:bg-background-dark">
+<div class="p-6 md:p-10 max-w-7xl mx-auto min-h-full flex flex-col">
+<div class="md:hidden flex items-center justify-between mb-8 sticky top-0 bg-background-light dark:bg-background-dark z-10 py-4 border-b border-gray-200 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-display font-bold italic text-lg">K</div>
+<span class="font-display font-bold text-lg text-primary dark:text-white">KelasInovatif</span>
+</div>
+<button class="text-gray-600 dark:text-gray-300 p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+<nav class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary dark:hover:text-white transition-colors" href="#">Schedule</a>
+<span class="mx-2 material-symbols-outlined text-base">chevron_right</span>
+<span class="text-gray-900 dark:text-white font-medium">Edit Entry</span>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Save Draft
+                        </button>
+<button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-[#1e3028] shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">publish</span>
+                            Publish
+                        </button>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row gap-8 h-full">
+<div class="flex-1 min-w-0">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-6 md:p-8">
+<h2 class="text-lg font-display font-bold text-primary dark:text-white mb-6 border-b border-gray-100 dark:border-gray-800 pb-4">Event Details</h2>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="event-title">Event Title</label>
+<input class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-lg font-display font-medium placeholder-gray-400 dark:text-white transition-shadow" id="event-title" placeholder="e.g. Introduction to Advanced Machine Learning" type="text" value="Mastering Digital Pedagogy"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Speaker</label>
+<div class="flex items-start gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/30">
+<div class="relative group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex items-center justify-center border-2 border-white dark:border-gray-600 shadow-sm">
+<img alt="Speaker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5DECcNwlr6XKaoC7QMMH9pRanwsdUswa3H1lPRzo6BB5B87vSwdhOo6KP1qqmWtI28EbqdoX0-4LQ4dDPSa2BTCRKkCZTOtenSbjyD6qqVrCacIFyRBoclWsT_0WcF8mY9-7tqsZF89YqlaI6hTZlXslXjU9h1B3zIBTGSqdtQsMHxe9xQeEmTGgwl-SuKJ_Wi4GWS9XM3OAq_32m6Bem7ezj4fvX7gr8B3Jnhkvfg9_OxxzTX7jNOsgrfCzucVA28RU5Nq6HDzSG"/>
+</div>
+<div class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-sm">edit</span>
+</div>
+</div>
+<div class="flex-1 space-y-3">
+<input class="w-full px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-md text-sm focus:ring-1 focus:ring-primary focus:border-primary dark:text-white" placeholder="Speaker Name" type="text" value="Alex Morgan"/>
+<input class="w-full px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-md text-sm focus:ring-1 focus:ring-primary focus:border-primary dark:text-white" placeholder="Role / Title" type="text" value="Lead Instructor, KelasInovatif"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" for="event-location">Location / Platform Link</label>
+<div class="relative rounded-lg shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">location_on</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary sm:text-sm dark:text-white" id="event-location" placeholder="Room 302 or https://zoom.us/..." type="text" value="Main Auditorium &amp; Zoom Live"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Description</label>
+<div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-surface-dark">
+<div class="flex items-center gap-1 p-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+<button class="p-1.5 text-gray-500 hover:text-primary hover:bg-gray-200 dark:hover:bg-gray-700 rounded"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-1.5 text-gray-500 hover:text-primary hover:bg-gray-200 dark:hover:bg-gray-700 rounded"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-1.5 text-gray-500 hover:text-primary hover:bg-gray-200 dark:hover:bg-gray-700 rounded"><span class="material-symbols-outlined text-lg">format_underlined</span></button>
+<div class="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+<button class="p-1.5 text-gray-500 hover:text-primary hover:bg-gray-200 dark:hover:bg-gray-700 rounded"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<button class="p-1.5 text-gray-500 hover:text-primary hover:bg-gray-200 dark:hover:bg-gray-700 rounded"><span class="material-symbols-outlined text-lg">link</span></button>
+</div>
+<textarea class="w-full p-4 border-0 focus:ring-0 text-gray-700 dark:text-gray-300 bg-transparent resize-y" placeholder="Write the event description here..." rows="6">In this session, we will explore the foundational strategies for implementing digital pedagogy in a modern classroom setting. Attendees will learn about...</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-80 shrink-0 space-y-6">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="px-5 py-4 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30">
+<h3 class="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+                                    Date &amp; Time
+                                </h3>
+</div>
+<div class="p-5 space-y-4">
+<div>
+<label class="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">Date</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary focus:border-primary dark:text-gray-200" type="date" value="2023-11-15"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">Start Time</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary focus:border-primary dark:text-gray-200" type="time" value="09:00"/>
+</div>
+<div>
+<label class="block text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">End Time</label>
+<input class="w-full px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary focus:border-primary dark:text-gray-200" type="time" value="10:30"/>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input class="rounded border-gray-300 text-primary focus:ring-primary" id="all-day" type="checkbox"/>
+<label class="text-sm text-gray-600 dark:text-gray-400" for="all-day">All day event</label>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="px-5 py-4 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 flex justify-between items-center">
+<h3 class="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">category</span>
+                                    Category
+                                </h3>
+<button class="text-xs font-medium text-primary hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                                    Add
+                                </button>
+</div>
+<div class="p-5">
+<select class="w-full px-3 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary focus:border-primary dark:text-gray-200 mb-3">
+<option>Workshops</option>
+<option>Seminars</option>
+<option selected="">Webinars</option>
+<option>Community Events</option>
+</select>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary border border-secondary/20">
+                                        Education
+                                        <button class="hover:text-red-500"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary border border-secondary/20">
+                                        Pedagogy
+                                        <button class="hover:text-red-500"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="px-5 py-4 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30">
+<h3 class="font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">image</span>
+                                    Featured Image
+                                </h3>
+</div>
+<div class="p-5">
+<div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-3xl mb-2">cloud_upload</span>
+<p class="text-xs text-gray-500 dark:text-gray-400">Click to upload or drag &amp; drop</p>
+<p class="text-[10px] text-gray-400 mt-1">SVG, PNG, JPG (max. 800x400px)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-auto pt-10 mb-6 text-center text-xs text-gray-400 dark:text-gray-600">
+                    © 2023 KelasInovatif Admin Panel. All rights reserved.
+                </footer>
+</div>
+</main>
+<div class="fixed bottom-6 right-6 z-50">
+<button class="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined block dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+</div>
+</div>
+
+</body></html>

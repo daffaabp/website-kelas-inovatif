@@ -1,0 +1,102 @@
+"use client";
+
+import React from "react";
+import { ScheduleForm } from "../../../create/_components/ScheduleForm";
+import { ScheduleSidebar } from "../../../create/_components/ScheduleSidebar";
+import { Upload } from "lucide-react";
+import { updateSchedule } from '@/app/actions/schedule';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+
+interface EditScheduleFormWrapperProps {
+    schedule: any;
+    scheduleId: number;
+}
+
+export function EditScheduleFormWrapper({ schedule, scheduleId }: EditScheduleFormWrapperProps) {
+    const router = useRouter();
+    const [isPending, startTransition] = React.useTransition();
+
+    async function handleAction(formData: FormData) {
+        startTransition(async () => {
+            const res = await updateSchedule(scheduleId, {
+                title: formData.get('title'),
+                type: formData.get('type'),
+                speaker_name: formData.get('speaker_name'),
+                speaker_role: formData.get('speaker_role'),
+                speaker_image: formData.get('speaker_image'),
+                speaker_image_file: formData.get('speaker_image_file'),
+                image: formData.get('image'),
+                featured_image_file: formData.get('featured_image_file'),
+                date: formData.get('date'),
+                start_time: formData.get('start_time'),
+                end_time: formData.get('end_time'),
+                location: formData.get('location'),
+                description: formData.get('description'),
+                excerpt: formData.get('excerpt'),
+                benefits: formData.get('benefits'),
+                register_url: formData.get('register_url'),
+                original_price: formData.get('original_price'),
+                discounted_price: formData.get('discounted_price'),
+            });
+
+            if (res.msg === 'success') {
+                toast.success('Schedule updated successfully');
+                router.push('/admin/schedule');
+                router.refresh();
+            } else {
+                toast.error(res.msg);
+            }
+        });
+    }
+
+    return (
+        <form action={handleAction} className="p-6 md:p-10 max-w-7xl mx-auto min-h-full flex flex-col">
+            {/* Header inline for reuse simplicity or create another component */}
+            <>
+                <div className="md:hidden flex items-center justify-between mb-8 sticky top-0 bg-[#F3F1EC] dark:bg-[#111816] z-10 py-4 border-b border-gray-200 dark:border-gray-800">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-[#263c32] flex items-center justify-center text-white font-serif font-bold italic text-lg">
+                            K
+                        </div>
+                        <span className="font-serif font-bold text-lg text-[#263c32] dark:text-white">
+                            Kelas Inovatif
+                        </span>
+                    </div>
+                    <button className="text-gray-600 dark:text-gray-300 p-2">
+                        {/* Menu icon placeholder */}
+                        <span className="material-icons-round">menu</span>
+                    </button>
+                </div>
+                <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                    <div>
+                        <h1 className="text-3xl md:text-4xl font-serif font-bold text-[#263c32] dark:text-white leading-tight">
+                            Edit Schedule
+                        </h1>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <button type="button" onClick={() => router.back()} className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-[#1C2624] border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            disabled={isPending}
+                            className="px-4 py-2 text-sm font-medium text-white bg-[#263c32] rounded-lg hover:bg-[#1e3028] shadow-md hover:shadow-lg transition-all flex items-center gap-2 disabled:opacity-50"
+                        >
+                            <Upload className="w-4 h-4" />
+                            {isPending ? 'Saving...' : 'Save Changes'}
+                        </button>
+                    </div>
+                </header>
+            </>
+
+            <div className="flex flex-col lg:flex-row gap-8 h-full">
+                <ScheduleForm initialData={schedule} />
+                <ScheduleSidebar initialData={schedule} />
+            </div>
+            <footer className="mt-auto pt-10 mb-6 text-center text-xs text-gray-400 dark:text-gray-600">
+                © 2023 Kelas Inovatif Admin Panel. All rights reserved.
+            </footer>
+        </form>
+    );
+}

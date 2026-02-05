@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Event Detail - Kelasinovatif</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent": "#f97316",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white flex flex-col min-h-screen">
+    <!-- Top Navigation -->
+    <header
+        class="sticky top-0 z-50 bg-white/90 backdrop-blur-md dark:bg-[#101922]/90 border-b border-[#f0f2f4] dark:border-[#2a3441]">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-10 py-3">
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-3 text-primary">
+                        <div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary">school</span>
+                        </div>
+                        <h2 class="text-[#111418] dark:text-white text-xl font-bold tracking-tight">Kelasinovatif</h2>
+                    </div>
+                    <label class="hidden md:flex flex-col min-w-40 h-10 w-64">
+                        <div
+                            class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f0f2f4] dark:bg-[#2a3441] overflow-hidden focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+                            <div class="text-[#617589] flex items-center justify-center pl-4">
+                                <span class="material-symbols-outlined text-[20px]">search</span>
+                            </div>
+                            <input
+                                class="flex w-full min-w-0 flex-1 bg-transparent border-none text-sm px-3 text-[#111418] dark:text-white placeholder:text-[#617589] focus:outline-none focus:ring-0"
+                                placeholder="Cari event..." />
+                        </div>
+                    </label>
+                </div>
+                <div class="flex items-center gap-6">
+                    <nav class="hidden lg:flex items-center gap-6">
+                        <a class="text-[#111418] dark:text-white hover:text-primary text-sm font-medium transition-colors"
+                            href="#">Webinar</a>
+                        <a class="text-[#111418] dark:text-white hover:text-primary text-sm font-medium transition-colors"
+                            href="#">Kelas Online</a>
+                        <a class="text-[#111418] dark:text-white hover:text-primary text-sm font-medium transition-colors"
+                            href="#">Bootcamp</a>
+                    </nav>
+                    <div class="flex gap-3">
+                        <button
+                            class="hidden sm:flex h-9 items-center justify-center px-4 rounded-lg border border-[#dbe0e6] dark:border-[#3e4a5b] hover:bg-[#f0f2f4] dark:hover:bg-[#2a3441] text-[#111418] dark:text-white text-sm font-semibold transition-colors">
+                            Masuk
+                        </button>
+                        <button
+                            class="flex h-9 items-center justify-center px-4 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold shadow-sm shadow-primary/20 transition-all">
+                            Daftar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-white dark:bg-[#101922] pt-8 pb-12 overflow-hidden">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent">
+            </div>
+            <div class="relative max-w-[1280px] mx-auto px-4 sm:px-10">
+                <!-- Breadcrumb -->
+                <div class="flex items-center gap-2 text-sm text-[#617589] mb-6">
+                    <a class="hover:text-primary" href="#">Home</a>
+                    <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                    <a class="hover:text-primary" href="#">Webinar</a>
+                    <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                    <span class="text-[#111418] dark:text-white font-medium">Detail Event</span>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-12 items-start">
+                    <div class="lg:col-span-2 space-y-6">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                            Webinar Eksklusif
+                        </div>
+                        <h1
+                            class="text-[#111418] dark:text-white text-3xl md:text-4xl lg:text-[42px] font-bold leading-[1.2] tracking-tight">
+                            Menguasai Cursor: Cara Efektif Membuat Karya Ilmiah Berkualitas
+                        </h1>
+                        <p class="text-[#617589] dark:text-[#9ca3af] text-lg leading-relaxed max-w-2xl">
+                            Pelajari teknik advanced menggunakan AI coding assistant untuk mempercepat riset dan
+                            penulisan akademik Anda dengan standar publikasi internasional.
+                        </p>
+                        <!-- Timer Component -->
+                        <div class="flex flex-wrap gap-4 py-4">
+                            <div
+                                class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#1e2936] rounded-xl min-w-[80px] border border-transparent dark:border-[#2a3441]">
+                                <span class="text-2xl font-bold text-primary">02</span>
+                                <span class="text-xs text-[#617589] uppercase tracking-wider">Hari</span>
+                            </div>
+                            <div
+                                class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#1e2936] rounded-xl min-w-[80px] border border-transparent dark:border-[#2a3441]">
+                                <span class="text-2xl font-bold text-primary">05</span>
+                                <span class="text-xs text-[#617589] uppercase tracking-wider">Jam</span>
+                            </div>
+                            <div
+                                class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#1e2936] rounded-xl min-w-[80px] border border-transparent dark:border-[#2a3441]">
+                                <span class="text-2xl font-bold text-primary">30</span>
+                                <span class="text-xs text-[#617589] uppercase tracking-wider">Menit</span>
+                            </div>
+                            <div
+                                class="flex flex-col items-center gap-2 p-3 bg-[#f0f2f4] dark:bg-[#1e2936] rounded-xl min-w-[80px] border border-transparent dark:border-[#2a3441]">
+                                <span class="text-2xl font-bold text-primary">00</span>
+                                <span class="text-xs text-[#617589] uppercase tracking-wider">Detik</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Side / Hero Image or Graphic -->
+                    <div
+                        class="hidden lg:block relative h-full min-h-[300px] w-full rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                        <!-- Placeholder for Hero Image -->
+                        <div class="w-full h-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&amp;w=2940&amp;auto=format&amp;fit=crop')] bg-cover bg-center"
+                            data-alt="People working on laptops in a modern office setting representing coding and collaboration">
+                        </div>
+                        <div class="absolute bottom-6 left-6 z-20">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="flex -space-x-3">
+                                    <img alt="Participant 1"
+                                        class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb0oIBsn5ni-QiHnLTLMVONettc7WlbN7EkeVWYFKkuJSj1WY0QeURD05QMc5ZS9T64bbyxRkNm7wrt4htoBvsm1o-b3-rqPhkFV2yosSKxi9jwfAPDPNKH6OHQmgjLXAGkvTuBoHRG77U4ks0P1Ntd16rJ6u_itbVSJ7USBJ1xUqbPaQbSEh9zoUfprctPiPE0sZuQGa4ycu96fk_mIstyBsl0jQ47BTvfEpK-esJ7md42-7lca28q15_AbOVP8l6_ydk5n6ja9kD" />
+                                    <img alt="Participant 2"
+                                        class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEGcI9mdgi6mILaUqdF4o2-ZeoAIH6oZazNUPgWk0zjwa-_4Gr2BDAJMaHJc94VmejYy4lj6OrRXXOWH9q8nZXcmOwiaIivnQ0ucF5cbr_OS_0RgLSpWTteKBCWipn8EzApcrOCAQZq0jNbWVVOfsdfJdFlMDDoPHmErD4Fp65y9uy8jthqRlotOv3AQc2BPJl036GQYFGLrgUXd2pZofFCLrFlQzgxYYk076n_HSYfPFafoofBPqF4nTIadsXoEiAnk_D3tVDbIcL" />
+                                    <img alt="Participant 3"
+                                        class="w-8 h-8 rounded-full border-2 border-white object-cover"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC1qvc19V4rSBX6Ib4x-3jbjenZ3_WlQHaYHix5u4p3vUlAtkB8Q9CJWy9uJAzGzmYek1vvJfD3WCv2gDjrGyJgMJOrIJfbXS8iqQusMASH3_v54Pd9VJPZIboFndPfmXy_BY-w52nLdxFPtrta821EVCLM54QtADctq6kiy8pdBmEtNFQ-HSSbdAnzUnqXBl5QWnN-UNn5GcFIkXp8dieg2_MYUs-Bow6R6NE8Th8882ro-izSG6S1SNd40k7r7GLnAKalHKcCfvg" />
+                                </div>
+                                <span
+                                    class="text-white text-xs font-medium bg-white/20 backdrop-blur-md px-2 py-1 rounded-full">+450
+                                    Mendaftar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content Split -->
+        <section class="max-w-[1280px] mx-auto px-4 sm:px-10 py-12">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Left Column: Main Content -->
+                <div class="lg:col-span-2 space-y-10">
+                    <!-- About Event -->
+                    <div
+                        class="bg-white dark:bg-[#1e2936] rounded-2xl p-6 sm:p-8 shadow-sm border border-[#f0f2f4] dark:border-[#2a3441]">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">info</span>
+                            Tentang Event
+                        </h3>
+                        <div
+                            class="prose prose-slate dark:prose-invert max-w-none text-[#617589] dark:text-[#9ca3af] leading-relaxed">
+                            <p class="mb-4">
+                                Dalam era digital yang serba cepat, kemampuan memanfaatkan alat bantu AI menjadi kunci
+                                efisiensi. Webinar ini dirancang khusus untuk akademisi, mahasiswa, dan peneliti yang
+                                ingin memaksimalkan potensi <strong>Cursor</strong> sebagai AI-powered code editor untuk
+                                mendukung penulisan karya ilmiah.
+                            </p>
+                            <p>
+                                Anda akan diajarkan bagaimana mengintegrasikan data riset, melakukan analisis coding
+                                sederhana, hingga memformat sitasi otomatis. Tidak diperlukan background coding yang
+                                mendalam, materi akan disampaikan dengan bahasa yang mudah dipahami.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Learning Objectives -->
+                    <div
+                        class="bg-white dark:bg-[#1e2936] rounded-2xl p-6 sm:p-8 shadow-sm border border-[#f0f2f4] dark:border-[#2a3441]">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">school</span>
+                            Materi yang Dipelajari
+                        </h3>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div
+                                class="flex items-start gap-3 p-3 rounded-lg hover:bg-background-light dark:hover:bg-[#2a3441] transition-colors">
+                                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                                <div>
+                                    <h4 class="font-semibold text-sm mb-1">Pengenalan Dasar Cursor</h4>
+                                    <p class="text-xs text-[#617589]">Instalasi dan setup environment untuk akademik.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-3 rounded-lg hover:bg-background-light dark:hover:bg-[#2a3441] transition-colors">
+                                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                                <div>
+                                    <h4 class="font-semibold text-sm mb-1">Prompt Engineering Riset</h4>
+                                    <p class="text-xs text-[#617589]">Teknik bertanya pada AI untuk hasil yang akurat.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-3 rounded-lg hover:bg-background-light dark:hover:bg-[#2a3441] transition-colors">
+                                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                                <div>
+                                    <h4 class="font-semibold text-sm mb-1">Analisis Data Otomatis</h4>
+                                    <p class="text-xs text-[#617589]">Mengolah raw data menjadi grafik siap publikasi.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-start gap-3 p-3 rounded-lg hover:bg-background-light dark:hover:bg-[#2a3441] transition-colors">
+                                <span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+                                <div>
+                                    <h4 class="font-semibold text-sm mb-1">Etika AI Akademik</h4>
+                                    <p class="text-xs text-[#617589]">Batasan penggunaan AI agar terhindar dari
+                                        plagiasi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Speaker Profile (Mobile View Only - moved here for better flow on small screens) -->
+                    <div
+                        class="lg:hidden bg-white dark:bg-[#1e2936] rounded-2xl p-6 shadow-sm border border-[#f0f2f4] dark:border-[#2a3441]">
+                        <h3 class="text-xl font-bold mb-4">Pembicara</h3>
+                        <div class="flex items-center gap-4">
+                            <img alt="Portrait of Dr. Budi Santoso" class="w-16 h-16 rounded-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCst1xiax9dznMKkTT68twY254wUoXnzRyPqJ8zI4TObkWFL5TbTAQrBMC6jo_Rgd1XIHXah3cufiFMjsczIi2cr3JFDtpSymjBEtb2FXR6SyQfJZ_JX9APEwwIogZL2lGWVCmojJbZOOlcyan_LkwPEU6yaKNDHVlegHWShRMUgvYkRWCVpDMfeV6mhNnndOnPZvUgkvTpk-GfWlJF143YIek7wCwwoEUrM-Z8PESj4egjm3zagX4Zx2uyuG9x8XfWSZLAVfMS3sFp" />
+                            <div>
+                                <h4 class="font-bold text-lg">Dr. Budi Santoso, M.Kom</h4>
+                                <p class="text-sm text-[#617589]">AI Researcher &amp; Lecturer at ITB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column: Sidebar -->
+                <div class="space-y-6">
+                    <!-- Event Details Card -->
+                    <div
+                        class="bg-white dark:bg-[#1e2936] rounded-2xl shadow-lg shadow-primary/5 border border-[#f0f2f4] dark:border-[#2a3441] overflow-hidden sticky top-24">
+                        <div class="bg-primary/5 p-6 border-b border-[#f0f2f4] dark:border-[#2a3441]">
+                            <h3 class="text-lg font-bold mb-4 text-[#111418] dark:text-white">Detail Pelaksanaan</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-white dark:bg-[#2a3441] p-2 rounded-lg shadow-sm text-primary">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-[#617589] font-medium uppercase">Tanggal</p>
+                                        <p class="font-semibold text-sm">Sabtu, 24 Oktober 2023</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-white dark:bg-[#2a3441] p-2 rounded-lg shadow-sm text-primary">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-[#617589] font-medium uppercase">Waktu</p>
+                                        <p class="font-semibold text-sm">09:00 - 12:00 WIB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="bg-white dark:bg-[#2a3441] p-2 rounded-lg shadow-sm text-primary">
+                                        <span class="material-symbols-outlined">videocam</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-[#617589] font-medium uppercase">Lokasi</p>
+                                        <p class="font-semibold text-sm">Zoom Meeting</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <!-- Desktop Speaker Section inside Sidebar -->
+                            <div class="hidden lg:block mb-6 pt-2">
+                                <h4 class="text-sm font-bold text-[#617589] uppercase mb-3">Pembicara</h4>
+                                <div class="flex items-center gap-3">
+                                    <img alt="Portrait of Dr. Budi Santoso"
+                                        class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-[#2a3441] shadow-sm"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgX2icpdXwExJDHeHJJX27rf8ltrF6Ucs8i0JytDlRAouEFM2iRgbWjpkeXEScFnqXdm9okjaN1kW30l2Sq-n3KYx-1zCCUe9JxFX_gLqoOLlJ6cIC0b5bqpP6lrMlwSYEbF-H5eSzvSNMt8Qwc-cG1UWIggURcl1h5RQqg8cGN8VvopWOTQtf7X-zCO1B0Sg9Ws9QUA0JLsgK9AQCgY81XXM4020ZIj--YSDaZ_G3i92bZ4jYCPY2btPFwdhamllojJ0uN1YsEWBT" />
+                                    <div>
+                                        <p class="font-bold text-sm">Dr. Budi Santoso</p>
+                                        <p class="text-xs text-[#617589]">AI Researcher</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <h4 class="text-sm font-bold text-[#617589] uppercase mb-3">Fasilitas</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#f0f2f4] dark:bg-[#2a3441] text-xs font-medium text-[#617589]">
+                                        <span class="material-symbols-outlined text-[14px]">workspace_premium</span>
+                                        E-Sertifikat
+                                    </span>
+                                    <span
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#f0f2f4] dark:bg-[#2a3441] text-xs font-medium text-[#617589]">
+                                        <span class="material-symbols-outlined text-[14px]">video_library</span> Rekaman
+                                    </span>
+                                    <span
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#f0f2f4] dark:bg-[#2a3441] text-xs font-medium text-[#617589]">
+                                        <span class="material-symbols-outlined text-[14px]">picture_as_pdf</span> Modul
+                                        PDF
+                                    </span>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full flex items-center justify-center gap-2 h-12 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5">
+                                Daftar Sekarang
+                                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                            </button>
+                            <p class="text-center text-xs text-[#617589] mt-3">Slot terbatas! Tersisa 15 kursi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Sticky Bottom Bar for Mobile Conversion -->
+    <div
+        class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-[#1e2936] border-t border-[#f0f2f4] dark:border-[#2a3441] p-4 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div class="flex items-center justify-between gap-4 max-w-[1280px] mx-auto">
+            <div class="flex flex-col">
+                <span class="text-xs text-[#617589]">Investasi Belajar</span>
+                <span class="text-lg font-bold text-primary">Gratis</span>
+            </div>
+            <button
+                class="flex-1 max-w-[200px] h-11 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/20">
+                Daftar Sekarang
+            </button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-[#101922] border-t border-[#f0f2f4] dark:border-[#2a3441] py-12 pb-24 lg:pb-12">
+        <div class="max-w-[1280px] mx-auto px-4 sm:px-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="flex items-center gap-3 text-primary">
+                    <div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary">school</span>
+                    </div>
+                    <h2 class="text-[#111418] dark:text-white text-xl font-bold tracking-tight">Kelasinovatif</h2>
+                </div>
+                <div class="flex gap-6 text-[#617589] text-sm font-medium">
+                    <a class="hover:text-primary" href="#">Tentang Kami</a>
+                    <a class="hover:text-primary" href="#">Syarat &amp; Ketentuan</a>
+                    <a class="hover:text-primary" href="#">Kebijakan Privasi</a>
+                    <a class="hover:text-primary" href="#">Bantuan</a>
+                </div>
+            </div>
+            <div class="mt-8 text-center md:text-left text-xs text-[#617589]">
+                © 2023 Kelasinovatif. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
