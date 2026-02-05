@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Schedule {
+  id              Int       @id @default(autoincrement())
+  title           String
+  type            String    // Workshop, Seminar, etc.
+  speakerName     String    @map("speaker_name")
+  speakerRole     String?   @map("speaker_role")
+  speakerImage    String?   @map("speaker_image")
+  date            DateTime
+  startTime       String    @map("start_time")
+  endTime         String    @map("end_time")
+  location        String
+  description     String?
+  image           String?
+  excerpt         String?
+  benefits        String?
+  registerUrl     String?   @map("register_url")
+  originalPrice   Int?      @map("original_price")
+  discountedPrice Int?      @map("discounted_price")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  @@map("schedules")
+}
+
+model Blog {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String?   @unique
+  excerpt     String?
+  content     String?
+  category    String?
+  authorName  String?   @map("author_name")
+  authorImage String?   @map("author_image")
+  image       String?
+  readTime    String?   @map("read_time")
+  featured    Boolean   @default(false)
+  status      BlogStatus @default(published)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@map("blogs")
+}
+
+model Email {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("emails")
+}
+
+enum BlogStatus {
+  published
+  draft
+}
