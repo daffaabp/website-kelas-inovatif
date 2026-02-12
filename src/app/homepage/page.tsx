@@ -6,11 +6,14 @@ import { Hero } from './_components/Hero';
 import { StatsSection } from './_components/StatsSection';
 import { CoursesSection } from './_components/CoursesSection';
 import { FeaturesSection } from './_components/FeaturesSection';
+import { Testimonials } from './_components/Testimonials';
 import { PromoSection } from './_components/PromoSection';
 import { EventSection } from './_components/EventSection';
 import { FaqSection } from './_components/FaqSection';
+import { NewsSection } from './_components/NewsSection';
 import { Footer } from '@/components/commons/Footer';
 import { NewsletterSection } from '@/components/commons/NewsletterSection';
+import { AIChatBot } from '@/components/commons/AIChatBot';
 import { CourseDetailView } from './_components/CourseDetailView';
 import { Course } from './types';
 import { LatestBlogSection } from './_components/LatestBlogSection';
@@ -27,7 +30,7 @@ export default function HomePage() {
     return (
       <main className="w-full overflow-x-hidden font-sans">
         <CourseDetailView course={selectedCourse} onBack={() => setSelectedCourse(null)} />
-        {/* <AIChatBot /> */}
+        <AIChatBot />
       </main>
     );
   }
@@ -36,10 +39,10 @@ export default function HomePage() {
     <main className="w-full overflow-x-hidden font-sans">
       <Navbar />
       <Hero />
+      <CoursesSection onCourseSelect={setSelectedCourse} />
       <div id="about">
         <StatsSection />
       </div>
-      <CoursesSection onCourseSelect={setSelectedCourse} />
       <FeaturesSection />
       {/* <Testimonials /> */}
       <PromoSection />
@@ -51,7 +54,7 @@ export default function HomePage() {
         <NewsletterSection />
         <Footer />
       </div>
-      {/* <AIChatBot /> */}
+      <AIChatBot />
     </main>
   );
 }
