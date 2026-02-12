@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface HeroProps {
     title: string;
@@ -30,10 +31,12 @@ export function Hero({ title, category, date, readTime, author }: HeroProps) {
                     {title}
                 </h1>
                 <div className="flex items-center justify-center gap-4">
-                    <img
+                    <Image
                         alt={author.name}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-md"
+                        className="rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-md"
                         src={author.image}
+                        width={48}
+                        height={48}
                     />
                     <div className="text-left">
                         <p className="text-base font-bold text-blog-primary dark:text-white leading-none mb-1">

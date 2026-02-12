@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Clock, MapPin, Calendar, Tag } from 'lucide-react';
 
 interface ScheduleHeroProps {
@@ -34,10 +35,12 @@ export function ScheduleHero({ title, type, date, startTime, endTime, location, 
 
                     {/* Speaker */}
                     <div className="flex items-center justify-center gap-4 mb-12">
-                        <img
+                        <Image
                             alt={speaker.name}
-                            className="w-16 h-16 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl"
+                            className="rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl"
                             src={speaker.image}
+                            width={64}
+                            height={64}
                         />
                         <div className="text-left">
                             <p className="text-lg font-bold text-blog-primary dark:text-white leading-none mb-1">

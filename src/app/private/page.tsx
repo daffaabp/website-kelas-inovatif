@@ -2,7 +2,6 @@
 import React from 'react';
 import { Hero } from './_components/Hero';
 import { Stats } from './_components/Stats';
-import { InstructorList } from './_components/InstructorList';
 import { Pricing } from './_components/Pricing';
 import { Benefits } from './_components/Benefits';
 import { Testimonials } from './_components/Testimonials';

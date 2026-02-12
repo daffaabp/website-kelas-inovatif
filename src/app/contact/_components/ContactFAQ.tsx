@@ -1,4 +1,6 @@
+import Link from "next/link";
 import React from "react";
+import { ArrowRight } from "lucide-react";
 
 export const ContactFAQ = () => {
     return (
@@ -11,15 +13,13 @@ export const ContactFAQ = () => {
                     Sebelum menghubungi kami, periksa pertanyaan yang sering diajukan. Anda mungkin
                     menemukan jawaban yang Anda cari.
                 </p>
-                <a
+                <Link
                     className="inline-flex items-center text-[var(--color-contact-primary)] dark:text-white font-semibold border-b-2 border-[var(--color-contact-primary)] dark:border-white pb-1 hover:text-opacity-80 transition-opacity"
                     href="/faq"
                 >
                     Kunjungi Pusat FAQ
-                    <span className="material-icons-outlined ml-2 text-sm">
-                        arrow_forward
-                    </span>
-                </a>
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
             </div>
         </section>
     );

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function CTA() {
     return (
         <section className="py-24 bg-eduzin-dark text-white relative overflow-hidden">
@@ -17,9 +19,9 @@ export function CTA() {
                     Bergabunglah dengan ratusan akademisi yang telah mempercepat pemahaman literature review mereka. Daftar sekarang dan kuasai cara memahami alur berpikir peneliti, memetakan pola penelitian, serta menyusun kerangka dan draft literature review yang terstruktur.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <a className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
+                    <Link className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
                         Daftar Sekarang
-                    </a>
+                    </Link>
                     <a className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg" href="https://wa.me/6285712208535?text=Halo%20Admin%20Kelas%20Inovatif%2C%20saya%20tertarik%20untuk%20mengikuti%20Kelas%20Menguasai%20NotebookLM.%20Kapan%20jadwal%20terdekat%20dan%20bagaimana%20cara%20pendaftarannya%3F%20Terima%20kasih." target="_blank" rel="noopener noreferrer">
                         Hubungi Kami
                     </a>

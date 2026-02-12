@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 export function Pricing() {
     return (
@@ -43,12 +43,12 @@ export function Pricing() {
                                 <Check className="w-5 h-5 text-green-500 mr-3 shrink-0" />
                                 <span>Jadwal Paling Fleksibel</span>
                             </li>
-                             <li className="flex items-start text-gray-600 dark:text-gray-300">
+                            <li className="flex items-start text-gray-600 dark:text-gray-300">
                                 <Check className="w-5 h-5 text-green-500 mr-3 shrink-0" />
                                 <span>Gratis Kelas Pengantar</span>
                             </li>
                         </ul>
-                        <a 
+                        <a
                             href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Eksklusif%20(1%20Orang)."
                             target='_blank'
                             className="block w-full text-center bg-private-primary hover:bg-private-primary/90 text-white font-bold py-4 rounded-xl transition-colors"
@@ -85,7 +85,7 @@ export function Pricing() {
                                 <span>Gratis Kelas Pengantar</span>
                             </li>
                         </ul>
-                        <a 
+                        <a
                             href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Premium%20(2%20Orang)."
                             target='_blank'
                             className="block w-full text-center bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-bold py-4 rounded-xl transition-colors"
@@ -122,7 +122,7 @@ export function Pricing() {
                                 <span>Gratis Kelas Pengantar</span>
                             </li>
                         </ul>
-                        <a 
+                        <a
                             href="https://wa.me/6285712208535?text=Halo%20Admin,%20saya%20tertarik%20daftar%20Private%20Master%20Class%20Paket%20Ekonomis%20(3%20Orang)."
                             target='_blank'
                             className="block w-full text-center bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-bold py-4 rounded-xl transition-colors"
@@ -133,7 +133,7 @@ export function Pricing() {
                 </div>
 
                 <div className="mt-12 text-center">
-                     <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                         *Biaya dapat ditanyakan langsung melalui Admin WhatsApp.
                     </p>
                 </div>

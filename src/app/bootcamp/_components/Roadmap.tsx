@@ -46,7 +46,7 @@ export default function Roadmap() {
             Roadmap Menuju Publikasi
           </h2>
           <p className="text-muted-foreground text-lg">
-            Kurikulum "End-to-End" yang dirancang sistematis untuk memandu Anda dari ide mentah hingga naskah siap terbit.
+            Kurikulum &quot;End-to-End&quot; yang dirancang sistematis untuk memandu Anda dari ide mentah hingga naskah siap terbit.
           </p>
         </div>
 
@@ -58,9 +58,8 @@ export default function Roadmap() {
             {steps.map((step, index) => (
               <div
                 key={step.id}
-                className={`flex flex-col md:flex-row items-center gap-8 animate-fadeIn fill-mode-[both] ${
-                  index % 2 === 0 ? "md:flex-row-reverse" : ""
-                }`}
+                className={`flex flex-col md:flex-row items-center gap-8 animate-fadeIn fill-mode-[both] ${index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  }`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 {/* Content Side */}

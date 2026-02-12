@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function PromoSection() {
@@ -9,10 +10,14 @@ export function PromoSection() {
 
           {/* Left Student */}
           <div className="w-full md:w-1/3">
-            <img src="/community/community8.avif"
-              alt="Student smiling"
-              className="w-full h-[400px] object-cover rounded-t-[100px] rounded-b-[20px] shadow-xl transition-all duration-500"
-            />
+            <div className="relative w-full h-[400px]">
+              <Image
+                src="/community/community8.avif"
+                alt="Student smiling"
+                className="object-cover rounded-t-[100px] rounded-b-[20px] shadow-xl transition-all duration-500"
+                fill
+              />
+            </div>
           </div>
 
           {/* Center Text */}
@@ -35,10 +40,14 @@ export function PromoSection() {
 
           {/* Right Student */}
           <div className="w-full md:w-1/3">
-            <img src="/community/community9.avif"
-              alt="Student smiling"
-              className="w-full h-[400px] object-cover rounded-t-[20px] rounded-b-[100px] shadow-xl transition-all duration-500"
-            />
+            <div className="relative w-full h-[400px]">
+              <Image
+                src="/community/community9.avif"
+                alt="Student smiling"
+                className="object-cover rounded-t-[20px] rounded-b-[100px] shadow-xl transition-all duration-500"
+                fill
+              />
+            </div>
           </div>
 
         </div>

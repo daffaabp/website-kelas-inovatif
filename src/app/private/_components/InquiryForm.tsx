@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { Check, Mail, Phone, Send } from 'lucide-react';
 
 export function InquiryForm() {
@@ -8,7 +9,12 @@ export function InquiryForm() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="relative bg-private-primary rounded-3xl p-8 md:p-16 overflow-hidden shadow-2xl">
                     <div className="absolute inset-0 opacity-20">
-                        <img alt="Abstract Background" className="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfP6S9S0rMQK0E3I2EksWg9OSChmadSaCAaxnsHOLYDpjeag1xuRnLhw3jq7eotIc_WqztvoDFt_dFAt8b0ljhcBKruhVw8A5yf5gYaMJjRCtRgP0WRI-YaBlzqDO8KB-1QvChgOtzp_2Fdp77gqKEp-zYpxztVMFn3EOeA-3_wQvxLkhmq7fBTqqDi13PJt-4uzsLnY8YFH-GwVInGY80hhL5EfcYlrLkFEFVsu271Rx4kQQ7WPta0LJbta4jkFfdmDSGFCCw58" />
+                        <Image
+                            alt="Abstract Background"
+                            className="object-cover grayscale"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRfP6S9S0rMQK0E3I2EksWg9OSChmadSaCAaxnsHOLYDpjeag1xuRnLhw3jq7eotIc_WqztvoDFt_dFAt8b0ljhcBKruhVw8A5yf5gYaMJjRCtRgP0WRI-YaBlzqDO8KB-1QvChgOtzp_2Fdp77gqKEp-zYpxztVMFn3EOeA-3_wQvxLkhmq7fBTqqDi13PJt-4uzsLnY8YFH-GwVInGY80hhL5EfcYlrLkFEFVsu271Rx4kQQ7WPta0LJbta4jkFfdmDSGFCCw58"
+                            fill
+                        />
                     </div>
                     <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
                         <div className="lg:w-5/12 text-white">

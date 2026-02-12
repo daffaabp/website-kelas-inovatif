@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Navbar } from '@/components/commons/Navbar';
 import { Footer } from '@/components/commons/Footer';
@@ -12,6 +14,7 @@ import {
     Video,
     ArrowRight
 } from 'lucide-react';
+
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -73,15 +76,7 @@ export default async function ScheduleDetailPage({ params }: Props) {
         ? Math.round(((originalPrice - discountedPrice) / originalPrice) * 100)
         : 0;
 
-    // Formatting currency
-    const formatCurrency = (amount: number) => {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        }).format(amount).replace('Rp', '').trim(); // Remove Rp prefix to match design or keep it if desired
-    };
+
 
     // The current design uses separate "Rp" span, so we just want the number string mostly, 
     // but Intl adds dots. 
@@ -100,9 +95,9 @@ export default async function ScheduleDetailPage({ params }: Props) {
                 <div className="relative max-w-[1280px] mx-auto px-4 sm:px-10">
                     {/* Breadcrumb */}
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                        <a className="hover:text-schedule-primary" href="/">Home</a>
+                        <Link className="hover:text-schedule-primary" href="/">Home</Link>
                         <span className="text-[16px] text-gray-400">›</span>
-                        <a className="hover:text-schedule-primary" href="/schedule">Webinar</a>
+                        <Link className="hover:text-schedule-primary" href="/schedule">Webinar</Link>
                         <span className="text-[16px] text-gray-400">›</span>
                         <span className="text-schedule-primary dark:text-white font-medium">Detail Event</span>
                     </div>
@@ -127,10 +122,13 @@ export default async function ScheduleDetailPage({ params }: Props) {
                         {/* Right Side / Hero Image */}
                         <div className="lg:col-span-2 relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-schedule-primary/10 group mt-8 lg:mt-0">
                             {schedule.image ? (
-                                <img
+                                <Image
                                     src={schedule.image}
                                     alt={schedule.title}
                                     className="w-full h-auto object-cover bg-black/5 dark:bg-black/20"
+                                    width={800}
+                                    height={450}
+                                    style={{ width: '100%', height: 'auto' }}
                                 />
                             ) : (
                                 <div className="w-full min-h-[300px] bg-slate-200 dark:bg-slate-700 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center"></div>
@@ -162,7 +160,7 @@ export default async function ScheduleDetailPage({ params }: Props) {
                         <div className="lg:hidden bg-schedule-surface-light dark:bg-schedule-surface-dark rounded-2xl p-6 shadow-sm border border-schedule-accent dark:border-gray-800">
                             <h3 className="text-xl font-bold mb-4 text-schedule-primary dark:text-white">Pembicara</h3>
                             <div className="flex items-center gap-4">
-                                <img alt={speaker.name} className="w-16 h-16 rounded-full object-cover" src={speaker.image || "https://i.pravatar.cc/150"} />
+                                <Image alt={speaker.name} className="rounded-full object-cover" src={speaker.image || "https://i.pravatar.cc/150"} width={64} height={64} />
                                 <div>
                                     <h4 className="font-bold text-lg text-schedule-primary dark:text-white">{speaker.name}</h4>
                                     <p className="text-sm text-muted-foreground">{speaker.role}</p>
@@ -245,7 +243,7 @@ export default async function ScheduleDetailPage({ params }: Props) {
                                 <div className="hidden lg:block mb-6 pt-2">
                                     <h4 className="text-sm font-bold text-muted-foreground uppercase mb-3">Pembicara</h4>
                                     <div className="flex items-center gap-3">
-                                        <img alt={speaker.name} className="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm" src={speaker.image || "https://i.pravatar.cc/150"} />
+                                        <Image alt={speaker.name} className="rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm" src={speaker.image || "https://i.pravatar.cc/150"} width={48} height={48} />
                                         <div>
                                             <p className="font-bold text-sm text-schedule-primary dark:text-white">{speaker.name}</p>
                                             <p className="text-xs text-muted-foreground">{speaker.role}</p>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { MapPin, Phone, Mail, Send } from "lucide-react";
 
@@ -244,9 +245,9 @@ export const ContactFormSection = () => {
                                     />
                                     <span className="text-sm text-gray-600 dark:text-gray-400">
                                         Saya setuju dengan{" "}
-                                        <a href="/privacy" className="text-eduzin-dark dark:text-about-primary underline hover:no-underline">
+                                        <Link href="/privacy" className="text-eduzin-dark dark:text-about-primary underline hover:no-underline">
                                             kebijakan privasi
-                                        </a>
+                                        </Link>
                                         . <span className="text-red-500">*</span>
                                     </span>
                                 </label>

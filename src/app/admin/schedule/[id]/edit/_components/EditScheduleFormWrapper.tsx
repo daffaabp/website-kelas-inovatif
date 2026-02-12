@@ -3,13 +3,15 @@
 import React from "react";
 import { ScheduleForm } from "../../../create/_components/ScheduleForm";
 import { ScheduleSidebar } from "../../../create/_components/ScheduleSidebar";
-import { Upload } from "lucide-react";
-import { updateSchedule } from '@/app/actions/schedule';
+import { Upload, Menu } from "lucide-react";
+import { updateSchedule, getScheduleById } from '@/app/actions/schedule';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 
+type ScheduleResult = NonNullable<Awaited<ReturnType<typeof getScheduleById>>>;
+
 interface EditScheduleFormWrapperProps {
-    schedule: any;
+    schedule: ScheduleResult;
     scheduleId: number;
 }
 
@@ -20,24 +22,24 @@ export function EditScheduleFormWrapper({ schedule, scheduleId }: EditScheduleFo
     async function handleAction(formData: FormData) {
         startTransition(async () => {
             const res = await updateSchedule(scheduleId, {
-                title: formData.get('title'),
-                type: formData.get('type'),
-                speaker_name: formData.get('speaker_name'),
-                speaker_role: formData.get('speaker_role'),
-                speaker_image: formData.get('speaker_image'),
-                speaker_image_file: formData.get('speaker_image_file'),
-                image: formData.get('image'),
-                featured_image_file: formData.get('featured_image_file'),
-                date: formData.get('date'),
-                start_time: formData.get('start_time'),
-                end_time: formData.get('end_time'),
-                location: formData.get('location'),
-                description: formData.get('description'),
-                excerpt: formData.get('excerpt'),
-                benefits: formData.get('benefits'),
-                register_url: formData.get('register_url'),
-                original_price: formData.get('original_price'),
-                discounted_price: formData.get('discounted_price'),
+                title: formData.get('title') as string,
+                type: formData.get('type') as string,
+                speaker_name: formData.get('speaker_name') as string,
+                speaker_role: formData.get('speaker_role') as string,
+                speaker_image: formData.get('speaker_image') as string,
+                speaker_image_file: formData.get('speaker_image_file') as File,
+                image: formData.get('image') as string,
+                featured_image_file: formData.get('featured_image_file') as File,
+                date: formData.get('date') as string, // Date string is fine if ScheduleData accepts string | Date
+                start_time: formData.get('start_time') as string,
+                end_time: formData.get('end_time') as string,
+                location: formData.get('location') as string,
+                description: formData.get('description') as string,
+                excerpt: formData.get('excerpt') as string,
+                benefits: formData.get('benefits') as string,
+                register_url: formData.get('register_url') as string,
+                original_price: formData.get('original_price') ? Number(formData.get('original_price')) : undefined,
+                discounted_price: formData.get('discounted_price') ? Number(formData.get('discounted_price')) : undefined,
             });
 
             if (res.msg === 'success') {
@@ -65,7 +67,7 @@ export function EditScheduleFormWrapper({ schedule, scheduleId }: EditScheduleFo
                     </div>
                     <button className="text-gray-600 dark:text-gray-300 p-2">
                         {/* Menu icon placeholder */}
-                        <span className="material-icons-round">menu</span>
+                        <Menu className="h-6 w-6" />
                     </button>
                 </div>
                 <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">

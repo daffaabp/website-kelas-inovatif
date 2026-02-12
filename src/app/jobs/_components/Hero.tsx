@@ -1,19 +1,23 @@
+import Image from 'next/image';
+
 export function Hero() {
     return (
         <div className="relative bg-eduzin-dark overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0">
                 {/* Geser gambar ke bawah dengan translate-y-16 di Tailwind */}
-                <img
+                <Image
                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop&q=80"
                     alt="Professional workspace"
-                    className="w-full h-full object-cover opacity-25 translate-y-16"
-                    style={{objectPosition: 'center 60%'}}
+                    className="object-cover opacity-25 translate-y-16"
+                    style={{ objectPosition: 'center 60%' }}
+                    fill
+                    priority
                 />
                 {/* Buat gradasi background sedikit lebih tipis supaya gambar lebih kelihatan */}
                 <div className="absolute inset-0 bg-linear-to-b from-eduzin-dark/70 via-eduzin-dark/80 to-eduzin-dark/95"></div>
             </div>
-            
+
             {/* Decorative Elements */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full border border-white/20"></div>

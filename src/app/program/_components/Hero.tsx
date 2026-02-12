@@ -1,13 +1,14 @@
-import React from 'react';
+import Image from 'next/image';
 
 export function Hero() {
     return (
         <header className="relative bg-program-primary py-24 sm:py-32 overflow-hidden">
             <div className="absolute inset-0 opacity-20 dark:opacity-10">
-                <img
+                <Image
                     alt="University Campus Pattern"
-                    className="w-full h-full object-cover mix-blend-overlay"
+                    className="object-cover mix-blend-overlay"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvNfmmy8TluoI3JMEvDAebDud2myFxR7cyO9fd9C07qRtXHbzDzBA3EqACfk7Y7d2F9YlHZhks-Ng_28cICwMYKeSEJPEWs8sdDiNbpxfeEY7MI0kdisyrQKH1SutJ4FkWXMuvWjeSUnwCW38aDGBS8YPFi3L9UjRaO-IE9xNST8frUOHGCbp-htAMfLCRsLQAb35-vk80Rh-nZMkQW6XCHGa8e82n7mfnanAHv4i_1CU5UunTq8RMChba3Jfn0R3otgbdj-mrmgc"
+                    fill
                 />
             </div>
             <div className="absolute inset-0 bg-linear-to-t from-program-primary via-transparent to-transparent"></div>
@@ -16,7 +17,7 @@ export function Hero() {
                     Tumbuh & Berkarya Bersama
                 </span>
                 <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
-                    Belajar, Kolaborasi, dan Raih Cita Akademik<br className="hidden md:block" /> 
+                    Belajar, Kolaborasi, dan Raih Cita Akademik<br className="hidden md:block" />
                     <i className="font-serif italic text-white/90">di Komunitas Kami</i>
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-200 font-light">

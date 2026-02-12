@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export function CTA() {
@@ -8,9 +9,9 @@ export function CTA() {
                 <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">Siap Berinovasi?</h2>
                 <p className="text-lg text-gray-200 mb-8 font-light">Bergabunglah dengan ribuan mahasiswa yang mengubah karier mereka dengan jalur pembelajaran khusus kami.</p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <a className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
+                    <Link className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
                         Daftar Sekarang
-                    </a>
+                    </Link>
                     <a
                         className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg"
                         href="https://wa.me/6285712208535?text=Hallo%2C%20saya%20butuh%20informasi%20webinar%20penulisan%20akademik%20di%20Kelas%20Inovatif"

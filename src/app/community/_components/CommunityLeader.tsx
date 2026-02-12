@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export function CommunityLeader() {
     return (
@@ -7,10 +8,11 @@ export function CommunityLeader() {
                 <div className="bg-white dark:bg-community-card-dark rounded-3xl overflow-hidden shadow-2xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                         <div className="relative h-96 lg:h-auto">
-                            <img
+                            <Image
                                 alt="Arianto, S.T., M.T."
-                                className="absolute inset-0 w-full h-full object-cover"
+                                className="object-cover"
                                 src="/images/speaker/arianto.avif"
+                                fill
                             />
                             <div className="absolute bottom-0 left-0 right-0 p-8 bg-linear-to-t from-black/80 to-transparent">
                                 <p className="text-white font-bold text-lg">M. Arianto</p>
@@ -18,7 +20,7 @@ export function CommunityLeader() {
                             </div>
                         </div>
                         <div className="p-10 lg:p-16 flex flex-col justify-center">
-                            <span className="text-6xl text-community-primary opacity-20 font-serif leading-none">"</span>
+                            <span className="text-6xl text-community-primary opacity-20 font-serif leading-none">&quot;</span>
                             <h3 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 leading-relaxed">
                                 Visi kami sederhana: Memastikan tidak ada akademisi Indonesia yang tertinggal. Kami membangun jembatan antara kerumitan teknologi AI dan integritas riset ilmiah.
                             </h3>

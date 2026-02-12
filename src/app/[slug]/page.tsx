@@ -102,8 +102,14 @@ export default async function BlogDetailPage({ params }: Props) {
         },
     });
 
-    // Shuffle array and take first 3
-    const shuffled = allRelatedPosts.sort(() => 0.5 - Math.random());
+    // Deterministic shuffle based on post ID to avoid Math.random() in render
+    // This ensures consistent related articles for the same post
+    const shuffled = allRelatedPosts.sort((a, b) => {
+        // Use post ID as seed for deterministic but varied ordering
+        const hashA = (a.id * 2654435761) % (post.id + 1);
+        const hashB = (b.id * 2654435761) % (post.id + 1);
+        return hashA - hashB;
+    });
     const relatedPostsRaw = shuffled.slice(0, 3);
 
     const relatedArticles = relatedPostsRaw.map((p) => ({

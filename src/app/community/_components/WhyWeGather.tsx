@@ -1,4 +1,5 @@
 import React from 'react';
+import { Network, Sparkles, BadgeCheck } from 'lucide-react';
 
 export function WhyWeGather() {
     return (
@@ -16,21 +17,21 @@ export function WhyWeGather() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="group relative bg-white dark:bg-community-card-dark rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
                         <div className="w-14 h-14 bg-community-primary/10 dark:bg-community-primary/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-community-primary group-hover:text-white transition-colors duration-300 text-community-primary">
-                            <span className="material-icons-outlined text-3xl">hub</span>
+                            <Network className="h-8 w-8" />
                         </div>
                         <h4 className="font-serif text-2xl font-bold text-gray-900 dark:text-white mb-4">Kolaborasi Lintas Disiplin</h4>
                         <p className="text-gray-600 dark:text-gray-400">Memecahkan batasan antar bidang ilmu. Dosen Teknik berkolaborasi dengan ahli Sosial, Peneliti Kesehatan bersinergi dengan pakar AI.</p>
                     </div>
                     <div className="group relative bg-white dark:bg-community-card-dark rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
                         <div className="w-14 h-14 bg-community-primary/10 dark:bg-community-primary/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-community-primary group-hover:text-white transition-colors duration-300 text-community-primary">
-                            <span className="material-icons-outlined text-3xl">auto_fix_high</span>
+                            <Sparkles className="h-8 w-8" />
                         </div>
                         <h4 className="font-serif text-2xl font-bold text-gray-900 dark:text-white mb-4">Akselerasi dengan AI</h4>
                         <p className="text-gray-600 dark:text-gray-400">Mengoptimalkan proses riset menggunakan Artificial Intelligence. Dari pencarian literatur hingga analisis data, semua lebih efisien.</p>
                     </div>
                     <div className="group relative bg-white dark:bg-community-card-dark rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
                         <div className="w-14 h-14 bg-community-primary/10 dark:bg-community-primary/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-community-primary group-hover:text-white transition-colors duration-300 text-community-primary">
-                            <span className="material-icons-outlined text-3xl">verified</span>
+                            <BadgeCheck className="h-8 w-8" />
                         </div>
                         <h4 className="font-serif text-2xl font-bold text-gray-900 dark:text-white mb-4">Integritas & Kredibilitas</h4>
                         <p className="text-gray-600 dark:text-gray-400">Membangun kepercayaan melalui hasil nyata. Kami menjunjung tinggi etika akademik dalam setiap penggunaan teknologi.</p>

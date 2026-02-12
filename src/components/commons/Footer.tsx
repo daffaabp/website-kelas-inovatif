@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Facebook, MapPin, Phone, Mail } from 'lucide-react';
 
 export function Footer() {
@@ -46,23 +47,23 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold text-about-primary dark:text-white mb-6">Menu Utama</h4>
                         <ul className="space-y-4 text-sm text-gray-600 dark:text-gray-400">
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/">Beranda</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/about">Tentang Kami</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/community">Komunitas</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/program">Program</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/bootcamp">Bootcamp</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/schedule">Event</a></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/">Beranda</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/about">Tentang Kami</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/community">Komunitas</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/program">Program</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/bootcamp">Bootcamp</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/schedule">Event</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-bold text-about-primary dark:text-white mb-6">Informasi</h4>
                         <ul className="space-y-4 text-sm text-gray-600 dark:text-gray-400">
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/blogs">Blog & Artikel</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/user-story">Kisah Alumni</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/faq">FAQ</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/contact">Hubungi Kami</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/jobs">Karir</a></li>
-                            <li><a className="hover:text-about-primary dark:hover:text-white transition" href="/privacy">Kebijakan Privasi</a></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/blogs">Blog & Artikel</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/user-story">Kisah Alumni</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/faq">FAQ</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/contact">Hubungi Kami</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/jobs">Karir</Link></li>
+                            <li><Link className="hover:text-about-primary dark:hover:text-white transition" href="/privacy">Kebijakan Privasi</Link></li>
                         </ul>
                     </div>
                     <div>
@@ -92,8 +93,8 @@ export function Footer() {
                 <div className="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
                     <p>© {new Date().getFullYear()} PT BAKAT KREATIF INDONESIA. Hak cipta dilindungi.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <a className="hover:text-about-primary dark:hover:text-white transition" href="/privacy">Kebijakan Privasi</a>
-                        <a className="hover:text-about-primary dark:hover:text-white transition" href="/terms">Syarat & Ketentuan</a>
+                        <Link className="hover:text-about-primary dark:hover:text-white transition" href="/privacy">Kebijakan Privasi</Link>
+                        <Link className="hover:text-about-primary dark:hover:text-white transition" href="/terms">Syarat & Ketentuan</Link>
                     </div>
                 </div>
             </div>

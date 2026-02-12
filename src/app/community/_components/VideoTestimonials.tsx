@@ -1,6 +1,7 @@
 'use client';
 
 import { ChevronLeft, ChevronRight, Play, User } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 interface VideoTestimonial {
@@ -152,14 +153,15 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
                                         referrerPolicy="strict-origin-when-cross-origin"
                                     />
                                 ) : (
-                                    <div 
+                                    <div
                                         className="relative w-full h-full cursor-pointer"
                                         onClick={() => setPlayingVideoId(video.id)}
                                     >
-                                        <img
+                                        <Image
                                             src={getThumbnail(video)}
                                             alt={`Testimoni ${video.name}`}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            fill
                                             onError={(e) => {
                                                 // Fallback jika thumbnail gagal load
                                                 (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
@@ -167,7 +169,7 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
                                         />
                                         {/* Gradient Overlay */}
                                         <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
-                                        
+
                                         {/* Play Button */}
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300 border-2 border-white/40 ring-4 ring-teal-500/30">
@@ -178,7 +180,7 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
                                         {/* YouTube Badge */}
                                         <div className="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
                                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                                             </svg>
                                             YouTube
                                         </div>
@@ -221,11 +223,10 @@ export function VideoTestimonials({ videos }: VideoTestimonialsProps) {
                                     setCurrentPage(index);
                                     setPlayingVideoId(null);
                                 }}
-                                className={`h-2 rounded-full transition-all duration-300 ${
-                                    index === currentPage
+                                className={`h-2 rounded-full transition-all duration-300 ${index === currentPage
                                         ? 'bg-teal-700 dark:bg-teal-400 w-8'
                                         : 'bg-gray-300 dark:bg-gray-600 w-2'
-                                }`}
+                                    }`}
                                 aria-label={`Ke halaman ${index + 1}`}
                             />
                         ))}

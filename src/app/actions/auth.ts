@@ -9,7 +9,16 @@ const loginSchema = z.object({
     password: z.string().min(1),
 })
 
-export async function login(prevState: any, formData: FormData) {
+
+type FormState = {
+    errors?: {
+        email?: string[];
+        password?: string[];
+    };
+    message?: string;
+} | undefined;
+
+export async function login(prevState: FormState, formData: FormData) {
     const result = loginSchema.safeParse(Object.fromEntries(formData))
 
     if (!result.success) {

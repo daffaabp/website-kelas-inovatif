@@ -7,7 +7,7 @@ const categories = ['Semua Acara', 'Workshop', 'Kuliah', 'Upacara'];
 
 export function EventFilters() {
     const [selectedCategory, setSelectedCategory] = useState('Semua Acara');
-    const [currentMonth, setCurrentMonth] = useState('Oktober 2023');
+    const [currentMonth] = useState('Oktober 2023');
 
     return (
         <section className="pb-12">

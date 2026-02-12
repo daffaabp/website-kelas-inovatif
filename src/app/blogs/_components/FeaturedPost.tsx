@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { BlogPost } from './types';
 
@@ -14,10 +15,11 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
             <div className="max-w-7xl mx-auto">
                 <div className="bg-white dark:bg-blog-surface-dark rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row border border-gray-100 dark:border-gray-800">
                     <div className="lg:w-1/2 relative h-64 lg:h-auto">
-                        <img
+                        <Image
                             alt={post.title}
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="object-cover"
                             src={post.image}
+                            fill
                         />
                         <div className="absolute top-4 left-4 bg-white dark:bg-black px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md text-blog-primary dark:text-white">
                             Unggulan
@@ -41,10 +43,12 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                         </p>
                         <div className="flex items-center justify-between mt-auto">
                             <div className="flex items-center gap-3">
-                                <img
+                                <Image
                                     alt={post.author.name}
-                                    className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-gray-700"
+                                    className="rounded-full object-cover border-2 border-white dark:border-gray-700"
                                     src={post.author.image}
+                                    width={40}
+                                    height={40}
                                 />
                                 <div>
                                     <p className="text-sm font-semibold text-blog-primary dark:text-white">

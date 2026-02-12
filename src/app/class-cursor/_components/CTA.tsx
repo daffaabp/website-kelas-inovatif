@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function CTA() {
     return (
         <section className="py-24 bg-linear-to-br from-teal-900 via-teal-800 to-teal-900 dark:from-gray-900 dark:via-teal-950 dark:to-gray-900 relative overflow-hidden">
@@ -33,9 +35,9 @@ export function CTA() {
                     Bergabunglah dengan para akademisi dan peneliti yang menghasilkan artikel, tesis, disertasi, dan buku berkualitas tinggi dengan teknologi AI. Kursi terbatas tersedia untuk kelas intensif ini.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <a className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
+                    <Link className="inline-flex items-center justify-center px-8 py-4 bg-white text-eduzin-dark font-bold rounded-full hover:bg-gray-100 transition shadow-lg text-lg" href="/schedule">
                         Daftar Sekarang
-                    </a>
+                    </Link>
                     <a
                         className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-medium rounded-full hover:bg-white/10 transition text-lg"
                         href="https://wa.me/6285712208535?text=Halo%20Admin%20Kelas%20Inovatif%2C%20saya%20ingin%20bertanya%20tentang%20Kelas%20Intensif%20Penulisan%20Karya%20Ilmiah%20menggunakan%20Cursor%20AI.%20Mohon%20info%20jadwal%20dan%20cara%20pendaftaran%20terbarunya.%20Terima%20kasih."

@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 interface RelatedArticle {
@@ -35,22 +37,23 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
                             Artikel Terkait
                         </h2>
                     </div>
-                    <a className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-blog-primary dark:text-white hover:text-blog-accent transition uppercase tracking-wide" href="/blogs">
+                    <Link className="hidden md:inline-flex items-center gap-2 text-sm font-bold text-blog-primary dark:text-white hover:text-blog-accent transition uppercase tracking-wide" href="/blogs">
                         Lihat semua postingan <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {articles.map((article) => (
-                        <a key={article.id} href={`/${article.slug}`}>
+                        <Link key={article.id} href={`/${article.slug}`}>
                             <article
                                 className="flex flex-col bg-blog-bg-light dark:bg-[#252525] rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 group h-full"
                             >
                                 <div className="relative h-56 overflow-hidden">
-                                    <img
+                                    <Image
                                         alt={article.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                                        className="object-cover transform group-hover:scale-105 transition duration-700"
                                         src={article.image}
+                                        fill
                                     />
                                     <div className="absolute top-4 left-4 bg-white/95 dark:bg-blog-surface-dark/95 backdrop-blur-sm px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-full text-blog-primary dark:text-white shadow-sm">
                                         {article.category}
@@ -73,10 +76,12 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
                                         {article.excerpt}
                                     </p>
                                     <div className="mt-auto flex items-center gap-3 pt-6 border-t border-gray-200 dark:border-gray-700/50">
-                                        <img
+                                        <Image
                                             alt={article.author.name}
-                                            className="w-8 h-8 rounded-full object-cover"
+                                            className="rounded-full object-cover"
                                             src={article.author.image}
+                                            width={32}
+                                            height={32}
                                         />
                                         <span className="text-xs font-bold text-blog-primary dark:text-white">
                                             {article.author.name}
@@ -84,14 +89,14 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
                                     </div>
                                 </div>
                             </article>
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
                 <div className="mt-10 md:hidden text-center">
-                    <a className="inline-flex items-center gap-2 text-sm font-bold text-blog-primary dark:text-white hover:text-blog-accent transition uppercase tracking-wide border border-gray-200 dark:border-gray-700 px-6 py-3 rounded-full" href="/blogs">
+                    <Link className="inline-flex items-center gap-2 text-sm font-bold text-blog-primary dark:text-white hover:text-blog-accent transition uppercase tracking-wide border border-gray-200 dark:border-gray-700 px-6 py-3 rounded-full" href="/blogs">
                         Lihat semua postingan <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

@@ -3,8 +3,16 @@ import { CopyPlus, Calendar, UserPlus } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
 
+interface Activity {
+    id: number | string;
+    type: string;
+    message: string;
+    user: string;
+    time: string | Date;
+}
+
 interface RecentActivitiesProps {
-    activities: any[];
+    activities: Activity[];
 }
 
 export function RecentActivities({ activities }: RecentActivitiesProps) {
@@ -36,7 +44,7 @@ export function RecentActivities({ activities }: RecentActivitiesProps) {
                         No recent activities
                     </div>
                 ) : (
-                    activities.map((activity, index) => (
+                    activities.map((activity) => (
                         <div key={activity.id} className="flex gap-4 group">
                             <div className="relative">
                                 <div className={`w-10 h-10 rounded-full flex items-center justify-center z-10 relative ${getActivityColor(activity.type)}`}>

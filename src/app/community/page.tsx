@@ -4,8 +4,6 @@ import { Footer } from '@/components/commons/Footer';
 import { Hero } from './_components/Hero';
 import { Stats } from './_components/Stats';
 import { WhyWeGather } from './_components/WhyWeGather';
-import { ClubShowcase } from './_components/ClubShowcase';
-import { CommunityCalendar } from './_components/CommunityCalendar';
 import { CommunityLeader } from './_components/CommunityLeader';
 import { VideoTestimonials } from './_components/VideoTestimonials';
 import { BeyondGraduation } from './_components/BeyondGraduation';

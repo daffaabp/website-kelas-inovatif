@@ -1,8 +1,19 @@
 import { ChevronsUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
+interface EventItem {
+    id: number | string;
+    date: string | Date;
+    type: string;
+    start_time: string;
+    end_time: string;
+    title: string;
+    location: string;
+    speaker_name: string;
+}
+
 interface EventListProps {
-    events: any[];
+    events: EventItem[];
     meta?: {
         total: number;
         page: number;
@@ -40,7 +51,7 @@ export function EventList({ events, meta }: EventListProps) {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                            {events.map((event, index) => {
+                            {events.map((event) => {
                                 const eventDate = new Date(event.date).toLocaleDateString('id-ID', {
                                     day: 'numeric',
                                     month: 'long',

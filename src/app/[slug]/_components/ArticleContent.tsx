@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Share2 } from 'lucide-react';
@@ -13,10 +14,11 @@ export function ArticleContent({ content, image, tags = ['Pendidikan', 'Teknolog
     return (
         <article className="bg-white dark:bg-blog-surface-dark rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-800 mb-12">
             <div className="w-full h-64 md:h-96 lg:h-[500px] relative">
-                <img
+                <Image
                     alt="Blog Cover"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="object-cover"
                     src={image}
+                    fill
                 />
             </div>
             <div className="p-8 md:p-12 lg:p-16">

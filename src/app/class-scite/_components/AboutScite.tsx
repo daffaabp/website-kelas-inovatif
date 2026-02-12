@@ -1,4 +1,5 @@
 import { CheckCircle, TrendingUp } from 'lucide-react';
+import Image from 'next/image';
 
 export function AboutScite() {
     return (
@@ -7,10 +8,13 @@ export function AboutScite() {
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
                     <div className="mb-12 lg:mb-0 relative">
                         <div className="absolute -top-4 -left-4 w-24 h-24 bg-green-200/50 dark:bg-green-900/30 rounded-full blur-2xl"></div>
-                        <img
+                        <Image
                             alt="Researcher looking at data visualization"
                             className="relative rounded-2xl shadow-2xl w-full h-auto object-contain max-h-[600px]"
                             src="/images/class-scite/image.png"
+                            width={800}
+                            height={600}
+                            style={{ width: '100%', height: 'auto' }}
                         />
                         <div className="absolute bottom-6 right-6 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg max-w-xs">
                             <div className="flex items-center gap-3 mb-2">

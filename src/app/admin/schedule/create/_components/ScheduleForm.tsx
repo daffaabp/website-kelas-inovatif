@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Edit, MapPin, Bold, Italic, Underline, List, Link as LinkIcon, Upload } from "lucide-react";
+import { MapPin, Bold, Italic, Underline, List, Link as LinkIcon, Upload } from "lucide-react";
+import Image from "next/image";
 
 interface ScheduleFormProps {
     initialData?: {
@@ -79,11 +80,12 @@ export function ScheduleForm({ initialData }: ScheduleFormProps) {
                                 className="relative group cursor-pointer"
                                 onClick={() => fileInputRef.current?.click()}
                             >
-                                <div className="w-16 h-16 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex items-center justify-center border-2 border-white dark:border-gray-600 shadow-sm group-hover:border-[#263c32] transition-colors">
-                                    <img
+                                <div className="relative w-16 h-16 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex items-center justify-center border-2 border-white dark:border-gray-600 shadow-sm group-hover:border-[#263c32] transition-colors">
+                                    <Image
                                         alt="Speaker"
-                                        className="w-full h-full object-cover"
+                                        className="object-cover"
                                         src={preview}
+                                        fill
                                     />
                                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                         <Upload className="w-5 h-5 text-white" />

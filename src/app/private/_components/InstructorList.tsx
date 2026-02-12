@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 
 export function InstructorList() {
     return (
@@ -19,9 +20,20 @@ export function InstructorList() {
                     <div className="group bg-private-bg-light dark:bg-private-bg-dark rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 flex flex-col h-full">
                         <div className="relative h-64 overflow-hidden">
                             <div className="absolute inset-0 bg-private-primary/20 group-hover:bg-private-primary/10 transition-colors z-10"></div>
-                            <img alt="Research Background" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLD8YcJLZ4QsPQBsoBEfUQUtXVq-6d-J7Uz0srwRM-5ilNDWApQ3x6-gvrxzpt6-74xmt8zmxlzOs0al-HT7Nrp-uA5BvuZ6CIb6nkR9muDea9XeXgbpmPMdSVoYMjyfEcJ0t7mpNzav1gTaoNbkGTx3BQ7ieXmgFWG-x9AJvBE0UmNk47j2JeDWroouvjKLx4662NDnlNh-L9dbQmDvMujwIH-ML9oBR9Mbc79vU0R1haVhPRpIkfDa5WcNHWM_1rPRNGgLkQOKM" />
+                            <Image
+                                alt="Research Background"
+                                className="object-cover transform group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLD8YcJLZ4QsPQBsoBEfUQUtXVq-6d-J7Uz0srwRM-5ilNDWApQ3x6-gvrxzpt6-74xmt8zmxlzOs0al-HT7Nrp-uA5BvuZ6CIb6nkR9muDea9XeXgbpmPMdSVoYMjyfEcJ0t7mpNzav1gTaoNbkGTx3BQ7ieXmgFWG-x9AJvBE0UmNk47j2JeDWroouvjKLx4662NDnlNh-L9dbQmDvMujwIH-ML9oBR9Mbc79vU0R1haVhPRpIkfDa5WcNHWM_1rPRNGgLkQOKM"
+                                fill
+                            />
                             <div className="absolute -bottom-10 left-8 z-20">
-                                <img alt="Dr. Sarah Jen" className="w-24 h-24 rounded-full border-4 border-white dark:border-private-surface-dark object-cover shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzShG3o5Q2NxBgFG6in_mwqPzcQBhop42O1olN4-zYu3bLN-juTm_7yA2pqgTC6oo2NFszsWMKb-evQvfxwwlMLHUzA5DLnN4h4TNzLl3wckTJsnhzFIbAuv2o1n1v3bNdgozq2RXghXq922263D17kOMkGAuSgv-pKxtc5eQTKG5-_2QNxNk22rLMC7a88VBP_d0bNJovLLUptP4pPfpdU0Tm_72BpXEMVQ8pxmvFt_DUoOvXtM12WzmLlNnVb62lo0_5XhOgsHM" />
+                                <Image
+                                    alt="Dr. Sarah Jen"
+                                    className="rounded-full border-4 border-white dark:border-private-surface-dark object-cover shadow-lg"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzShG3o5Q2NxBgFG6in_mwqPzcQBhop42O1olN4-zYu3bLN-juTm_7yA2pqgTC6oo2NFszsWMKb-evQvfxwwlMLHUzA5DLnN4h4TNzLl3wckTJsnhzFIbAuv2o1n1v3bNdgozq2RXghXq922263D17kOMkGAuSgv-pKxtc5eQTKG5-_2QNxNk22rLMC7a88VBP_d0bNJovLLUptP4pPfpdU0Tm_72BpXEMVQ8pxmvFt_DUoOvXtM12WzmLlNnVb62lo0_5XhOgsHM"
+                                    width={96}
+                                    height={96}
+                                />
                             </div>
                         </div>
                         <div className="p-8 pt-16 flex-grow flex flex-col">
@@ -46,9 +58,20 @@ export function InstructorList() {
                     <div className="group bg-private-bg-light dark:bg-private-bg-dark rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 flex flex-col h-full">
                         <div className="relative h-64 overflow-hidden">
                             <div className="absolute inset-0 bg-private-primary/20 group-hover:bg-private-primary/10 transition-colors z-10"></div>
-                            <img alt="AI Background" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA1EkTMCzSQ8kwdCwSpgmWOXEfH3tI0ndy-SdOzcutz25Jy9Xho2rAKFBElz7C-yd9Z5W9g_oRSFE5241qScEtpzZyy-nDmRV3mxEi4JQhn5ktiU_Qw60AfeZTLm_cgJqBHsmoIY4zaasINifBoSmytMKActV87KCTgNqrw7SxreDUf0E2QahG8PNLa4pMuCOt90GItU0mhjSkjplWUQgKkltZAyAY1e1iQWq3C7iioBh-b7zCbs0HrVawj36ySfyYBV-_1jCsbEw" />
+                            <Image
+                                alt="AI Background"
+                                className="object-cover transform group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA1EkTMCzSQ8kwdCwSpgmWOXEfH3tI0ndy-SdOzcutz25Jy9Xho2rAKFBElz7C-yd9Z5W9g_oRSFE5241qScEtpzZyy-nDmRV3mxEi4JQhn5ktiU_Qw60AfeZTLm_cgJqBHsmoIY4zaasINifBoSmytMKActV87KCTgNqrw7SxreDUf0E2QahG8PNLa4pMuCOt90GItU0mhjSkjplWUQgKkltZAyAY1e1iQWq3C7iioBh-b7zCbs0HrVawj36ySfyYBV-_1jCsbEw"
+                                fill
+                            />
                             <div className="absolute -bottom-10 left-8 z-20">
-                                <img alt="James Wu" className="w-24 h-24 rounded-full border-4 border-white dark:border-private-surface-dark object-cover shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGo9rgNBWwfst_lAwWeI0PDYO5EkcP7Ev5J23qW6MyowqxBQ7fYxo3rPnvM5ypiaI6vlliGwDZKn6zkeZd3X-Ahwffel9vrHEnonlszxWDEjQWS_U5mq09CBP0JiMjFgBSeXWMRje7rwZsJWC1uVn7R88NsepxTUT5TFYNY7tsFYS5ac6-T3sJV_SfAkyS7jLrMSKG3LIJ85jUF9Lc6g7VzyZYivW1Hr-MV-YeoVkuYJS3ogqtawX5aXN1rNF-3oLUPd3rDyk8GUE" />
+                                <Image
+                                    alt="James Wu"
+                                    className="rounded-full border-4 border-white dark:border-private-surface-dark object-cover shadow-lg"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGo9rgNBWwfst_lAwWeI0PDYO5EkcP7Ev5J23qW6MyowqxBQ7fYxo3rPnvM5ypiaI6vlliGwDZKn6zkeZd3X-Ahwffel9vrHEnonlszxWDEjQWS_U5mq09CBP0JiMjFgBSeXWMRje7rwZsJWC1uVn7R88NsepxTUT5TFYNY7tsFYS5ac6-T3sJV_SfAkyS7jLrMSKG3LIJ85jUF9Lc6g7VzyZYivW1Hr-MV-YeoVkuYJS3ogqtawX5aXN1rNF-3oLUPd3rDyk8GUE"
+                                    width={96}
+                                    height={96}
+                                />
                             </div>
                         </div>
                         <div className="p-8 pt-16 flex-grow flex flex-col">
@@ -73,9 +96,20 @@ export function InstructorList() {
                     <div className="group bg-private-bg-light dark:bg-private-bg-dark rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 flex flex-col h-full">
                         <div className="relative h-64 overflow-hidden">
                             <div className="absolute inset-0 bg-private-primary/20 group-hover:bg-private-primary/10 transition-colors z-10"></div>
-                            <img alt="Coding Background" className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9wK7W8VN3Xswqk9do6k4bNOsF5eGYM9355Bj_sUHCXZHch2auyTnUfxM38h61UgzOsxlbLKPKtmULFwttVn12ufcTEsB9joMiUs_FaP4rSMH3x0twTud9nO2S36YKdoos73ZMJi3uj7ieuZ0eW5inAcA8WblnxKUVsaei5SiMWz8GxsBfJ9SeCmgtGvHCq-Yj8vDCxWbpwTe-lE-AVUy_7RNBMI3v_CVgV9FekYh4x5pLDje9NOYAwW9M1L2OC2qvWkmJlVX8gUk" />
+                            <Image
+                                alt="Coding Background"
+                                className="object-cover transform group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9wK7W8VN3Xswqk9do6k4bNOsF5eGYM9355Bj_sUHCXZHch2auyTnUfxM38h61UgzOsxlbLKPKtmULFwttVn12ufcTEsB9joMiUs_FaP4rSMH3x0twTud9nO2S36YKdoos73ZMJi3uj7ieuZ0eW5inAcA8WblnxKUVsaei5SiMWz8GxsBfJ9SeCmgtGvHCq-Yj8vDCxWbpwTe-lE-AVUy_7RNBMI3v_CVgV9FekYh4x5pLDje9NOYAwW9M1L2OC2qvWkmJlVX8gUk"
+                                fill
+                            />
                             <div className="absolute -bottom-10 left-8 z-20">
-                                <img alt="Emily Tran" className="w-24 h-24 rounded-full border-4 border-white dark:border-private-surface-dark object-cover shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2NrEqTUmknVRpFVOGody1k0i7TFmA7sJza9UBiyVa0xI6Ci-mEbSWy0a5o5WY9LrE6FFOUTGt96aPwqv3do37HHKvmbm45WYbZCRzZTvaq8t_bh2w-OnAFhkVRUTJngL1dRkDHo6qu9237sBP38ISxd7Ryo6XqVJ4oD0kmt9ZT6gdXjcaCVVLMoLM0Sg50mHKG2T8S2mxUl5-MGHzrux7TQqBYawIMHofZTXOULyfnRYsguoWITCkuaw4hScLI1FjbJoTlCP2oac" />
+                                <Image
+                                    alt="Emily Tran"
+                                    className="rounded-full border-4 border-white dark:border-private-surface-dark object-cover shadow-lg"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2NrEqTUmknVRpFVOGody1k0i7TFmA7sJza9UBiyVa0xI6Ci-mEbSWy0a5o5WY9LrE6FFOUTGt96aPwqv3do37HHKvmbm45WYbZCRzZTvaq8t_bh2w-OnAFhkVRUTJngL1dRkDHo6qu9237sBP38ISxd7Ryo6XqVJ4oD0kmt9ZT6gdXjcaCVVLMoLM0Sg50mHKG2T8S2mxUl5-MGHzrux7TQqBYawIMHofZTXOULyfnRYsguoWITCkuaw4hScLI1FjbJoTlCP2oac"
+                                    width={96}
+                                    height={96}
+                                />
                             </div>
                         </div>
                         <div className="p-8 pt-16 flex-grow flex flex-col">

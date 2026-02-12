@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Search } from 'lucide-react';
 import { BlogPost } from './types';
 
@@ -121,10 +122,11 @@ export function BlogGrid({ posts }: BlogGridProps) {
                                 className="flex flex-col bg-white dark:bg-blog-surface-dark rounded-xl overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 dark:border-gray-800 group h-full"
                             >
                                 <div className="relative h-56 overflow-hidden">
-                                    <img
+                                    <Image
                                         alt={post.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500"
+                                        className="object-cover transform group-hover:scale-105 transition duration-500"
                                         src={post.image}
+                                        fill
                                     />
                                     <div className="absolute top-3 left-3 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded text-blog-primary dark:text-white">
                                         {post.category}
@@ -142,10 +144,12 @@ export function BlogGrid({ posts }: BlogGridProps) {
                                     </p>
                                     <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
                                         <div className="flex items-center gap-2">
-                                            <img
+                                            <Image
                                                 alt={post.author.name}
-                                                className="w-6 h-6 rounded-full"
+                                                className="rounded-full"
                                                 src={post.author.image}
+                                                width={24}
+                                                height={24}
                                             />
                                             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
                                                 {post.author.name}

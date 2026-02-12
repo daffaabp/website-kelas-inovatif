@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
 
 interface BreadcrumbProps {
@@ -11,24 +11,24 @@ export function Breadcrumb({ title }: BreadcrumbProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <ol className="flex items-center gap-2 text-sm">
                     <li className="flex items-center">
-                        <a
+                        <Link
                             className="flex items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-blog-primary dark:hover:text-white transition"
                             href="/"
                         >
                             <Home className="w-4 h-4" />
                             <span>Beranda</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="flex items-center">
                         <ChevronRight className="w-4 h-4 text-gray-400" />
                     </li>
                     <li className="flex items-center">
-                        <a
+                        <Link
                             className="text-gray-500 dark:text-gray-400 hover:text-blog-primary dark:hover:text-white transition"
                             href="/blogs"
                         >
                             Blog
-                        </a>
+                        </Link>
                     </li>
                     <li className="flex items-center">
                         <ChevronRight className="w-4 h-4 text-gray-400" />

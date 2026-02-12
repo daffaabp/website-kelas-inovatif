@@ -1,11 +1,18 @@
 
 import React from 'react';
+import Image from 'next/image';
 
 export function Hero() {
     return (
         <section className="relative pt-32 pb-32 overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <img alt="University Campus Background" className="w-full h-full object-cover opacity-20 dark:opacity-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuYFJC2GfasulK9SL0JfmfGMZwsfQ6u3A2hAf6jLMk4qkSJ_CHSqxX5xijC0wjJN70XVJp_WLBjdHT-54E7VDiln7q0uoYbIDXLcitwgY5DxdscIBEQ9bm0cW2GAuNLs7tYRyDR89pT9qrcEK868Fh6Ly-6Xhwqdikp-rfAXDbl4lWCdKDXWFnhQRyfTYaeb4ULD0uja5C40wGhp1Tt3sCGvf4blRzLcmNQ30lH2D7XND3xPamhkp3yHHfgWdAtfIBf3rL23UeXMM" />
+                <Image
+                    alt="University Campus Background"
+                    className="object-cover opacity-20 dark:opacity-10"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuYFJC2GfasulK9SL0JfmfGMZwsfQ6u3A2hAf6jLMk4qkSJ_CHSqxX5xijC0wjJN70XVJp_WLBjdHT-54E7VDiln7q0uoYbIDXLcitwgY5DxdscIBEQ9bm0cW2GAuNLs7tYRyDR89pT9qrcEK868Fh6Ly-6Xhwqdikp-rfAXDbl4lWCdKDXWFnhQRyfTYaeb4ULD0uja5C40wGhp1Tt3sCGvf4blRzLcmNQ30lH2D7XND3xPamhkp3yHHfgWdAtfIBf3rL23UeXMM"
+                    fill
+                    priority
+                />
                 <div className="absolute inset-0 bg-linear-to-b from-private-bg-light/50 via-private-bg-light/80 to-private-bg-light dark:from-private-bg-dark/50 dark:via-private-bg-dark/80 dark:to-private-bg-dark"></div>
             </div>
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -31,6 +31,8 @@ model Schedule {
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
 
+  @@index([date(sort: Asc)]) // For upcoming events
+  @@index([type, date]) // For filtering by event type
   @@map("schedules")
 }
 
@@ -51,6 +53,9 @@ model Blog {
   createdAt    DateTime   @default(now()) @map("created_at")
   updatedAt    DateTime   @updatedAt @map("updated_at")
 
+  @@index([status, createdAt(sort: Desc)]) // For published posts sorted by date
+  @@index([category, status]) // For filtering by category
+  @@index([featured, status]) // For featured posts
   @@map("blogs")
 }
 

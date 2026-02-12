@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar } from '@/components/commons/Navbar';
 import { Footer } from '@/components/commons/Footer';
 import { Hero } from './_components/Hero';
-import { HighlightedEvent } from './_components/HighlightedEvent';
 import { EventList } from './_components/EventList';
 import { getSchedules } from '@/app/actions/schedule';
 
@@ -50,7 +49,7 @@ export default async function SchedulePage(props: { searchParams: Promise<{ page
     // Given the previous code: `const highlightedEvent = schedules.length > 0 ? schedules[0] : undefined;`
     // We will keep similar logic.
 
-    const highlightedEvent = schedules.length > 0 ? schedules[0] : undefined;
+    // const highlightedEvent = schedules.length > 0 ? schedules[0] : undefined;
 
     return (
         <main className="bg-schedule-bg-light dark:bg-schedule-bg-dark text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen">

@@ -25,7 +25,7 @@ export function DashboardHeader() {
                         Welcome back, Admin User!
                     </h1>
                     <p className="text-gray-500 dark:text-gray-400">
-                        Here's an overview of your platform's performance today.
+                        Here&apos;s an overview of your platform&apos;s performance today.
                     </p>
                 </div>
                 <div className="flex items-center gap-4">

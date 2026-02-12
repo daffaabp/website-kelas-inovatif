@@ -1,11 +1,15 @@
+import Image from 'next/image';
+
 export function Hero() {
     return (
         <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     alt="Students studying in library"
-                    className="w-full h-full object-cover opacity-20 dark:opacity-10"
+                    className="object-cover opacity-20 dark:opacity-10"
                     src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&h=800&fit=crop"
+                    fill
+                    priority
                 />
                 <div className="absolute inset-0 bg-linear-to-b from-gray-50/50 via-gray-50/80 to-gray-50 dark:from-gray-900/50 dark:via-gray-900/80 dark:to-gray-900"></div>
             </div>

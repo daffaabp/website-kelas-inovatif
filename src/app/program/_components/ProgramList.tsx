@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import React from 'react';
-import { ArrowRight, CheckCircle, Sparkles, Clock } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 
 export function ProgramList() {
     return (
@@ -13,7 +15,7 @@ export function ProgramList() {
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                             <div className="lg:col-span-5 relative">
                                 <div className="aspect-4/3 rounded-xl overflow-hidden shadow-lg relative">
-                                    <img alt="Students analyzing scientific data" className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" src="/images/program/scispace.avif" />
+                                    <Image alt="Students analyzing scientific data" className="object-cover transform group-hover:scale-105 transition duration-700" src="/images/program/scispace.avif" fill />
                                     <div className="absolute bottom-4 left-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
                                         <span className="text-xs font-bold text-program-primary dark:text-white flex items-center gap-1">
                                             <Sparkles className="w-4 h-4" /> Eksklusif Class
@@ -48,9 +50,9 @@ export function ProgramList() {
                                     </div>
                                 </div>
                                 <div className="pt-6">
-                                    <a className="inline-flex items-center gap-2 px-6 py-3 bg-program-primary dark:bg-program-primary text-white rounded-lg font-semibold hover:bg-program-primary/90 dark:hover:bg-program-primary/80 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105" href="/class-scite">
+                                    <Link className="inline-flex items-center gap-2 px-6 py-3 bg-program-primary dark:bg-program-primary text-white rounded-lg font-semibold hover:bg-program-primary/90 dark:hover:bg-program-primary/80 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105" href="/class-scite">
                                         Lihat Detail Program <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -85,14 +87,14 @@ export function ProgramList() {
                                     </div>
                                 </div>
                                 <div className="pt-6">
-                                    <a className="inline-flex items-center gap-2 px-6 py-3 bg-program-primary dark:bg-program-primary text-white rounded-lg font-semibold hover:bg-program-primary/90 dark:hover:bg-program-primary/80 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105" href="/class-notebooklm">
+                                    <Link className="inline-flex items-center gap-2 px-6 py-3 bg-program-primary dark:bg-program-primary text-white rounded-lg font-semibold hover:bg-program-primary/90 dark:hover:bg-program-primary/80 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105" href="/class-notebooklm">
                                         Lihat Detail Program <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="lg:col-span-5 relative order-1 lg:order-2">
                                 <div className="aspect-4/3 rounded-xl overflow-hidden shadow-lg relative">
-                                    <img alt="Students using tablets for digital learning" className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" src="/images/program/notebooklm.avif" />
+                                    <Image alt="Students using tablets for digital learning" className="object-cover transform group-hover:scale-105 transition duration-700" src="/images/program/notebooklm.avif" fill />
                                     <div className="absolute bottom-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
                                         <span className="text-xs font-bold text-program-primary dark:text-white flex items-center gap-1">
                                             <Sparkles className="w-4 h-4" /> Eksklusif Class
@@ -129,7 +131,7 @@ export function ProgramList() {
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
                             <div className="lg:col-span-5 relative">
                                 <div className="aspect-4/3 rounded-xl overflow-hidden shadow-2xl relative ring-2 ring-teal-300 dark:ring-teal-800/50">
-                                    <img alt="Penulisan karya ilmiah dengan bantuan Cursor di laptop" className="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" src="/images/program/cursor.avif" />
+                                    <Image alt="Penulisan karya ilmiah dengan bantuan Cursor di laptop" className="object-cover transform group-hover:scale-105 transition duration-700" src="/images/program/cursor.avif" fill />
                                     <div className="absolute inset-0 bg-linear-to-t from-teal-900/30 via-transparent to-transparent"></div>
                                     <div className="absolute bottom-4 left-4 bg-linear-to-r from-teal-700/95 to-teal-800/95 dark:from-teal-800/95 dark:to-teal-900/95 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg ring-1 ring-white/20">
                                         <span className="text-xs font-bold text-white flex items-center gap-1">
@@ -168,9 +170,9 @@ export function ProgramList() {
                                     </div>
                                 </div>
                                 <div className="pt-6 flex flex-col sm:flex-row sm:items-center gap-4">
-                                    <a className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-teal-700 via-teal-800 to-teal-900 hover:from-teal-800 hover:via-teal-900 hover:to-teal-950 text-white rounded-lg font-bold transition-all duration-300 shadow-xl shadow-teal-700/50 hover:shadow-2xl hover:shadow-teal-800/50 hover:scale-105 ring-2 ring-teal-600/50" href="/class-cursor">
+                                    <Link className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-teal-700 via-teal-800 to-teal-900 hover:from-teal-800 hover:via-teal-900 hover:to-teal-950 text-white rounded-lg font-bold transition-all duration-300 shadow-xl shadow-teal-700/50 hover:shadow-2xl hover:shadow-teal-800/50 hover:scale-105 ring-2 ring-teal-600/50" href="/class-cursor">
                                         Lihat Detail Program <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

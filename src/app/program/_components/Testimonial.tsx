@@ -1,5 +1,6 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
+import Image from 'next/image';
 
 export function Testimonial() {
     return (
@@ -7,13 +8,15 @@ export function Testimonial() {
             <div className="max-w-4xl mx-auto px-4 text-center">
                 <Quote className="text-program-primary/40 dark:text-white/20 w-12 h-12 mx-auto mb-6" />
                 <h3 className="text-2xl md:text-3xl font-serif font-medium text-gray-900 dark:text-white mb-8">
-                    "Saya awam dengan AI, namun di Kelas Inovatif saya justru 'tersesat di jalan yang benar'. Di sini, pembelajaran diberikan perlahan dan bertahap. Hasilnya, saya bisa menyelesaikan studi magister saya, dan tahun depan berencana melanjutkan ke jenjang doktoral S3"
+                    &quot;Saya awam dengan AI, namun di Kelas Inovatif saya justru &apos;tersesat di jalan yang benar&apos;. Di sini, pembelajaran diberikan perlahan dan bertahap. Hasilnya, saya bisa menyelesaikan studi magister saya, dan tahun depan berencana melanjutkan ke jenjang doktoral S3&quot;
                 </h3>
                 <div className="flex items-center justify-center space-x-4">
-                    <img
+                    <Image
                         alt="Student Portrait"
-                        className="w-12 h-12 rounded-full object-cover"
+                        className="rounded-full object-cover"
                         src="/images/testimonials/Wayan Tangun.avif"
+                        width={48}
+                        height={48}
                     />
                     <div className="text-left">
                         <p className="font-bold text-gray-900 dark:text-white text-sm">Wayan Tangun Setiarien, M.M.</p>
