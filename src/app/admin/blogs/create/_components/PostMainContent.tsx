@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Bold, Italic, Underline, List, ListOrdered, Link as LinkIcon, Image, Quote } from "lucide-react";
+import { Bold, Italic, Underline, List, ListOrdered, Link as LinkIcon, Image as ImageIcon, Quote } from "lucide-react";
 
 interface PostMainContentProps {
     initialData?: {
@@ -201,7 +201,7 @@ export function PostMainContent({ initialData }: PostMainContentProps) {
                             className="p-1.5 text-gray-500 hover:text-[#263c32] hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 rounded transition-colors"
                             title="Image"
                         >
-                            <Image className="w-5 h-5" />
+                            <ImageIcon className="w-5 h-5" />
                         </button>
                         <button
                             type="button"

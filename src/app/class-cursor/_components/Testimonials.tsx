@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export function Testimonials() {
     const [currentSlide, setCurrentSlide] = useState(0);
-    
+
     const testimonials = [
         {
             quote: "Alhamdulillah berkat ikut kelas inovatif pertama kali nulis artikel dan bisa diterima di Sinta 2. Terimakasih Pak Ari dan Tim 🙏🙏",
@@ -66,15 +66,15 @@ export function Testimonials() {
 
     const itemsPerSlide = 3;
     const totalSlides = Math.ceil(testimonials.length / itemsPerSlide);
-    
+
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % totalSlides);
     };
-    
+
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
     };
-    
+
     const currentTestimonials = testimonials.slice(
         currentSlide * itemsPerSlide,
         (currentSlide + 1) * itemsPerSlide
@@ -89,14 +89,14 @@ export function Testimonials() {
                         <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mt-2">Apa yang dikatakan alumni</h2>
                     </div>
                     <div className="flex gap-2 mt-4 md:mt-0">
-                        <button 
+                        <button
                             onClick={prevSlide}
                             className="w-10 h-10 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                             aria-label="Testimoni sebelumnya"
                         >
                             <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
                         </button>
-                        <button 
+                        <button
                             onClick={nextSlide}
                             className="w-10 h-10 rounded-full bg-linear-to-r from-teal-700 to-teal-800 text-white flex items-center justify-center hover:from-teal-800 hover:to-teal-900 transition shadow-lg"
                             aria-label="Testimoni selanjutnya"
@@ -105,13 +105,13 @@ export function Testimonials() {
                         </button>
                     </div>
                 </div>
-                
+
                 {/* Carousel Container */}
                 <div className="relative overflow-hidden">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {currentTestimonials.map((testimonial, index) => (
                             <div key={currentSlide * itemsPerSlide + index} className="bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl relative border-2 border-transparent hover:border-teal-200 dark:hover:border-teal-900 transition-all animate-in fade-in slide-in-from-right-4 duration-500">
-                                <span className="text-6xl text-gray-200 dark:text-gray-700 font-serif absolute top-4 left-6 leading-none">"</span>
+                                <span className="text-6xl text-gray-200 dark:text-gray-700 font-serif absolute top-4 left-6 leading-none">&quot;</span>
                                 <p className="relative z-10 text-gray-700 dark:text-gray-300 mb-6 mt-4 font-light italic text-lg leading-relaxed">
                                     {testimonial.quote}
                                 </p>
@@ -128,18 +128,17 @@ export function Testimonials() {
                         ))}
                     </div>
                 </div>
-                
+
                 {/* Slide Indicators */}
                 <div className="flex justify-center gap-2 mt-8">
                     {Array.from({ length: totalSlides }).map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setCurrentSlide(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                index === currentSlide 
-                                    ? 'bg-teal-700 dark:bg-teal-400 w-8' 
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                                    ? 'bg-teal-700 dark:bg-teal-400 w-8'
                                     : 'bg-gray-300 dark:bg-gray-600'
-                            }`}
+                                }`}
                             aria-label={`Ke slide ${index + 1}`}
                         />
                     ))}

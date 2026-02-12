@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function MissionSection() {
     return (
         <section className="py-16 md:py-24 bg-about-surface-light dark:bg-about-surface-dark relative">
@@ -5,14 +7,17 @@ export function MissionSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="relative">
                         <div className="absolute -top-4 -left-4 w-24 h-24 bg-about-primary/10 rounded-full blur-xl"></div>
-                        <img
-                            alt="Workshop dan aktivitas komunitas Kelas Inovatif"
-                            className="relative rounded-2xl shadow-2xl w-full object-cover h-[500px]"
-                            src="/community/community8.avif"
-                        />
+                        <div className="relative w-full h-[500px] rounded-2xl shadow-2xl overflow-hidden">
+                            <Image
+                                alt="Workshop dan aktivitas komunitas Kelas Inovatif"
+                                className="object-cover"
+                                src="/community/community8.avif"
+                                fill
+                            />
+                        </div>
                         <div className="absolute bottom-8 right-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg max-w-xs hidden md:block">
                             <p className="font-serif text-lg italic text-about-primary dark:text-white">
-                                &quot;Puji Tuhan, dengan mengikuti Kelas Inovatif, disertasi saya berhasil selesai. 
+                                &quot;Puji Tuhan, dengan mengikuti Kelas Inovatif, disertasi saya berhasil selesai.
                                 Saya dan tim juga sudah membuktikan, artikel yang kami tulis sudah berhasil tembus Scopus Q1.&quot;
                             </p>
                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 font-bold">
@@ -28,8 +33,8 @@ export function MissionSection() {
                             Visi
                         </h3>
                         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                            Menjadi platform pembelajaran terdepan yang mendorong transformasi digital 
-                            di Indonesia melalui pemahaman dan penguasaan teknologi AI, memberdayakan 
+                            Menjadi platform pembelajaran terdepan yang mendorong transformasi digital
+                            di Indonesia melalui pemahaman dan penguasaan teknologi AI, memberdayakan
                             setiap akademisi untuk berinovasi dan berkompetisi dalam era digital.
                         </p>
                         <h3 className="font-serif text-3xl md:text-4xl font-bold mb-6 text-about-primary dark:text-white">

@@ -1,17 +1,17 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { 
-  ArrowRight, 
-  Calendar, 
-  Clock, 
-  MapPin, 
-  User, 
-  Video, 
-  Users, 
+import {
+  ArrowRight,
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  Video,
   BookOpen
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getLatestSchedules } from '@/app/actions/schedule';
 
 interface EventData {
@@ -56,21 +56,21 @@ const formatTime = (time: string): string => {
 // Helper for Badge Colors/Icons
 const getEventTypeStyles = (type: string) => {
   const t = type?.toLowerCase() || '';
-  if (t.includes('workshop')) return { 
-    bg: 'bg-indigo-100 dark:bg-indigo-900/30', 
-    text: 'text-indigo-600 dark:text-indigo-400', 
-    icon: <Users size={14} /> 
+  if (t.includes('workshop')) return {
+    bg: 'bg-indigo-100 dark:bg-indigo-900/30',
+    text: 'text-indigo-600 dark:text-indigo-400',
+    icon: <Users size={14} />
   };
-  if (t.includes('bootcamp')) return { 
-    bg: 'bg-rose-100 dark:bg-rose-900/30', 
-    text: 'text-rose-600 dark:text-rose-400', 
-    icon: <BookOpen size={14} /> 
+  if (t.includes('bootcamp')) return {
+    bg: 'bg-rose-100 dark:bg-rose-900/30',
+    text: 'text-rose-600 dark:text-rose-400',
+    icon: <BookOpen size={14} />
   };
   // Webinar/Seminar/Default
-  return { 
-    bg: 'bg-emerald-100 dark:bg-emerald-900/30', 
-    text: 'text-emerald-600 dark:text-emerald-400', 
-    icon: <Video size={14} /> 
+  return {
+    bg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    text: 'text-emerald-600 dark:text-emerald-400',
+    icon: <Video size={14} />
   };
 };
 
@@ -83,7 +83,7 @@ export function EventSection() {
       try {
         setLoading(true);
         const schedules = await getLatestSchedules(8);
-        
+
         const mappedEvents: EventData[] = schedules.map((schedule) => ({
           id: schedule.id,
           title: schedule.title,
@@ -114,7 +114,7 @@ export function EventSection() {
   return (
     <section className="bg-white py-20">
       <div className="container mx-auto px-4 md:px-8">
-        
+
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-3xl">
@@ -137,7 +137,7 @@ export function EventSection() {
 
         {/* Content Area */}
         <div className="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-          
+
           {loading ? (
             // Loading Skeleton
             <div className="p-6 md:p-8 space-y-6">
@@ -167,11 +167,11 @@ export function EventSection() {
               {events.map((event) => {
                 const style = getEventTypeStyles(event.type);
                 return (
-                  <div 
-                    key={event.id} 
+                  <div
+                    key={event.id}
                     className="group flex flex-col md:flex-row items-start md:items-center gap-6 p-6 md:p-8 hover:bg-white transition-colors duration-200"
                   >
-                    
+
                     {/* Date Block (Desktop Left / Mobile Top) */}
                     <div className="shrink-0 flex items-center gap-4 md:block text-center md:w-20">
                       <div className="flex flex-col bg-white border border-gray-200 rounded-xl p-2 md:p-3 shadow-sm min-w-[70px]">
@@ -196,39 +196,41 @@ export function EventSection() {
                     <div className="grow min-w-0 space-y-2 md:space-y-1">
                       {/* Valid for Desktop Type Badge */}
                       <div className="hidden md:flex items-center gap-2 mb-2">
-                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${style.bg} ${style.text}`}>
-                           {style.icon}
-                           {event.type}
-                         </span>
-                         <span className="text-[10px] text-gray-400 font-medium flex items-center gap-1">
-                           <Clock size={12} /> {formatTime(event.start_time)}
-                         </span>
+                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${style.bg} ${style.text}`}>
+                          {style.icon}
+                          {event.type}
+                        </span>
+                        <span className="text-[10px] text-gray-400 font-medium flex items-center gap-1">
+                          <Clock size={12} /> {formatTime(event.start_time)}
+                        </span>
                       </div>
-                      
+
                       <h3 className="text-xl md:text-2xl font-serif font-medium text-gray-900 group-hover:text-eduzin-gold transition-colors line-clamp-2">
                         {event.title}
                       </h3>
-                      
+
                       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mt-2">
                         <div className="flex items-center gap-1.5 md:hidden">
-                            <Clock size={14} className="text-gray-400" />
-                            <span>{formatTime(event.start_time)}</span>
+                          <Clock size={14} className="text-gray-400" />
+                          <span>{formatTime(event.start_time)}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <MapPin size={14} className="text-gray-400" />
-                            <span>{event.location}</span>
+                          <MapPin size={14} className="text-gray-400" />
+                          <span>{event.location}</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Speaker & Action */}
                     <div className="shrink-0 w-full md:w-auto flex items-center justify-between md:flex-col md:items-end gap-4 mt-2 md:mt-0 pl-0 md:pl-6 md:border-l md:border-gray-100">
-                      
+
                       <div className="flex items-center gap-3">
-                        <img 
-                          src={event.speaker.avatar} 
+                        <Image
+                          src={event.speaker.avatar}
                           alt={event.speaker.name}
-                          className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                          className="rounded-full object-cover border-2 border-white shadow-sm"
+                          width={40}
+                          height={40}
                         />
                         <div className="text-left md:text-right">
                           <p className="text-xs font-bold text-gray-900">{event.speaker.name}</p>
@@ -254,9 +256,9 @@ export function EventSection() {
         </div>
 
         <div className="mt-8 text-center md:hidden">
-            <button className="text-sm font-bold tracking-widest uppercase text-gray-500 hover:text-gray-900 transition-colors cursor-pointer">
-              Lihat Semua Event
-            </button>
+          <button className="text-sm font-bold tracking-widest uppercase text-gray-500 hover:text-gray-900 transition-colors cursor-pointer">
+            Lihat Semua Event
+          </button>
         </div>
 
       </div>

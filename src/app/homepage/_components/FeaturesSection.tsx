@@ -1,4 +1,5 @@
-import { Monitor, Award, Users, MessagesSquare, ArrowRight } from 'lucide-react';
+import { Award, Users } from 'lucide-react';
+import Image from 'next/image';
 
 export function FeaturesSection() {
   return (
@@ -9,12 +10,20 @@ export function FeaturesSection() {
           {/* Left: Image Mosaic */}
           <div className="grid grid-cols-2 gap-4 h-[500px]">
             <div className="space-y-4 pt-12">
-              <img src="/community/community3.avif" className="w-full h-48 object-cover rounded-lg" alt="Kegiatan bersama member 1" />
-              <img src="/community/community2.avif" className="w-full h-64 object-cover rounded-lg" alt="Kegiatan bersama member 2" />
+              <div className="relative w-full h-48 rounded-lg overflow-hidden">
+                <Image src="/community/community3.avif" fill className="object-cover" alt="Kegiatan bersama member 1" />
+              </div>
+              <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                <Image src="/community/community2.avif" fill className="object-cover" alt="Kegiatan bersama member 2" />
+              </div>
             </div>
             <div className="space-y-4">
-              <img src="/community/community4.avif" className="w-full h-64 object-cover rounded-lg" alt="Kegiatan bersama member 3" />
-              <img src="/images/documentation-alumni/dokumentasi6.avif" className="w-full h-48 object-cover rounded-lg" alt="Kegiatan bersama member 4" />
+              <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                <Image src="/community/community4.avif" fill className="object-cover" alt="Kegiatan bersama member 3" />
+              </div>
+              <div className="relative w-full h-48 rounded-lg overflow-hidden">
+                <Image src="/images/documentation-alumni/dokumentasi6.avif" fill className="object-cover" alt="Kegiatan bersama member 4" />
+              </div>
             </div>
           </div>
 

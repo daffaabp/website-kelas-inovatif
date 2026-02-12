@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function VideoIntro() {
     return (
         <section className="py-20 bg-gray-50 dark:bg-gray-900">
@@ -12,10 +14,12 @@ export function VideoIntro() {
                                 Penulisan karya ilmiah membutuhkan akurasi, struktur yang rapi, dan bebas plagiasi. Cursor AI dirancang khusus untuk membantu Anda menulis dengan tingkat akurasi tinggi—membaca hingga level baris, mendukung berbagai model AI, dan mempercepat proses drafting hingga revisi tanpa mengorbankan kualitas akademik.
                             </p>
                             <div className="flex items-center gap-4">
-                                <img
+                                <Image
                                     alt="Instructor"
-                                    className="w-12 h-12 rounded-full border-2 border-teal-400 object-cover"
+                                    className="rounded-full border-2 border-teal-400 object-cover"
                                     src="/images/speaker/arianto.avif"
+                                    width={48}
+                                    height={48}
                                 />
                                 <div>
                                     <p className="font-semibold text-sm">Arianto</p>
@@ -24,10 +28,11 @@ export function VideoIntro() {
                             </div>
                         </div>
                         <div className="relative bg-black/20 min-h-[400px] group cursor-pointer">
-                            <img
+                            <Image
                                 alt="Video thumbnail"
-                                className="w-full h-full object-cover absolute inset-0 opacity-80 group-hover:opacity-60 transition duration-500"
+                                className="object-cover absolute inset-0 opacity-80 group-hover:opacity-60 transition duration-500"
                                 src="/images/program/cursor.avif"
+                                fill
                             />
                             {/* <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition duration-300 border-2 border-white/40 ring-4 ring-teal-500/30">

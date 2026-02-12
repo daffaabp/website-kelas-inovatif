@@ -5,8 +5,17 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import Link from "next/link";
 
+interface ScheduleItem {
+    id: number | string;
+    title: string;
+    date: string | Date;
+    startTime: string;
+    speaker: string;
+    location: string;
+}
+
 interface UpcomingScheduleProps {
-    schedules: any[];
+    schedules: ScheduleItem[];
 }
 
 export function UpcomingSchedule({ schedules }: UpcomingScheduleProps) {

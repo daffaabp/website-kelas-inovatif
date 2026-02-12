@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight, PlayCircle } from 'lucide-react';
 
 export function Hero() {
     const scrollToTestimonials = () => {
@@ -33,16 +35,22 @@ export function Hero() {
                         </p>
                         <div className="flex flex-wrap gap-4 pt-4">
                             <Link href="/schedule" className="bg-white text-community-primary px-8 py-3.5 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg flex items-center gap-2 cursor-pointer">
-                                Gabung Sekarang <span className="material-icons-outlined text-sm">arrow_forward</span>
+                                Gabung Sekarang <ArrowRight className="h-4 w-4" />
                             </Link>
                             <button onClick={scrollToTestimonials} className="border border-white/40 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-white/10 transition flex items-center gap-2 cursor-pointer">
-                                <span className="material-icons-outlined">play_circle</span> Kisah Alumni
+                                <PlayCircle className="h-5 w-5" /> Kisah Alumni
                             </button>
                         </div>
                     </div>
                     <div className="relative lg:h-[500px] w-full hidden lg:flex items-center justify-center">
                         <div className="relative w-[600px] h-[480px] rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500 z-20 border-4 border-white/10">
-                            <img alt="Campus exterior gathering" className="w-full h-full object-cover" src="/community/hero-graduation.avif" />
+                            <Image
+                                alt="Campus exterior gathering"
+                                className="object-cover"
+                                src="/community/hero-graduation.avif"
+                                fill
+                                priority
+                            />
                         </div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-white/10 backdrop-blur-md rounded-full z-0 animate-pulse"></div>
                     </div>

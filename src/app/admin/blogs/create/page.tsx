@@ -10,6 +10,7 @@ import { PostSidebar } from "./_components/PostSidebar";
 import { createBlog } from "@/app/actions/blog";
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { BlogStatus } from '@prisma/client';
 
 export default function CreatePostPage() {
     const router = useRouter();
@@ -19,18 +20,18 @@ export default function CreatePostPage() {
         const readTime = readTimeVal ? `${readTimeVal} min read` : '5 min read';
 
         const res = await createBlog({
-            title: formData.get('title'),
-            slug: formData.get('slug'),
-            excerpt: formData.get('excerpt'),
-            content: formData.get('content'),
-            category: formData.get('category'),
-            image: formData.get('image'),
-            contentImage: formData.get('contentImage'), // Keep usage of URL input if needed
-            image_file: formData.get('image_file'), // File upload for thumbnail
-            content_image_file: formData.get('content_image_file'), // File upload for content image
+            title: formData.get('title') as string,
+            slug: formData.get('slug') as string,
+            excerpt: formData.get('excerpt') as string | undefined,
+            content: formData.get('content') as string | undefined,
+            category: formData.get('category') as string | undefined,
+            image: formData.get('image') as string | undefined,
+            contentImage: formData.get('contentImage') as string | undefined, // Keep usage of URL input if needed
+            image_file: formData.get('image_file') as File | undefined, // File upload for thumbnail
+            content_image_file: formData.get('content_image_file') as File | undefined, // File upload for content image
             read_time: readTime,
             featured: formData.get('featured') === 'on',
-            status: formData.get('status'),
+            status: formData.get('status') as BlogStatus | undefined,
             // Author hardcoded or pulled from auth session in real app
             author_name: 'Admin',
             author_image: '/images/logo-kelas-inovatif/admin_image_placeholder.avif',

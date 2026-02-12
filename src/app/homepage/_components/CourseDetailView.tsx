@@ -1,4 +1,5 @@
 import { ArrowLeft, Clock, BarChart, Users, CheckCircle, Star, Share2 } from 'lucide-react';
+import Image from 'next/image';
 import { Course } from '../types';
 import { Navbar } from '@/components/commons/Navbar';
 import { Footer } from '@/components/commons/Footer';
@@ -29,7 +30,7 @@ export function CourseDetailView({ course, onBack }: CourseDetailViewProps) {
       {/* Hero Section */}
       <div className="relative bg-eduzin-dark text-white py-16 md:py-24">
         <div className="absolute inset-0 opacity-20">
-          <img src={course.image} alt="bg" className="w-full h-full object-cover" />
+          <Image src={course.image} alt="bg" className="object-cover" fill />
           <div className="absolute inset-0 bg-eduzin-dark mix-blend-multiply"></div>
         </div>
 
@@ -113,10 +114,12 @@ export function CourseDetailView({ course, onBack }: CourseDetailViewProps) {
             <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
               <h3 className="text-2xl font-serif font-medium mb-6">Your Instructor</h3>
               <div className="flex flex-col md:flex-row gap-6 items-start">
-                <img
+                <Image
                   src={course.instructor.avatar}
                   alt={course.instructor.name}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-eduzin-light"
+                  className="rounded-full object-cover border-4 border-eduzin-light"
+                  width={96}
+                  height={96}
                 />
                 <div>
                   <h4 className="text-xl font-bold mb-1">{course.instructor.name}</h4>

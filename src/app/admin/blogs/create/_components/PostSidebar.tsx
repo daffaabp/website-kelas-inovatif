@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { CloudUpload, X, Clock } from "lucide-react";
+import Image from "next/image";
 
 interface PostSidebarProps {
     initialData?: {
@@ -18,18 +19,18 @@ interface PostSidebarProps {
 
 export function PostSidebar({ initialData }: PostSidebarProps) {
     const [featured, setFeatured] = useState(initialData?.featured || false);
-    
+
     // Thumbnail Image State
     const [imagePreview, setImagePreview] = useState<string | null>(initialData?.image || null);
-    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [, setImageFile] = useState<File | null>(null);
 
     // Content Image State
     const [contentImagePreview, setContentImagePreview] = useState<string | null>(initialData?.contentImage || null);
-    const [contentImageFile, setContentImageFile] = useState<File | null>(null);
+    const [, setContentImageFile] = useState<File | null>(null);
 
     // Parse read time to number if it format is "X min read"
     const initialReadTime = initialData?.read_time ? parseInt(initialData.read_time) : undefined;
-    const initialStatus = initialData?.status || 'draft';
+
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'thumbnail' | 'content') => {
         const file = e.target.files?.[0];
@@ -86,20 +87,20 @@ export function PostSidebar({ initialData }: PostSidebarProps) {
                     Thumbnail Image
                 </h3>
                 <p className="text-xs text-gray-500 mb-4">Displayed on blog cards and lists.</p>
-                
+
                 {/* Hidden input must exist in DOM regardless of preview state */}
-                <input 
-                    type="file" 
+                <input
+                    type="file"
                     accept="image/*"
                     onChange={(e) => handleImageChange(e, 'thumbnail')}
-                    className="hidden" 
+                    className="hidden"
                     id="image_file_input"
                     name="image_file"
                 />
 
                 {imagePreview ? (
-                    <div className="relative rounded-lg overflow-hidden group border border-gray-200 dark:border-gray-700">
-                        <img src={imagePreview} alt="Thumbnail preview" className="w-full h-48 object-cover" />
+                    <div className="relative rounded-lg overflow-hidden group border border-gray-200 dark:border-gray-700 h-48">
+                        <Image src={imagePreview} alt="Thumbnail preview" className="object-cover" fill />
                         <button
                             type="button"
                             onClick={() => removeImage('thumbnail')}
@@ -130,18 +131,18 @@ export function PostSidebar({ initialData }: PostSidebarProps) {
                 <p className="text-xs text-gray-500 mb-4">Displayed at the top of the blog post.</p>
 
                 {/* Hidden input must exist in DOM regardless of preview state */}
-                <input 
-                    type="file" 
+                <input
+                    type="file"
                     accept="image/*"
-                    onChange={(e) => handleImageChange(e, 'content')} 
-                    className="hidden" 
+                    onChange={(e) => handleImageChange(e, 'content')}
+                    className="hidden"
                     id="content_image_file_input"
                     name="content_image_file"
                 />
 
                 {contentImagePreview ? (
-                    <div className="relative rounded-lg overflow-hidden group border border-gray-200 dark:border-gray-700">
-                        <img src={contentImagePreview} alt="Content image preview" className="w-full h-48 object-cover" />
+                    <div className="relative rounded-lg overflow-hidden group border border-gray-200 dark:border-gray-700 h-48">
+                        <Image src={contentImagePreview} alt="Content image preview" className="object-cover" fill />
                         <button
                             type="button"
                             onClick={() => removeImage('content')}

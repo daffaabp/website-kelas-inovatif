@@ -2,12 +2,14 @@
 
 import { prisma } from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
+import { Prisma } from '@prisma/client';
+import { saveFile, deleteFile } from '@/lib/storage';
 
 export async function getSchedules(page = 1, limit = 6, type?: string, month?: number, year?: number) {
     try {
         const offset = (page - 1) * limit;
 
-        const where: any = {};
+        const where: Prisma.ScheduleWhereInput = {};
 
         if (type && type !== 'All') {
             where.type = type;
@@ -103,18 +105,35 @@ export async function getScheduleById(id: number) {
     }
 }
 
-import { saveFile, deleteFile } from '@/lib/storage';
-
-// ... imports
-
 // Helper to safely parse numbers
-const parseIntSafe = (value: any) => {
+const parseIntSafe = (value: unknown) => {
     if (value === undefined || value === null || value === '') return null;
     const num = Number(value);
     return isNaN(num) ? null : num;
 };
 
-export async function createSchedule(data: any) {
+interface ScheduleData {
+    title: string;
+    date: string | Date;
+    start_time: string;
+    end_time: string;
+    type: string;
+    location: string;
+    speaker_name: string;
+    speaker_role?: string;
+    speaker_image?: string;
+    image?: string;
+    description?: string;
+    excerpt?: string;
+    benefits?: string;
+    register_url?: string;
+    original_price?: number;
+    discounted_price?: number;
+    speaker_image_file?: File;
+    featured_image_file?: File;
+}
+
+export async function createSchedule(data: ScheduleData) {
     try {
         // Handle speaker image upload
         if (data.speaker_image_file && data.speaker_image_file instanceof File && data.speaker_image_file.size > 0) {
@@ -161,7 +180,7 @@ export async function createSchedule(data: any) {
     }
 }
 
-export async function updateSchedule(id: number, data: any) {
+export async function updateSchedule(id: number, data: Partial<ScheduleData>) {
     try {
         // Fetch existing data first to handle image deletion
         const existingSchedule = await prisma.schedule.findUnique({
@@ -196,7 +215,7 @@ export async function updateSchedule(id: number, data: any) {
                 speakerRole: data.speaker_role,
                 speakerImage: data.speaker_image,
                 image: data.image,
-                date: new Date(data.date),
+                date: data.date ? new Date(data.date) : undefined,
                 startTime: data.start_time,
                 endTime: data.end_time,
                 location: data.location,

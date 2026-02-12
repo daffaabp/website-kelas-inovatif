@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function Hero() {
@@ -40,10 +41,12 @@ export function Hero() {
 
             {/* Right Image Section */}
             <div className="w-full md:w-1/2 h-[50vh] md:h-auto relative">
-                <img
+                <Image
                     src="/community/komunitas_kelasinovatif.avif"
                     alt="Komunitas Kelas Inovatif"
-                    className="w-full h-full object-cover"
+                    className="object-cover"
+                    fill
+                    priority
                 />
                 {/* Optional subtle overlay for better transition if needed, or remove completely if cleaner is preferred */}
                 <div className="absolute inset-0 bg-linear-to-r from-[#1a3a2a] via-transparent to-transparent md:via-[#1a3a2a]/20"></div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Search, Plus } from "lucide-react";
+import { Search, Plus, Menu } from "lucide-react";
 
 export function ScheduleHeader({ currentType = 'All' }: { currentType?: string }) {
     return (
@@ -16,7 +16,7 @@ export function ScheduleHeader({ currentType = 'All' }: { currentType?: string }
                 </div>
                 <button className="text-gray-600 dark:text-gray-300 p-2">
                     {/* Menu icon placeholder - likely handled by layout or separate component */}
-                    <span className="material-icons-round">menu</span>
+                    <Menu className="h-6 w-6" />
                 </button>
             </div>
             <header className="flex flex-col gap-6 mb-10">

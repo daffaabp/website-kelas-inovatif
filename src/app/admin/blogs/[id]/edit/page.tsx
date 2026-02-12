@@ -1,15 +1,17 @@
+import { BlogStatus } from '@prisma/client';
 import { PostMainContent } from '../../create/_components/PostMainContent';
 import { PostSidebar } from '../../create/_components/PostSidebar';
-import { CreatePostHeader } from '../../create/_components/CreatePostHeader'; // You might want to rename/reuse or make a GenericPostHeader
 import { AdminSidebar } from '../../../_components/AdminSidebar';
 import { ThemeToggle } from '../../../_components/ThemeToggle';
 import { getBlogById, updateBlog, getBlogBySlug } from '@/app/actions/blog';
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
-import { toast } from 'sonner';
 
 // Reusing PostHeader for simplicity, but ideally should be "EditPostHeader" with "Update" text
 // For now, let's create a local implementation or just wrap handling.
+
+
+type BlogData = NonNullable<Awaited<ReturnType<typeof getBlogById>>>;
 
 export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -17,7 +19,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
     // Check if ID is numeric, if not try to use it as a slug (user might find this route via some means, though usually ID)
     // The route is [id], so typical usage is /admin/blogs/123/edit.
 
-    let blog: any = null;
+    let blog: BlogData | null = null;
     const itemsId = parseInt(id);
     if (!isNaN(itemsId)) {
         blog = await getBlogById(itemsId);
@@ -30,26 +32,27 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
 
     async function handleUpdate(formData: FormData) {
         "use server";
+        if (!blog) return;
 
         const readTimeVal = formData.get('read_time');
         const readTime = readTimeVal ? `${readTimeVal} min read` : '5 min read';
 
         const res = await updateBlog(blog.id, {
-            title: formData.get('title'),
-            slug: formData.get('slug'),
-            excerpt: formData.get('excerpt'),
-            content: formData.get('content'),
-            category: formData.get('category'),
-            image: formData.get('image'),
-            contentImage: formData.get('contentImage'),
-            image_file: formData.get('image_file'),
-            content_image_file: formData.get('content_image_file'),
+            title: formData.get('title') as string,
+            slug: formData.get('slug') as string,
+            excerpt: formData.get('excerpt') as string,
+            content: formData.get('content') as string,
+            category: formData.get('category') as string,
+            image: formData.get('image') as string,
+            contentImage: formData.get('contentImage') as string,
+            image_file: formData.get('image_file') as File,
+            content_image_file: formData.get('content_image_file') as File,
             read_time: readTime,
             featured: formData.get('featured') === 'on',
-            status: formData.get('status'),
+            status: formData.get('status') as BlogStatus,
             // Preserve author info or update if needed
-            author_name: blog.authorName,
-            author_image: blog.authorImage,
+            author_name: blog.author_name,
+            author_image: blog.author_image,
         });
 
         if (res.msg === 'success') {

@@ -1,8 +1,22 @@
-import { PlayCircle, ArrowRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { PlayCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+interface HighlightedEventData {
+    id: number | string;
+    title: string;
+    start_time: string;
+    end_time: string;
+    location: string;
+    date: string | Date;
+    speaker_name: string;
+    speaker_role?: string;
+    speaker_image?: string;
+    [key: string]: unknown; // Allow loose props if needed, or strict
+}
 
 interface HighlightedEventProps {
-    event?: any;
+    event?: HighlightedEventData;
 }
 
 export function HighlightedEvent({ event }: HighlightedEventProps) {
@@ -28,10 +42,12 @@ export function HighlightedEvent({ event }: HighlightedEventProps) {
                         <p><strong className="text-white font-medium">Tanggal:</strong> {new Date(event.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                     </div>
                     <div className="flex items-center gap-3 mb-6">
-                        <img
+                        <Image
                             alt={event.speaker_name}
-                            className="w-10 h-10 rounded-full border-2 border-emerald-600 object-cover"
+                            className="rounded-full border-2 border-emerald-600 object-cover"
                             src={event.speaker_image || "https://lh3.googleusercontent.com/aida-public/AB6AXuBpxo98xKfAoKf9eYIGlLTHrg0bpAxCPF5JJYlFS0d0IFzdVetmb7Ypx0nwCB3RHzjDAAAZmS4B2TxB8I1KyUhZpCGCpsPCrw8C3Jdy7_Iqaub6E5BTdfQASqvPo87RPjncapprpuOglOwsnxYspFZkut_-dy9yLTr9isnUhgC9mk8T25h3AM8ZjiyZsx0moSkmBn1bAlxqu9ZR74FxMBaQqJCyvH8i3kzEOe3Stiam1mXoPk9EqhJr40im56hWnXY8Wt80mwTAuqXP"}
+                            width={40}
+                            height={40}
                         />
                         <div>
                             <div className="text-white font-semibold text-sm">{event.speaker_name}</div>
@@ -46,10 +62,11 @@ export function HighlightedEvent({ event }: HighlightedEventProps) {
                 <div className="order-1 lg:order-2 relative">
                     <div className="relative rounded-t-[70px] rounded-b-lg overflow-hidden border border-emerald-800 shadow-2xl aspect-video group cursor-pointer">
                         {/* Placeholder image logic, ideally event has an image */}
-                        <img
+                        <Image
                             alt={event.title}
-                            className="w-full h-full object-cover transition transform duration-700 group-hover:scale-105"
+                            className="object-cover transition transform duration-700 group-hover:scale-105"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1AljKiXVAMOTFnwKWu_z8UQd9CeeudS3_R76y4caOKT-c9TquoynZMjg1PQTHottUXajz-kVnJBvqYgVp6o1iJGf8o0nCyDY9oGzW_LnyZ5VqWo32F_kMhleKSIu3tYQA13VKn8KNL5CUA-mqzXgyYCQZxWgsfw5ADnEy-5Vv-Dqi-brJqI6I3vOgOlBxBLkNzYplE130w87rEfUdqn3QqorhRieRyLjwn1SVp4chI8kBBA-O54ylHlZDwE--sGuKWVwj1UPwbnMk"
+                            fill
                         />
                         <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition group-hover:bg-black/20">
                             {/* <div className="w-14 h-14 rounded-full border border-white/50 bg-white/10 backdrop-blur-sm flex items-center justify-center text-white transition transform group-hover:scale-110">

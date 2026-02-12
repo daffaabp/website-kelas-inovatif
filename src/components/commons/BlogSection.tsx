@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 export interface LatestBlog {
     id: number;
@@ -70,11 +72,12 @@ export function BlogSection({ blogs = [] }: BlogSectionProps) {
                                     href={blogUrl}
                                     className="group block cursor-pointer"
                                 >
-                                    <div className="overflow-hidden rounded-sm mb-4">
-                                        <img
+                                    <div className="overflow-hidden rounded-sm mb-4 relative h-48">
+                                        <Image
                                             src={imageUrl}
                                             alt={blog.title}
-                                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            fill
                                         />
                                     </div>
                                     <div className="flex items-center gap-3 mb-2">

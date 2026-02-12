@@ -21,7 +21,7 @@ const accordionData: AccordionItem[] = [
                     Dengan mengakses situs web ini, kami berasumsi Anda menerima syarat dan ketentuan ini. Jangan melanjutkan menggunakan Kelas Inovatif jika Anda tidak setuju untuk menerima semua syarat dan ketentuan yang dinyatakan di halaman ini.
                 </p>
                 <p className="mt-4">
-                    Terminologi berikut berlaku untuk Syarat dan Ketentuan ini, Pernyataan Privasi dan Pemberitahuan Penafian serta semua Perjanjian: "Klien", "Anda" dan "Milik Anda" merujuk pada Anda, orang yang masuk ke situs web ini dan mematuhi syarat dan ketentuan Perusahaan. "Perusahaan", "Kami Sendiri", "Kami", "Milik Kami" dan "Kita", merujuk pada Perusahaan kami.
+                    Terminologi berikut berlaku untuk Syarat dan Ketentuan ini, Pernyataan Privasi dan Pemberitahuan Penafian serta semua Perjanjian: &quot;Klien&quot;, &quot;Anda&quot; dan &quot;Milik Anda&quot; merujuk pada Anda, orang yang masuk ke situs web ini dan mematuhi syarat dan ketentuan Perusahaan. &quot;Perusahaan&quot;, &quot;Kami Sendiri&quot;, &quot;Kami&quot;, &quot;Milik Kami&quot; dan &quot;Kita&quot;, merujuk pada Perusahaan kami.
                 </p>
             </>
         ),

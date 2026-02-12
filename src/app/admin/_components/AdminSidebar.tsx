@@ -3,12 +3,11 @@
 import React from "react";
 import { usePathname } from "next/navigation"; // Correct hook
 import LinkComponent from "next/link"; // Specific import for component as Next.js recommends
+import Image from "next/image";
 import {
     LayoutDashboard,
     FileText,
     Calendar,
-    Users,
-    Settings,
 } from "lucide-react";
 
 export function AdminSidebar() {
@@ -40,19 +39,6 @@ export function AdminSidebar() {
             name: "Schedule",
             href: "/admin/schedule",
             icon: Calendar,
-        },
-    ];
-
-    const navItems2 = [
-        {
-            name: "Users",
-            href: "/admin/users",
-            icon: Users,
-        },
-        {
-            name: "Settings",
-            href: "/admin/settings",
-            icon: Settings,
         },
     ];
 
@@ -91,10 +77,12 @@ export function AdminSidebar() {
             </nav>
             <div className="p-4 border-t border-gray-200 dark:border-gray-800 shrink-0">
                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-[#F3F1EC] dark:hover:bg-gray-800 cursor-pointer transition-colors w-full mb-2">
-                    <img
+                    <Image
                         alt="Admin Profile"
-                        className="w-10 h-10 rounded-full object-cover border-2 border-[#263c32]/20"
+                        className="rounded-full object-cover border-2 border-[#263c32]/20"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmb0q5os0D3PyYecLz1Crk_uIdc73zDZO4NLRJ6aDrEMgq6VrN5BC4u_Eb387roJwfjwFF0dmHy_qaRgKJmrSFgtOUchq8Gbgc91o742zRRTDVpOA08T_PsEkgzBYtpIW_mHgAriBm6wVLLJJTsjlyM1FP9bz-EfEa1XPuohKSob1_QxEaDlGRGthZBvmZd1BuaNBpS9vICEcobeGW75SW2LJaaqoVoUXWDO-buuavviIqDXMfvXzwLJIpQ53GjNnqh5ihFWnfXHM8"
+                        width={40}
+                        height={40}
                     />
                     <div className="overflow-hidden">
                         <p className="text-sm font-semibold text-gray-800 dark:text-white truncate">

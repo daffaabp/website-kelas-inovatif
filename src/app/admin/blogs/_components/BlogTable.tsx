@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Filter, MoreVertical, Edit, Trash2 } from "lucide-react";
+import Image from "next/image";
 
 import { deleteBlog } from "@/app/actions/blog";
 import { toast } from "sonner";
@@ -9,8 +10,19 @@ import { useRouter } from "next/navigation";
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 
+interface BlogSummary {
+    id: number;
+    title: string;
+    category?: string;
+    author_name?: string;
+    status: string;
+    featured: boolean;
+    image?: string;
+    created_at: string;
+}
+
 interface BlogTableProps {
-    blogs: any[];
+    blogs: BlogSummary[];
     metadata: {
         total: number;
         page: number;
@@ -90,11 +102,12 @@ export function BlogTable({ blogs, metadata }: BlogTableProps) {
                                 <tr key={blog.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group">
                                     <td className="px-6 py-4 align-middle">
                                         <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 shadow-sm">
-                                                <img
+                                            <div className="relative w-12 h-12 rounded-lg bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 shadow-sm">
+                                                <Image
                                                     alt={blog.title}
-                                                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                                                    className="object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                                                     src={blog.image || "https://placehold.co/100"}
+                                                    fill
                                                 />
                                             </div>
                                             <div>
@@ -119,10 +132,10 @@ export function BlogTable({ blogs, metadata }: BlogTableProps) {
                                     </td>
                                     <td className="px-6 py-4 align-middle">
                                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${blog.status === 'draft'
-                                                ? 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
-                                                : blog.featured
-                                                    ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30'
-                                                    : 'bg-green-100 text-green-800 dark:bg-green-900/30'
+                                            ? 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
+                                            : blog.featured
+                                                ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30'
+                                                : 'bg-green-100 text-green-800 dark:bg-green-900/30'
                                             }`}>
                                             {blog.status === 'draft' ? 'Draft' : (blog.featured ? 'Featured' : 'Published')}
                                         </span>

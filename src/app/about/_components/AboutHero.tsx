@@ -1,10 +1,13 @@
+import Image from 'next/image';
+
 export function AboutHero() {
     return (
         <header className="relative pt-32 pb-16 md:pt-32 md:pb-24 overflow-hidden">
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     alt="Kegiatan komunitas Kelas Inovatif"
-                    className="w-full h-full object-cover opacity-20 dark:opacity-10"
+                    className="object-cover opacity-20 dark:opacity-10"
+                    fill
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs4-_qe17AU3qQ_289nbOlJE5KVNyNoOcz9bPaYVi2OXNlbO9QNkZ0AQEQgELo6W9oQtVf779r33P7NsREBsGY4X6qbtdDcASYp_IXiA6wOqAYyT6bILk5mHuOfERX7I2VJ96LBxh-vy6RF9P1o-vE0pm1fZ7dYEVrH3Y8X5DCbO6rFAHNpUkst1lGuERC6qRczaHpn-OFvVbDQKqSYx7k0TgEkth_xfL8MHdFQ4fNHeXDLkb2nlO_lz_Mf2yAhKytlxvWtp_F1yw"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-about-bg-light dark:from-about-bg-dark to-transparent"></div>

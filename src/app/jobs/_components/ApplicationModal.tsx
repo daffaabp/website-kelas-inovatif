@@ -8,7 +8,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { X, Upload, FileText } from 'lucide-react';
+import { Upload, FileText } from 'lucide-react';
 
 interface ApplicationModalProps {
     isOpen: boolean;

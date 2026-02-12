@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Play, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function FeaturedReplay() {
@@ -24,10 +25,12 @@ export function FeaturedReplay() {
                             <p><strong className="font-semibold text-white">Lokasi:</strong> Auditorium Utama</p>
                         </div>
                         <div className="flex items-center gap-4 mb-8">
-                            <img
+                            <Image
                                 alt="Natalia T. Morgan"
-                                className="w-12 h-12 rounded-full border-2 border-white/30"
+                                className="rounded-full border-2 border-white/30"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeLyPHMTP3maUhJYZEieYq1u2_lzGyeawg7QnoW0fTGVgSM32OpVk_1DQd9S7BUQS_SbdZrzsrppy4LxFTUnx0_vvrF8owoVAWawfNqxu7jOAPeA_QfLHBoQOWYaTbAd6goRu4Zog1BCmyOrXU5ybMxVYpiYbmvhsTz3-XRig71CqkvCZeW0IycE7d7SHGZ5XITYA2WnDyKyHKKKAr9fz4Rp2iX8V22ShP9OpsEPsGnGI8QyZeVGeaKHGn1iY2C9F_NQ_ymfjuTSI"
+                                width={48}
+                                height={48}
                             />
                             <div>
                                 <p className="font-semibold">Natalia T. Morgan</p>
@@ -41,10 +44,13 @@ export function FeaturedReplay() {
                     </div>
                     <div className="lg:w-1/2 w-full z-10">
                         <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                            <img
+                            <Image
                                 alt="Ceremony hall"
                                 className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAMtYK2f8wlZdfRhLXP9w4emvsLRDL6G2BWp91Q7H_jARYYOAuOfMkUl3Cl0MXgKk93ge75sgShlOKXx2i11F1kHNqWMV26pmUOgTES5jYHLqqsPErOMicKBtDerIzm-OQGEt2fA_rrCO9p45TRort79q7HhCB_M_ytQ8EUd2rXzi9HYNOlr2swHLNdqmgaiLUOXwX88Gm2K3OAbbiSejGRb8N9PfGwH8XzcN2tUbfg8ipFI3MuiPLB1d4Y0JJ5H-7Wn5pDpFh0U8"
+                                width={800}
+                                height={450}
+                                style={{ width: '100%', height: 'auto' }}
                             />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                                 <button className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 text-white hover:bg-white hover:text-schedule-primary transition-all duration-300">

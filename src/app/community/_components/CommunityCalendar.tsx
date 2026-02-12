@@ -1,4 +1,5 @@
 import React from 'react';
+import { Clock, ArrowRight } from 'lucide-react';
 
 export function CommunityCalendar() {
     return (
@@ -21,7 +22,7 @@ export function CommunityCalendar() {
                         <div className="grow text-center md:text-left">
                             <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                                 <span className="text-xs bg-white text-community-primary px-2 py-0.5 rounded font-bold uppercase">UTAMA</span>
-                                <span className="text-xs opacity-70 flex items-center"><span className="material-icons-outlined text-sm mr-1">schedule</span> Sabtu, 19:30 WIB</span>
+                                <span className="text-xs opacity-70 flex items-center"><Clock className="h-4 w-4 mr-1" /> Sabtu, 19:30 WIB</span>
                             </div>
                             <h3 className="text-xl font-bold mb-1">Monthly Meeting Bersama Pak Arianto</h3>
                             <p className="text-sm text-gray-300">Zoom Meeting • Bedah kasus AI, Update Tools, & Tanya Jawab Riset.</p>
@@ -38,7 +39,7 @@ export function CommunityCalendar() {
                         <div className="grow text-center md:text-left">
                             <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                                 <span className="text-xs bg-orange-500 text-white px-2 py-0.5 rounded font-bold uppercase">Workshop</span>
-                                <span className="text-xs opacity-70 flex items-center"><span className="material-icons-outlined text-sm mr-1">schedule</span> 09:00 - 12:00</span>
+                                <span className="text-xs opacity-70 flex items-center"><Clock className="h-4 w-4 mr-1" /> 09:00 - 12:00</span>
                             </div>
                             <h3 className="text-xl font-bold mb-1">Bedah Jurnal Scopus Q1</h3>
                             <p className="text-sm text-gray-300">Live Case Study • Strategi Menembus Reviewer Internasional</p>
@@ -55,7 +56,7 @@ export function CommunityCalendar() {
                         <div className="grow text-center md:text-left">
                             <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                                 <span className="text-xs bg-green-500 text-white px-2 py-0.5 rounded font-bold uppercase">Klinik</span>
-                                <span className="text-xs opacity-70 flex items-center"><span className="material-icons-outlined text-sm mr-1">schedule</span> 13:00 - 15:00</span>
+                                <span className="text-xs opacity-70 flex items-center"><Clock className="h-4 w-4 mr-1" /> 13:00 - 15:00</span>
                             </div>
                             <h3 className="text-xl font-bold mb-1">Klinik Percepatan Disertasi</h3>
                             <p className="text-sm text-gray-300">Sesi Khusus • Konsultasi Kendala Promovendus</p>
@@ -67,7 +68,7 @@ export function CommunityCalendar() {
                 </div>
                 <div className="text-center mt-12">
                     <a className="inline-flex items-center text-sm font-bold text-white hover:text-gray-200 transition" href="#">
-                        Lihat Kalender Lengkap <span className="material-icons-outlined ml-2">arrow_forward</span>
+                        Lihat Kalender Lengkap <ArrowRight className="ml-2 h-5 w-5" />
                     </a>
                 </div>
             </div>

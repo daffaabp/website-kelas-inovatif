@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Quote, ArrowRight, PlayCircle } from 'lucide-react';
 import { AlumniStory } from '../_data/stories';
 
@@ -14,10 +15,12 @@ export function StoryCard({ story, onReadMore }: StoryCardProps) {
             {/* Header: Profile */}
             <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center gap-4">
-                    <img
+                    <Image
                         alt={story.name}
                         src={story.photo}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-[#D4AF37] shadow-sm transform group-hover:scale-110 transition-transform duration-500"
+                        className="rounded-full object-cover border-2 border-[#D4AF37] shadow-sm transform group-hover:scale-110 transition-transform duration-500"
+                        width={64}
+                        height={64}
                     />
                     <div>
                         <h4 className="font-bold text-lg text-[#1C302B] dark:text-white leading-tight">{story.name}</h4>
@@ -39,13 +42,13 @@ export function StoryCard({ story, onReadMore }: StoryCardProps) {
             <div className="relative mb-6 grow">
                 <Quote className="absolute -top-2 -left-2 w-6 h-6 text-[#D4AF37]/20 transform -scale-x-100" />
                 <p className="font-serif text-xl text-[#1C302B] dark:text-white leading-relaxed pl-6 italic">
-                    "{story.quote}"
+                    &quot;{story.quote}&quot;
                 </p>
             </div>
 
             {/* Footer Actions */}
             <div className="mt-auto pt-6 flex items-center justify-between border-t border-gray-100 dark:border-gray-800">
-                <button 
+                <button
                     onClick={() => onReadMore(story)}
                     className="flex items-center gap-2 text-sm font-bold text-[#1C302B] dark:text-white hover:text-[#D4AF37] transition-colors group/btn"
                 >
@@ -55,7 +58,7 @@ export function StoryCard({ story, onReadMore }: StoryCardProps) {
 
                 <div className="flex items-center gap-3">
                     {story.videoUrl && (
-                         <button className="text-gray-400 hover:text-red-500 transition hover:scale-110 transform" title="Tonton Video">
+                        <button className="text-gray-400 hover:text-red-500 transition hover:scale-110 transform" title="Tonton Video">
                             <PlayCircle className="w-6 h-6" />
                         </button>
                     )}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, BookOpen, Rocket, Users, Newspaper, HelpCircle, Mail, Briefcase } from 'lucide-react';
@@ -25,7 +26,7 @@ export function Navbar() {
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-contact-secondary/90 dark:bg-contact-bg-dark/90 backdrop-blur-md shadow-sm border-b border-contact-primary/10 dark:border-white/10 ${scrolled ? 'py-3' : 'py-4'}`}>
             <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
                 {/* Logo */}
-                <a href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+                <Link href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
                     <Image
                         src="/images/logo-kelas-inovatif/logo_kelas_inovatif.png"
                         alt="Kelas Inovatif"
@@ -34,14 +35,14 @@ export function Navbar() {
                         className="h-10 w-auto object-contain"
                         priority
                     />
-                </a>
+                </Link>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700 dark:text-gray-300">
-                    <a href="/" className="hover:opacity-75 transition-opacity cursor-pointer">BERANDA</a>
-                    <a href="/about" className="hover:opacity-75 transition-opacity cursor-pointer">TENTANG KAMI</a>
-                    <a href="/community" className="hover:opacity-75 transition-opacity cursor-pointer">KOMUNITAS</a>
-                    <a href="/user-story" className="hover:opacity-75 transition-opacity cursor-pointer">USER STORY</a>
+                    <Link href="/" className="hover:opacity-75 transition-opacity cursor-pointer">BERANDA</Link>
+                    <Link href="/about" className="hover:opacity-75 transition-opacity cursor-pointer">TENTANG KAMI</Link>
+                    <Link href="/community" className="hover:opacity-75 transition-opacity cursor-pointer">KOMUNITAS</Link>
+                    <Link href="/user-story" className="hover:opacity-75 transition-opacity cursor-pointer">USER STORY</Link>
 
                     {/* Programs Dropdown */}
                     <div
@@ -74,7 +75,7 @@ export function Navbar() {
                                     <div className="absolute inset-0 bg-linear-to-br from-eduzin-dark/5 to-transparent pointer-events-none"></div>
 
                                     <div className="relative py-2">
-                                        <a
+                                        <Link
                                             href="/program"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -83,11 +84,11 @@ export function Navbar() {
                                                 <BookOpen className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Regular Program</span>
                                             </div>
-                                        </a>
+                                        </Link>
 
                                         <div className="mx-4 my-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
 
-                                        <a
+                                        <Link
                                             href="/bootcamp"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -96,11 +97,11 @@ export function Navbar() {
                                                 <Rocket className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Bootcamp Masterclass</span>
                                             </div>
-                                        </a>
+                                        </Link>
 
                                         <div className="mx-4 my-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
 
-                                        <a
+                                        <Link
                                             href="/private"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -109,14 +110,14 @@ export function Navbar() {
                                                 <Users className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Private Class</span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                         )}
                     </div>
 
-                    <a href="/schedule" className="hover:opacity-75 transition-opacity cursor-pointer">EVENT</a>
+                    <Link href="/schedule" className="hover:opacity-75 transition-opacity cursor-pointer">EVENT</Link>
 
                     {/* Information Dropdown */}
                     <div
@@ -149,7 +150,7 @@ export function Navbar() {
                                     <div className="absolute inset-0 bg-linear-to-br from-eduzin-dark/5 to-transparent pointer-events-none"></div>
 
                                     <div className="relative py-2">
-                                        <a
+                                        <Link
                                             href="/blogs"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -158,11 +159,11 @@ export function Navbar() {
                                                 <Newspaper className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Baca Blogs</span>
                                             </div>
-                                        </a>
+                                        </Link>
 
                                         <div className="mx-4 my-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
 
-                                        <a
+                                        <Link
                                             href="/faq"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -171,11 +172,11 @@ export function Navbar() {
                                                 <HelpCircle className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Baca FAQ</span>
                                             </div>
-                                        </a>
+                                        </Link>
 
                                         <div className="mx-4 my-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
 
-                                        <a
+                                        <Link
                                             href="/contact"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -184,11 +185,11 @@ export function Navbar() {
                                                 <Mail className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Hubungi Kami</span>
                                             </div>
-                                        </a>
+                                        </Link>
 
                                         <div className="mx-4 my-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-gray-600 to-transparent"></div>
 
-                                        <a
+                                        <Link
                                             href="/jobs"
                                             className="group block px-5 py-3.5 text-gray-700 dark:text-gray-300 hover:bg-linear-to-r hover:from-eduzin-dark/10 hover:to-eduzin-dark/5 dark:hover:from-eduzin-dark/20 dark:hover:to-eduzin-dark/10 transition-all duration-200 cursor-pointer relative overflow-hidden"
                                         >
@@ -197,7 +198,7 @@ export function Navbar() {
                                                 <Briefcase className="w-4 h-4 text-eduzin-dark group-hover:scale-110 transition-transform duration-200" />
                                                 <span className="font-medium">Karir</span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -224,10 +225,10 @@ export function Navbar() {
             {/* Mobile Menu */}
             {mobileMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg py-8 px-4 flex flex-col gap-4 text-center">
-                    <a href="/" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Beranda</a>
-                    <a href="/about" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Tentang Kami</a>
-                    <a href="/community" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Komunitas</a>
-                    <a href="/user-story" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>User Story</a>
+                    <Link href="/" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Beranda</Link>
+                    <Link href="/about" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Tentang Kami</Link>
+                    <Link href="/community" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Komunitas</Link>
+                    <Link href="/user-story" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>User Story</Link>
 
                     {/* Programs Dropdown Mobile */}
                     <div className="flex flex-col gap-2">
@@ -240,14 +241,14 @@ export function Navbar() {
                         </button>
                         {programsDropdownOpen && (
                             <div className="flex flex-col gap-2 pl-4 bg-gray-50 dark:bg-gray-800 py-2 rounded-lg">
-                                <a href="/program" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Regular Program</a>
-                                <a href="/bootcamp" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Bootcamp Masterclass</a>
-                                <a href="/private" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Private Class</a>
+                                <Link href="/program" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Regular Program</Link>
+                                <Link href="/bootcamp" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Bootcamp Masterclass</Link>
+                                <Link href="/private" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Private Class</Link>
                             </div>
                         )}
                     </div>
 
-                    <a href="/schedule" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Event</a>
+                    <Link href="/schedule" className="text-gray-800 dark:text-gray-200 font-medium cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Event</Link>
 
                     {/* Information Dropdown Mobile */}
                     <div className="flex flex-col gap-2">
@@ -260,10 +261,10 @@ export function Navbar() {
                         </button>
                         {informationDropdownOpen && (
                             <div className="flex flex-col gap-2 pl-4 bg-gray-50 dark:bg-gray-800 py-2 rounded-lg">
-                                <a href="/blogs" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Read Blogs</a>
-                                <a href="/faq" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Baca FAQ</a>
-                                <a href="/contact" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Hubungi Kami</a>
-                                <a href="/jobs" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Careers</a>
+                                <Link href="/blogs" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Read Blogs</Link>
+                                <Link href="/faq" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Baca FAQ</Link>
+                                <Link href="/contact" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Hubungi Kami</Link>
+                                <Link href="/jobs" className="text-gray-700 dark:text-gray-300 text-sm cursor-pointer" onClick={() => setMobileMenuOpen(false)}>Careers</Link>
                             </div>
                         )}
                     </div>

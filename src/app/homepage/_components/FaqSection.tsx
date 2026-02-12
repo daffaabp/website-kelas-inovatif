@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Image from 'next/image';
 import { faqs } from '../_data/faqs';
 
 export function FaqSection() {
@@ -23,8 +24,8 @@ export function FaqSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          <div className="w-full aspect-video md:aspect-auto md:h-[500px] overflow-hidden rounded-lg">
-            <img src="/community/community0.avif" className="w-full h-full object-cover" alt="Student thinking" />
+          <div className="relative w-full aspect-video md:aspect-auto md:h-[500px] overflow-hidden rounded-lg">
+            <Image src="/community/community0.avif" className="object-cover" alt="Student thinking" fill />
           </div>
 
           <Accordion type="single" collapsible defaultValue="item-0" className="w-full">

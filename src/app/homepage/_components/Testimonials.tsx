@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { testimonials } from '../_data/testimonials';
 
@@ -54,17 +55,19 @@ export function Testimonials() {
               </p>
             </div>
 
-             <div className="flex items-center gap-4">
-               <img 
-                 src={current.avatar} 
-                 alt={current.author} 
-                 className="w-12 h-12 rounded-full object-cover" 
-               />
-               <div>
-                 <p className="font-bold text-sm">{current.author}</p>
-                 <p className="text-xs text-gray-500">{current.role}</p>
-               </div>
-             </div>
+            <div className="flex items-center gap-4">
+              <Image
+                src={current.avatar}
+                alt={current.author}
+                className="rounded-full object-cover"
+                width={48}
+                height={48}
+              />
+              <div>
+                <p className="font-bold text-sm">{current.author}</p>
+                <p className="text-xs text-gray-500">{current.role}</p>
+              </div>
+            </div>
           </div>
 
         </div>

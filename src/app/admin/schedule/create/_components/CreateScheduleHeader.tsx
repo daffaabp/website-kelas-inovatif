@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Upload } from "lucide-react";
+import { Upload, Menu } from "lucide-react";
 import { useFormStatus } from 'react-dom';
 
 function SubmitButton() {
@@ -33,7 +33,7 @@ export function CreateScheduleHeader() {
                 </div>
                 <button className="text-gray-600 dark:text-gray-300 p-2">
                     {/* Menu icon placeholder */}
-                    <span className="material-icons-round">menu</span>
+                    <Menu className="h-6 w-6" />
                 </button>
             </div>
             <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">

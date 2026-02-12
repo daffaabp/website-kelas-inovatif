@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { Calendar, Tag, Image as ImageIcon, Plus, X, UploadCloud } from "lucide-react";
+import Image from "next/image";
 
 interface ScheduleSidebarProps {
     initialData?: {
@@ -134,7 +135,7 @@ export function ScheduleSidebar({ initialData }: ScheduleSidebarProps) {
                     >
                         {preview ? (
                             <>
-                                <img src={preview} alt="Featured Preview" className="absolute inset-0 w-full h-full object-cover" />
+                                <Image src={preview} alt="Featured Preview" className="object-cover" fill />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                     <UploadCloud className="text-white w-8 h-8" />
                                 </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GraduationCap, BookOpen, Users, ArrowRight } from "lucide-react";
 
 export function PartnershipSection() {
@@ -9,8 +10,8 @@ export function PartnershipSection() {
                         Program Kerjasama
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 text-lg">
-                        Kelas Inovatif telah dipercaya berbagai institusi untuk mengakselerasi literasi AI di Indonesia. 
-                        Mulai dari universitas, lembaga pemerintahan, hingga satuan militer (TNI), kami hadir untuk 
+                        Kelas Inovatif telah dipercaya berbagai institusi untuk mengakselerasi literasi AI di Indonesia.
+                        Mulai dari universitas, lembaga pemerintahan, hingga satuan militer (TNI), kami hadir untuk
                         menciptakan dampak nyata melalui edukasi teknologi yang inklusif.
                     </p>
                 </div>
@@ -71,13 +72,13 @@ export function PartnershipSection() {
                     </div>
                 </div>
                 <div className="text-center">
-                    <a
+                    <Link
                         className="inline-flex items-center px-6 py-3 bg-about-primary text-white rounded-full font-medium hover:bg-about-primary/90 transition-colors group"
                         href="/contact"
                     >
                         Hubungi Kami untuk Kerjasama
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

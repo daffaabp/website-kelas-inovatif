@@ -1,4 +1,5 @@
 import { Mail, Link as LinkIcon } from "lucide-react";
+import Image from 'next/image';
 
 const leaders = [
     {
@@ -53,10 +54,11 @@ export function LeadershipSection() {
                     {leaders.map((leader, index) => (
                         <div key={index} className="group">
                             <div className="relative overflow-hidden rounded-xl mb-4 aspect-3/4">
-                                <img
+                                <Image
                                     alt={leader.name}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                                     src={leader.image}
+                                    fill
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                     <div className="flex space-x-2">

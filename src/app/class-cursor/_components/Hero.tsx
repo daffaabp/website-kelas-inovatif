@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Clock, TrendingUp, Users, Star } from 'lucide-react';
 
 export function Hero() {
@@ -5,10 +6,12 @@ export function Hero() {
         <div className="relative bg-linear-to-br from-teal-900 via-teal-800 to-teal-900 dark:from-gray-900 dark:via-teal-950 dark:to-gray-900 overflow-hidden">
             {/* Premium Background Pattern */}
             <div className="absolute inset-0">
-                <img
+                <Image
                     alt="Students in library"
-                    className="w-full h-full object-cover opacity-20"
+                    className="object-cover opacity-20"
                     src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=800&fit=crop"
+                    fill
+                    priority
                 />
                 <div className="absolute inset-0 bg-linear-to-r from-teal-900/90 via-teal-800/80 to-transparent"></div>
             </div>
@@ -34,7 +37,7 @@ export function Hero() {
                     </h1>
 
                     <p className="text-lg text-gray-200 mb-8 max-w-2xl font-light leading-relaxed">
-                    Ratusan mahasiswa S2/S3 dan dosen telah mempercepat publikasi, penulisan artikel, tesis, disertasi, bahkan pembuatan buku dengan Cursor AI. Mulai dari draft hingga karya terbit—kini menulis karya ilmiah berkualitas dan bebas plagiasi jadi lebih mudah.
+                        Ratusan mahasiswa S2/S3 dan dosen telah mempercepat publikasi, penulisan artikel, tesis, disertasi, bahkan pembuatan buku dengan Cursor AI. Mulai dari draft hingga karya terbit—kini menulis karya ilmiah berkualitas dan bebas plagiasi jadi lebih mudah.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">

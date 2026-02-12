@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 import { Quote, Star, PlayCircle } from 'lucide-react';
 
 export function Testimonials() {
@@ -53,14 +54,15 @@ export function Testimonials() {
                         <div key={index} className="bg-private-bg-light dark:bg-private-bg-dark rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden flex flex-col h-full group hover:shadow-xl transition-all duration-300">
                             {/* Video Thumbnail */}
                             <div className="relative aspect-video overflow-hidden bg-gray-200">
-                                <img 
-                                    src={item.thumbnail} 
-                                    alt={`Testimoni ${item.name}`} 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                <Image
+                                    src={item.thumbnail}
+                                    alt={`Testimoni ${item.name}`}
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                    fill
                                 />
-                                <a 
-                                    href={item.videoUrl} 
-                                    target="_blank" 
+                                <a
+                                    href={item.videoUrl}
+                                    target="_blank"
                                     rel="noopener noreferrer"
                                     className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-colors"
                                 >
@@ -76,11 +78,11 @@ export function Testimonials() {
                             <div className="p-6 flex flex-col grow relative">
                                 <Quote className="text-gray-200 dark:text-gray-700 absolute top-4 right-4 w-8 h-8 opacity-50" />
                                 <div className="mb-4">
-                                     <h3 className="font-bold text-gray-900 dark:text-white text-lg">{item.name}</h3>
-                                     <p className="text-xs text-private-primary font-medium">{item.role}</p>
+                                    <h3 className="font-bold text-gray-900 dark:text-white text-lg">{item.name}</h3>
+                                    <p className="text-xs text-private-primary font-medium">{item.role}</p>
                                 </div>
                                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 grow italic">
-                                    "{item.quote}"
+                                    &quot;{item.quote}&quot;
                                 </p>
                                 <div className="flex text-yellow-500 text-xs gap-0.5 mt-auto">
                                     {[...Array(5)].map((_, i) => (

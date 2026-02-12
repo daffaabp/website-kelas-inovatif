@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CheckCircle, Clock, Video, Users, Calendar, MessageCircle, FileText, Zap } from 'lucide-react';
+import { Clock, Video, Users, MessageCircle, FileText, Zap } from 'lucide-react';
 
 export function Benefits() {
     const benefits = [

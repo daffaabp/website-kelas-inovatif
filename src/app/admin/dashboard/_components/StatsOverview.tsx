@@ -1,5 +1,5 @@
 import React from "react";
-import { Users, GraduationCap, FileText, Calendar, ArrowUp, ArrowRight, Minus } from "lucide-react";
+import { Users, GraduationCap, FileText, Calendar, ArrowRight } from "lucide-react";
 
 interface StatsOverviewProps {
     stats: {

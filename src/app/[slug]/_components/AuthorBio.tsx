@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Mail, Globe, CheckCircle } from 'lucide-react';
 
 interface AuthorBioProps {
@@ -14,11 +15,12 @@ export function AuthorBio({ author }: AuthorBioProps) {
     return (
         <div className="bg-white dark:bg-blog-surface-dark rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 md:p-10 mb-12 flex flex-col md:flex-row items-center md:items-start gap-8">
             <div className="relative">
-                <div className="w-24 h-24 rounded-full p-1 border-2 border-dashed border-blog-accent">
-                    <img
+                <div className="relative w-24 h-24 rounded-full p-1 border-2 border-dashed border-blog-accent">
+                    <Image
                         alt={author.name}
-                        className="w-full h-full rounded-full object-cover"
+                        className="rounded-full object-cover"
                         src={author.image}
+                        fill
                     />
                 </div>
                 <div className="absolute bottom-0 right-0 w-8 h-8 bg-blog-primary rounded-full flex items-center justify-center text-white border-2 border-white dark:border-blog-surface-dark">
