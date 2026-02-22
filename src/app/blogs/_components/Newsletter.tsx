@@ -1,14 +1,26 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useActionState, useEffect } from "react";
+import { subscribeToNewsletter } from "@/app/actions/subscribe";
+import { toast } from "sonner";
+
+const initialState = {
+    success: false,
+    message: "",
+};
 
 export function Newsletter() {
-    const [email, setEmail] = useState('');
+    const [state, action, isPending] = useActionState(subscribeToNewsletter, initialState);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Newsletter subscription logic here
-    };
+    useEffect(() => {
+        if (state.message) {
+            if (state.success) {
+                toast.success(state.message);
+            } else {
+                toast.error(state.message);
+            }
+        }
+    }, [state]);
 
     return (
         <section className="py-16 bg-white dark:bg-blog-surface-dark border-t border-gray-100 dark:border-gray-800">
@@ -35,20 +47,37 @@ export function Newsletter() {
                                 </p>
                             </div>
                         </div>
-                        <form onSubmit={handleSubmit} className="w-full md:w-auto flex flex-col sm:flex-row gap-3">
-                            <input
-                                className="w-full sm:w-80 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-blog-surface-dark text-sm focus:outline-none focus:ring-2 focus:ring-blog-primary dark:focus:ring-white"
-                                placeholder="Email bisnis..."
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <button
-                                className="px-8 py-3 bg-blog-primary text-white rounded-full text-sm font-medium hover:bg-opacity-90 transition shadow-lg"
-                                type="submit"
-                            >
-                                BERLANGGANAN
-                            </button>
+                        <form action={action} className="w-full md:w-auto flex flex-col gap-3">
+                            <div className="flex gap-3">
+                                <input
+                                    name="firstName"
+                                    className="flex-1 w-full sm:w-40 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-blog-surface-dark text-sm focus:outline-none focus:ring-2 focus:ring-blog-primary dark:focus:ring-white"
+                                    placeholder="Nama Depan"
+                                    type="text"
+                                />
+                                <input
+                                    name="lastName"
+                                    className="flex-1 w-full sm:w-40 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-blog-surface-dark text-sm focus:outline-none focus:ring-2 focus:ring-blog-primary dark:focus:ring-white"
+                                    placeholder="Nama Belakang"
+                                    type="text"
+                                />
+                            </div>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    name="email"
+                                    className="flex-1 w-full sm:w-80 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-blog-surface-dark text-sm focus:outline-none focus:ring-2 focus:ring-blog-primary dark:focus:ring-white"
+                                    placeholder="Email bisnis..."
+                                    type="email"
+                                    required
+                                />
+                                <button
+                                    className="px-8 py-3 bg-blog-primary text-white rounded-full text-sm font-medium hover:bg-opacity-90 transition shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                                    type="submit"
+                                    disabled={isPending}
+                                >
+                                    {isPending ? "MEMPROSES..." : "BERLANGGANAN"}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
